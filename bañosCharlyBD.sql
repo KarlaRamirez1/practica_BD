@@ -15,7 +15,7 @@ CREATE TABLE Empleado(
     Puesto VARCHAR(350),
     Salario DECIMAL(7,2),
     email_empleado VARCHAR(350),
-    Administrador INT AUTO_INCREMENT,
+    contraseña VARCHAR(21),
     Estado char(1) DEFAULT "A",
     PRIMARY KEY(Codigo_EM)
 );
