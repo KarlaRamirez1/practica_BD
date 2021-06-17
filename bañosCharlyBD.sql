@@ -46,7 +46,7 @@ CREATE TABLE Compras(
 CREATE TABLE Ventas(
     Folio_venta INT,
     Producto INT,
-    Color VARCHAR(200),
+    Color VARCHAR(50),
     Cantidad INT,
     Subtotal DECIMAL(7,2),
     IVA DECIMAL(7,2),
