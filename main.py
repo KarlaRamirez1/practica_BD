@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QMainWindow, QMessageBox,
 from PyQt5.QtGui import QIcon, QColor
 from PyQt5 import QtWidgets, QtCore #,QtGui
 from PyQt5.uic import loadUi
-from Modules.login import Login
+from modules.login import Login
 
 
 class Main(QMainWindow):
