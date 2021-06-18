@@ -3,6 +3,7 @@ CREATE TABLE Producto(
     Tipo VARCHAR(200),
     Nombre VARCHAR(200),
     Precio DECIMAL(7,2),
+    Descripcion VARCHAR(500),
     Existencia INT,
     Resurtible BOOLEAN,
     PRIMARY KEY(Id)
