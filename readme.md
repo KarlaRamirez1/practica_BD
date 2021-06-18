@@ -1,3 +1,5 @@
+# Baños chaly
+
 ## 1 - Ventas
 * Fecha - Date
 * RFC cliente - Text
@@ -84,10 +86,10 @@
     - Total ticket          - Campo
 * Total General             - Campo
 * Generar ticket - Button "creara un excel"
-## 8 - Respaldos
+## 7 - Respaldos
 * Generar respaldo    - Button
 * Recuperar respaldo  - Button
-## 7 - Perfil
+## 8 - Perfil
 ### Empleado
 * Editar sus datos personales
 * Editar Nombre de usuario
@@ -103,7 +105,7 @@
     - Ver
     - Agregar
 * Tickets
-### - Administrador
+### Administrador
 * Editar datos personales de empleados
 * ver correo y username de empleados
 * Crear empleados
