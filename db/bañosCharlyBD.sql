@@ -1,7 +1,7 @@
 CREATE TABLE Producto(
     Id VARCHAR(14),
-    Nombre VARCHAR(200),
     Tipo VARCHAR(200),
+    Nombre VARCHAR(200),
     Precio DECIMAL(7,2),
     Existencia INT,
     Resurtible BOOLEAN,
@@ -14,7 +14,7 @@ CREATE TABLE Empleado(
     Apellido_p VARCHAR(100),
     Apellido_m VARCHAR(100),
     Nombre_usuario VARCHAR(100),
-    Email_empleado VARCHAR(350),
+    Email VARCHAR(350),
     Contrasenia VARCHAR(21),
     Puesto INT,
     Salario DECIMAL(7,2),
@@ -23,12 +23,13 @@ CREATE TABLE Empleado(
 );
 
 CREATE TABLE Proveedor(
+    Id INT AUTO_INCREMENT,
     Rfc VARCHAR(13),
     Nombre VARCHAR(350),
     Telefono VARCHAR(13),
     direccion VARCHAR(350),
     Activo BOOLEAN DEFAULT TRUE,
-    PRIMARY KEY(Rfc)
+    PRIMARY KEY(Id)
 );
 
 CREATE TABLE Compra(
@@ -55,7 +56,7 @@ CREATE TABLE Venta(
     Id INT,
     Folio INT,
     Producto INT,
-    Color VARCHAR(50),
+    Color VARCHAR(150),
     Cantidad INT,
     FOREIGN KEY(Folio)REFERENCES Ticket_venta(Folio),
     PRIMARY KEY(Id),
