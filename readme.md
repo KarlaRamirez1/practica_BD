@@ -1,4 +1,4 @@
-# Baños chaly
+# Baños charly
 
 ## 1 - Ventas
 * Fecha - Date
