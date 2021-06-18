@@ -54,7 +54,7 @@ CREATE TABLE Ticket_compra(
 
 CREATE TABLE Venta(
     Id INT,
-    Folio INT,
+    Folio INT AUTO_INCREMENT,
     Producto INT,
     Color VARCHAR(150),
     Cantidad INT,
@@ -70,6 +70,11 @@ CREATE TABLE Ticket_venta(
     RFC_Cliente VARCHAR(13),
     FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
 );
+
+
+
+
+
 
 
 
