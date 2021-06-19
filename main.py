@@ -9,7 +9,7 @@ from PyQt5 import QtWidgets, QtCore #,QtGui
 from PyQt5.uic import loadUi
 from Modules.login import Login
 
-conexion = sqlite3.connect("BD_BañosCharly_Master")
+conexion = sqlite3.connect("BD_BaniosCharly_Master")
 
 
 class Main(QMainWindow):
