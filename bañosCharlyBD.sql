@@ -1,13 +1,28 @@
+CREATE TABLE Tipo(
+    Id INT AUTO_INCREMENT ,
+    nombreT VARCHAR(100),
+    PRIMARY KEY(Id)
+);
+
+CREATE TABLE Nombre(
+    Id INT AUTO_INCREMENT ,
+    nombre VARCHAR(200),
+    PRIMARY KEY(Id)
+);
 CREATE TABLE Producto(
     Id VARCHAR(14),
-    Tipo VARCHAR(200),
-    Nombre VARCHAR(200),
+    Tipo int,
+    Nombre int,
     Precio DECIMAL(7,2),
     Descripcion VARCHAR(500),
     Existencia INT,
     Resurtible BOOLEAN,
-    PRIMARY KEY(Id)
+    PRIMARY KEY(IdP),
+    FOREIGN KEY(Tipo)REFERENCES Tipo(Id),
+    FOREIGN KEY(Nombre)REFERENCES Nombre(Id)
 );
+
+
 
 CREATE TABLE Empleado(
     Id INT AUTO_INCREMENT,
@@ -65,40 +80,31 @@ CREATE TABLE Venta(
 );
 
 CREATE TABLE Ticket_venta(
-    Folio INT,
+    Folio INT AUTO_INCREMENT,
     Fecha DATE,
     Id_empleado int,
     RFC_Cliente VARCHAR(13),
+    PRIMARY KEY(Folio),
     FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
 );
 
 
-
-
-
-
-
-
-
-
-
-
---Disparadores para las tablas
---trigger para restar la existencia del producto despues de registrar una venta
+/*Disparadores para las tablas
+trigger para restar la existencia del producto despues de registrar una venta
 delimiter //
-create trigger existenciaVenta before insert on Ventas for each row
+create trigger existenciaVenta before insert on Venta for each row
 begin
-update Producto set Existencia=Existencia-new.cantidad where Codigo_p=new.Producto;
+update Producto set Existencia=Existencia-new.cantidad where IdP=new.Id;
 end
 //
-delimiter ;
+delimiter ;*/
 
--- trigger para sumar la existencia del producto cuando realizamos una compra del producto
+/*trigger para sumar la existencia del producto cuando realizamos una compra del producto
 DELIMITER //
-create trigger existenciaCompra After insert on Compras for each row
+create trigger existenciaCompra After insert on Compra for each row
 begin
-update Producto set Existencia=Existencia+new.cantidad where Codigo_p=new.Producto;
+update Producto set Existencia=Existencia+new.cantidad where IdP=new.Id;
 end
 //
-delimiter ;
+delimiter ;*/
 
