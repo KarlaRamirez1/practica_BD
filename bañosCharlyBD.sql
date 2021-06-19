@@ -1,3 +1,12 @@
+CREATE TABLE Proveedor(
+    Id INT AUTO_INCREMENT,
+    Rfc VARCHAR(13),
+    Nombre VARCHAR(350),
+    Telefono VARCHAR(13),
+    direccion VARCHAR(350),
+    Activo BOOLEAN DEFAULT TRUE,
+    PRIMARY KEY(Id)
+);
 CREATE TABLE Tipo(
     Id INT AUTO_INCREMENT ,
     nombreT VARCHAR(100),
@@ -17,12 +26,12 @@ CREATE TABLE Producto(
     Descripcion VARCHAR(500),
     Existencia INT,
     Resurtible BOOLEAN,
+    Proveedor INT,
     PRIMARY KEY(IdP),
     FOREIGN KEY(Tipo)REFERENCES Tipo(Id),
-    FOREIGN KEY(Nombre)REFERENCES Nombre(Id)
+    FOREIGN KEY(Nombre)REFERENCES Nombre(Id),
+    FOREIGN KEY(Proveedor)REFERENCES Proveedor(Id),
 );
-
-
 
 CREATE TABLE Empleado(
     Id INT AUTO_INCREMENT,
@@ -38,19 +47,11 @@ CREATE TABLE Empleado(
     PRIMARY KEY(Id)
 );
 
-CREATE TABLE Proveedor(
-    Id INT AUTO_INCREMENT,
-    Rfc VARCHAR(13),
-    Nombre VARCHAR(350),
-    Telefono VARCHAR(13),
-    direccion VARCHAR(350),
-    Activo BOOLEAN DEFAULT TRUE,
-    PRIMARY KEY(Id)
-);
+
 
 CREATE TABLE Compra(
     Id INT,
-    Folio INT, --conjunto de compras
+    Folio INT,
     Producto INT,
     Precio DECIMAL(7,2),
     Cantidad INT,
@@ -64,6 +65,7 @@ CREATE TABLE Ticket_compra(
     Fecha DATE,
     Id_empleado int,
     Id_proveedor int,
+    PRIMARY KEY(Folio),
     FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
     FOREIGN KEY(Id_proveedor)REFERENCES Proveedor(RFC)
 );
