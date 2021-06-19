@@ -85,26 +85,6 @@ CREATE TABLE Ticket_venta(
     Id_empleado int,
     RFC_Cliente VARCHAR(13),
     PRIMARY KEY(Folio),
-    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
+    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id)
 );
-
-
-/*Disparadores para las tablas
-trigger para restar la existencia del producto despues de registrar una venta
-delimiter //
-create trigger existenciaVenta before insert on Venta for each row
-begin
-update Producto set Existencia=Existencia-new.cantidad where IdP=new.Id;
-end
-//
-delimiter ;*/
-
-/*trigger para sumar la existencia del producto cuando realizamos una compra del producto
-DELIMITER //
-create trigger existenciaCompra After insert on Compra for each row
-begin
-update Producto set Existencia=Existencia+new.cantidad where IdP=new.Id;
-end
-//
-delimiter ;*/
 
