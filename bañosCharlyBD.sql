@@ -27,10 +27,10 @@ CREATE TABLE Producto(
     Existencia INT,
     Resurtible BOOLEAN,
     Proveedor INT,
-    PRIMARY KEY(IdP),
+    PRIMARY KEY(Id),
     FOREIGN KEY(Tipo)REFERENCES Tipo(Id),
     FOREIGN KEY(Nombre)REFERENCES Nombre(Id),
-    FOREIGN KEY(Proveedor)REFERENCES Proveedor(Id),
+    FOREIGN KEY(Proveedor)REFERENCES Proveedor(Id)
 );
 
 CREATE TABLE Empleado(
@@ -64,10 +64,8 @@ CREATE TABLE Ticket_compra(
     Folio INT,
     Fecha DATE,
     Id_empleado int,
-    Id_proveedor int,
     PRIMARY KEY(Folio),
-    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
-    FOREIGN KEY(Id_proveedor)REFERENCES Proveedor(RFC)
+    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id)
 );
 
 CREATE TABLE Venta(
@@ -78,7 +76,7 @@ CREATE TABLE Venta(
     Cantidad INT,
     FOREIGN KEY(Folio)REFERENCES Ticket_venta(Folio),
     PRIMARY KEY(Id),
-    FOREIGN KEY(Producto)REFERENCES Producto(Id),
+    FOREIGN KEY(Producto)REFERENCES Producto(Id)
 );
 
 CREATE TABLE Ticket_venta(
