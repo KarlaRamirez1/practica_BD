@@ -98,7 +98,67 @@ class Ui_MainWindows(object):
 "\n"
 "\n"
 "/"
-                        "********************************/")
+                        "********************************/\n"
+"\n"
+"\n"
+"\n"
+"#page_ventas {\n"
+"background: #333;\n"
+"}\n"
+"\n"
+"\n"
+"#scrollAreaWidgetContents {\n"
+"background: #111;\n"
+"}\n"
+"\n"
+"#scrollAreaWidgetContents QPushButton {\n"
+"image: url(:/icons/assets/icons/remove.png);\n"
+"background: #FF5C67;\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"\n"
+"#page_ventas QLabel, QLineEdit {\n"
+"font: 12pt;\n"
+"background: transparent;\n"
+"color: white;\n"
+"}\n"
+"\n"
+"\n"
+"QDateEdit {\n"
+"background: transparent;\n"
+"border-bottom 1px solid red;\n"
+"font: 12pt;\n"
+"color: #fff;\n"
+"}\n"
+"\n"
+"Line {\n"
+"background: #fff;\n"
+"}\n"
+"\n"
+"QDateEdit::down-button, QDateEdit::up-button { image: none; }\n"
+"\n"
+"QComboBox {\n"
+"background:red;\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down { image: url(:/icons/assets/icons/arrow-down.png); margin:5px; width: 30px; height: 30px; }\n"
+"\n"
+"QDoubleSpinBox, QSpinBox {\n"
+"background:transparent;\n"
+"color: #fff;\n"
+"font:11pt;\n"
+"}\n"
+"QDoubleSpinBox::down-button, QDoubleSpinBox::up-b"
+                        "utton { image: none; }\n"
+"QSpinBox::down-button, QSpinBox::up-button { image: none; }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
         self.main = QWidget(MainWindows)
         self.main.setObjectName(u"main")
         self.main.setLayoutDirection(Qt.LeftToRight)
@@ -497,9 +557,136 @@ class Ui_MainWindows(object):
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page_ventas = QWidget()
         self.page_ventas.setObjectName(u"page_ventas")
-        self.label = QLabel(self.page_ventas)
+        self.verticalLayout_6 = QVBoxLayout(self.page_ventas)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.box_ventas_top = QFrame(self.page_ventas)
+        self.box_ventas_top.setObjectName(u"box_ventas_top")
+        self.box_ventas_top.setMinimumSize(QSize(0, 57))
+        self.box_ventas_top.setFrameShape(QFrame.StyledPanel)
+        self.box_ventas_top.setFrameShadow(QFrame.Raised)
+        self.ventas_fecha = QDateEdit(self.box_ventas_top)
+        self.ventas_fecha.setObjectName(u"ventas_fecha")
+        self.ventas_fecha.setGeometry(QRect(0, 26, 150, 22))
+        self.label = QLabel(self.box_ventas_top)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(400, 200, 55, 16))
+        self.label.setGeometry(QRect(1, 0, 150, 20))
+        self.line = QFrame(self.box_ventas_top)
+        self.line.setObjectName(u"line")
+        self.line.setGeometry(QRect(0, 55, 150, 2))
+        self.line.setFrameShape(QFrame.HLine)
+        self.line.setFrameShadow(QFrame.Sunken)
+        self.label_11 = QLabel(self.box_ventas_top)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setGeometry(QRect(360, 0, 150, 20))
+        self.ventas_rfc_cliente = QLineEdit(self.box_ventas_top)
+        self.ventas_rfc_cliente.setObjectName(u"ventas_rfc_cliente")
+        self.ventas_rfc_cliente.setGeometry(QRect(360, 20, 151, 22))
+        self.line_2 = QFrame(self.box_ventas_top)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setGeometry(QRect(360, 50, 150, 2))
+        self.line_2.setFrameShape(QFrame.HLine)
+        self.line_2.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_6.addWidget(self.box_ventas_top)
+
+        self.scrollArea = QScrollArea(self.page_ventas)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 990, 389))
+        self.verticalLayout_5 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.ventas_scrolling = QFrame(self.scrollAreaWidgetContents)
+        self.ventas_scrolling.setObjectName(u"ventas_scrolling")
+        self.ventas_scrolling.setMinimumSize(QSize(0, 367))
+        self.ventas_scrolling.setFrameShape(QFrame.StyledPanel)
+        self.ventas_scrolling.setFrameShadow(QFrame.Raised)
+        self.venta_1 = QFrame(self.ventas_scrolling)
+        self.venta_1.setObjectName(u"venta_1")
+        self.venta_1.setGeometry(QRect(0, 0, 871, 86))
+        self.venta_1.setStyleSheet(u"")
+        self.venta_1.setFrameShape(QFrame.StyledPanel)
+        self.venta_1.setFrameShadow(QFrame.Raised)
+        self.label_12 = QLabel(self.venta_1)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setGeometry(QRect(440, 0, 61, 20))
+        self.label_13 = QLabel(self.venta_1)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setGeometry(QRect(520, 1, 91, 20))
+        self.venta_precio_1 = QDoubleSpinBox(self.venta_1)
+        self.venta_precio_1.setObjectName(u"venta_precio_1")
+        self.venta_precio_1.setGeometry(QRect(439, 26, 62, 22))
+        self.venta_total_1 = QDoubleSpinBox(self.venta_1)
+        self.venta_total_1.setObjectName(u"venta_total_1")
+        self.venta_total_1.setGeometry(QRect(730, 32, 75, 22))
+        self.venta_unidades_1 = QSpinBox(self.venta_1)
+        self.venta_unidades_1.setObjectName(u"venta_unidades_1")
+        self.venta_unidades_1.setGeometry(QRect(519, 26, 42, 22))
+        self.label_14 = QLabel(self.venta_1)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setGeometry(QRect(610, 0, 100, 20))
+        self.remove_venta_1 = QPushButton(self.venta_1)
+        self.remove_venta_1.setObjectName(u"remove_venta_1")
+        self.remove_venta_1.setGeometry(QRect(820, 20, 28, 28))
+        self.remove_venta_1.setCursor(QCursor(Qt.PointingHandCursor))
+        self.line_6 = QFrame(self.venta_1)
+        self.line_6.setObjectName(u"line_6")
+        self.line_6.setGeometry(QRect(730, 55, 75, 2))
+        self.line_6.setFrameShape(QFrame.HLine)
+        self.line_6.setFrameShadow(QFrame.Sunken)
+        self.venta_categoria_producto_1 = QComboBox(self.venta_1)
+        self.venta_categoria_producto_1.setObjectName(u"venta_categoria_producto_1")
+        self.venta_categoria_producto_1.setGeometry(QRect(-1, 26, 200, 35))
+        self.venta_categoria_producto_1.setCursor(QCursor(Qt.PointingHandCursor))
+        self.venta_nombre_producto_1 = QComboBox(self.venta_1)
+        self.venta_nombre_producto_1.setObjectName(u"venta_nombre_producto_1")
+        self.venta_nombre_producto_1.setGeometry(QRect(229, 26, 200, 35))
+        self.venta_nombre_producto_1.setCursor(QCursor(Qt.PointingHandCursor))
+        self.line_4 = QFrame(self.venta_1)
+        self.line_4.setObjectName(u"line_4")
+        self.line_4.setGeometry(QRect(519, 56, 60, 2))
+        self.line_4.setFrameShape(QFrame.HLine)
+        self.line_4.setFrameShadow(QFrame.Sunken)
+        self.line_3 = QFrame(self.venta_1)
+        self.line_3.setObjectName(u"line_3")
+        self.line_3.setGeometry(QRect(439, 55, 60, 2))
+        self.line_3.setFrameShape(QFrame.HLine)
+        self.line_3.setFrameShadow(QFrame.Sunken)
+        self.line_5 = QFrame(self.venta_1)
+        self.line_5.setObjectName(u"line_5")
+        self.line_5.setGeometry(QRect(610, 55, 100, 2))
+        self.line_5.setFrameShape(QFrame.HLine)
+        self.line_5.setFrameShadow(QFrame.Sunken)
+        self.venta_color_1 = QLineEdit(self.venta_1)
+        self.venta_color_1.setObjectName(u"venta_color_1")
+        self.venta_color_1.setGeometry(QRect(610, 20, 100, 22))
+        self.label_15 = QLabel(self.venta_1)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setGeometry(QRect(730, 1, 75, 20))
+
+        self.verticalLayout_5.addWidget(self.ventas_scrolling)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_6.addWidget(self.scrollArea)
+
+        self.ventas_buttons = QFrame(self.page_ventas)
+        self.ventas_buttons.setObjectName(u"ventas_buttons")
+        self.ventas_buttons.setMinimumSize(QSize(0, 45))
+        self.ventas_buttons.setFrameShape(QFrame.StyledPanel)
+        self.ventas_buttons.setFrameShadow(QFrame.Raised)
+        self.pushButton_2 = QPushButton(self.ventas_buttons)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(10, 10, 150, 30))
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton = QPushButton(self.ventas_buttons)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(190, 10, 150, 30))
+        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_6.addWidget(self.ventas_buttons)
+
         self.stackedWidget.addWidget(self.page_ventas)
         self.page_compras = QWidget()
         self.page_compras.setObjectName(u"page_compras")
@@ -654,7 +841,17 @@ class Ui_MainWindows(object):
         self.lbl_recorte_caja.setText(QCoreApplication.translate("MainWindows", u"Recorte de caja", None))
         self.btn_copia_seguridad.setText("")
         self.lbl_copia_seguridad.setText(QCoreApplication.translate("MainWindows", u"Copia de seguridad", None))
-        self.label.setText(QCoreApplication.translate("MainWindows", u"ventas", None))
+        self.label.setText(QCoreApplication.translate("MainWindows", u"Fecha", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
+        self.ventas_rfc_cliente.setText("")
+        self.label_12.setText(QCoreApplication.translate("MainWindows", u"Precio", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindows", u"Unidades", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindows", u"Color", None))
+        self.remove_venta_1.setText("")
+        self.venta_color_1.setText("")
+        self.label_15.setText(QCoreApplication.translate("MainWindows", u"Total", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindows", u"Generar Venta", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindows", u"Agregar Prducto", None))
         self.label_3.setText(QCoreApplication.translate("MainWindows", u"compras", None))
         self.label_4.setText(QCoreApplication.translate("MainWindows", u"productos", None))
         self.label_5.setText(QCoreApplication.translate("MainWindows", u"proveedores", None))
