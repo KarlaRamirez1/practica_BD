@@ -18,8 +18,8 @@ class Ui_MainWindows(object):
     def setupUi(self, MainWindows):
         if not MainWindows.objectName():
             MainWindows.setObjectName(u"MainWindows")
-        MainWindows.resize(1120, 620)
-        MainWindows.setMinimumSize(QSize(900, 400))
+        MainWindows.resize(1100, 600)
+        MainWindows.setMinimumSize(QSize(900, 500))
         MainWindows.setStyleSheet(u"* {\n"
 "border: none;\n"
 "}\n"
@@ -34,9 +34,6 @@ class Ui_MainWindows(object):
 "\n"
 "\n"
 "#side_bar {\n"
-"background: #212634;\n"
-"}\n"
-"#toggle_bar {\n"
 "background: #212634;\n"
 "}\n"
 "\n"
@@ -57,23 +54,32 @@ class Ui_MainWindows(object):
 "color: #fff;\n"
 "}\n"
 "\n"
-"#side_bar QPushButton:hover, #toggle_bar QLabel:hover {\n"
+"#side_bar QPushButton {\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"#lbl_toggle, #lbl_ventas, #lbl_compras, #lbl_productos, #lbl_proveedores, #lbl_tickets, #lbl_recorte_caja, #lbl_copia_seguridad {\n"
+"Text-align:left;\n"
+"margin-left:22px;\n"
+"}\n"
+"\n"
+"#side_bar QFrame QLabel {\n"
+"\n"
+"}\n"
+"\n"
+"#side_bar QFrame:hover {\n"
 "background: #293546;\n"
 "}\n"
 "\n"
 "\n"
 "\n"
-"\n"
-"\n"
-"\n"
-"\n"
 "/********************************/\n"
 "#btn_toggle { image: url(:/icons/assets/icons/toggle menu.png); }\n"
-"#btn_compras { image: url(:/icons/assets/icons/compras.png); }\n"
+"#btn_c"
+                        "ompras { image: url(:/icons/assets/icons/compras.png); }\n"
 "#btn_ventas { image: url(:/icons/assets/icons/ventas.png); }\n"
 "#btn_productos { image: url(:/icons/assets/icons/productos.png); }\n"
-"#btn_"
-                        "proveedores { image: url(:/icons/assets/icons/proveedores.png); }\n"
+"#btn_proveedores { image: url(:/icons/assets/icons/proveedores.png); }\n"
 "#btn_tickets { image: url(:/icons/assets/icons/tickets.png); }\n"
 "#btn_recorte_caja { image: url(:/icons/assets/icons/corte caja.png); }\n"
 "#btn_copia_seguridad { image: url(:/icons/assets/icons/backup.png); }\n"
@@ -86,21 +92,21 @@ class Ui_MainWindows(object):
 "#btn_minimized { image: url(:/icons/assets/icons/minimized.png); }\n"
 "#btn_maximized { image: url(:/icons/assets/icons/maximized.png); }\n"
 "#btn_closed { image: url(:/icons/assets/icons/closed.png); }\n"
+"#btn_minimized, #btn_maximized, #btn_closed { border-radius: 4px; }\n"
+"\n"
+"#btn_minimized:hover, #btn_maximized:hover,  #btn_closed:hover { background: #293546; }\n"
 "\n"
 "\n"
-"\n"
-"#btn_minimized:hover, #btn_maximized:hover,  #btn_closed:hover {\n"
-"background: #293546;\n"
-"}\n"
-"\n"
-"\n"
-"/********************************/")
+"/"
+                        "********************************/")
         self.main = QWidget(MainWindows)
         self.main.setObjectName(u"main")
         self.main.setLayoutDirection(Qt.LeftToRight)
+        self.main.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.main)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(10, 10, 10, 10)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.App = QFrame(self.main)
         self.App.setObjectName(u"App")
         self.App.setFrameShape(QFrame.StyledPanel)
@@ -174,6 +180,7 @@ class Ui_MainWindows(object):
         self.btn_usuario.setObjectName(u"btn_usuario")
         self.btn_usuario.setMinimumSize(QSize(28, 28))
         self.btn_usuario.setMaximumSize(QSize(28, 16777215))
+        self.btn_usuario.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_4.addWidget(self.btn_usuario)
 
@@ -181,6 +188,7 @@ class Ui_MainWindows(object):
         self.btn_minimized.setObjectName(u"btn_minimized")
         self.btn_minimized.setMinimumSize(QSize(28, 28))
         self.btn_minimized.setMaximumSize(QSize(28, 16777215))
+        self.btn_minimized.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_4.addWidget(self.btn_minimized)
 
@@ -188,6 +196,7 @@ class Ui_MainWindows(object):
         self.btn_maximized.setObjectName(u"btn_maximized")
         self.btn_maximized.setMinimumSize(QSize(28, 28))
         self.btn_maximized.setMaximumSize(QSize(28, 16777215))
+        self.btn_maximized.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_4.addWidget(self.btn_maximized)
 
@@ -195,6 +204,7 @@ class Ui_MainWindows(object):
         self.btn_closed.setObjectName(u"btn_closed")
         self.btn_closed.setMinimumSize(QSize(28, 28))
         self.btn_closed.setMaximumSize(QSize(28, 16777215))
+        self.btn_closed.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_4.addWidget(self.btn_closed)
 
@@ -215,63 +225,252 @@ class Ui_MainWindows(object):
         self.side_bar = QFrame(self.container)
         self.side_bar.setObjectName(u"side_bar")
         self.side_bar.setMinimumSize(QSize(45, 0))
-        self.side_bar.setMaximumSize(QSize(60, 16777215))
+        self.side_bar.setMaximumSize(QSize(45, 16777215))
         self.side_bar.setFrameShape(QFrame.StyledPanel)
         self.side_bar.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.side_bar)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.btn_toggle = QPushButton(self.side_bar)
+        self.box_toggle = QFrame(self.side_bar)
+        self.box_toggle.setObjectName(u"box_toggle")
+        self.box_toggle.setMinimumSize(QSize(45, 0))
+        self.box_toggle.setMaximumSize(QSize(200, 16777215))
+        self.box_toggle.setFrameShape(QFrame.StyledPanel)
+        self.box_toggle.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.box_toggle)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.btn_toggle = QPushButton(self.box_toggle)
         self.btn_toggle.setObjectName(u"btn_toggle")
-        self.btn_toggle.setMinimumSize(QSize(0, 60))
+        self.btn_toggle.setMinimumSize(QSize(45, 60))
+        self.btn_toggle.setMaximumSize(QSize(45, 16777215))
+        self.btn_toggle.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_toggle)
+        self.horizontalLayout_6.addWidget(self.btn_toggle)
 
-        self.btn_compras = QPushButton(self.side_bar)
-        self.btn_compras.setObjectName(u"btn_compras")
-        self.btn_compras.setMinimumSize(QSize(0, 60))
+        self.lbl_toggle = QPushButton(self.box_toggle)
+        self.lbl_toggle.setObjectName(u"lbl_toggle")
+        self.lbl_toggle.setMinimumSize(QSize(155, 60))
+        self.lbl_toggle.setMaximumSize(QSize(155, 16777215))
+        self.lbl_toggle.setCursor(QCursor(Qt.PointingHandCursor))
+        self.lbl_toggle.setLayoutDirection(Qt.LeftToRight)
 
-        self.verticalLayout_4.addWidget(self.btn_compras)
+        self.horizontalLayout_6.addWidget(self.lbl_toggle)
 
-        self.btn_ventas = QPushButton(self.side_bar)
+        self.lbl_toggle.raise_()
+        self.btn_toggle.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_toggle)
+
+        self.box_ventas = QFrame(self.side_bar)
+        self.box_ventas.setObjectName(u"box_ventas")
+        self.box_ventas.setMinimumSize(QSize(45, 60))
+        self.box_ventas.setFrameShape(QFrame.StyledPanel)
+        self.box_ventas.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.box_ventas)
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.btn_ventas = QPushButton(self.box_ventas)
         self.btn_ventas.setObjectName(u"btn_ventas")
-        self.btn_ventas.setMinimumSize(QSize(0, 60))
+        self.btn_ventas.setMinimumSize(QSize(45, 60))
+        self.btn_ventas.setMaximumSize(QSize(45, 16777215))
+        self.btn_ventas.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_ventas)
+        self.horizontalLayout_5.addWidget(self.btn_ventas, 0, Qt.AlignLeft)
 
-        self.btn_productos = QPushButton(self.side_bar)
+        self.lbl_ventas = QPushButton(self.box_ventas)
+        self.lbl_ventas.setObjectName(u"lbl_ventas")
+        self.lbl_ventas.setMinimumSize(QSize(155, 60))
+        self.lbl_ventas.setMaximumSize(QSize(155, 16777215))
+        self.lbl_ventas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_5.addWidget(self.lbl_ventas, 0, Qt.AlignLeft)
+
+        self.lbl_ventas.raise_()
+        self.btn_ventas.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_ventas, 0, Qt.AlignLeft)
+
+        self.box_compras = QFrame(self.side_bar)
+        self.box_compras.setObjectName(u"box_compras")
+        self.box_compras.setFrameShape(QFrame.StyledPanel)
+        self.box_compras.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.box_compras)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.btn_compras = QPushButton(self.box_compras)
+        self.btn_compras.setObjectName(u"btn_compras")
+        self.btn_compras.setMinimumSize(QSize(45, 60))
+        self.btn_compras.setMaximumSize(QSize(45, 16777215))
+        self.btn_compras.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_7.addWidget(self.btn_compras)
+
+        self.lbl_compras = QPushButton(self.box_compras)
+        self.lbl_compras.setObjectName(u"lbl_compras")
+        self.lbl_compras.setMinimumSize(QSize(155, 60))
+        self.lbl_compras.setMaximumSize(QSize(155, 16777215))
+        self.lbl_compras.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_7.addWidget(self.lbl_compras, 0, Qt.AlignLeft)
+
+        self.lbl_compras.raise_()
+        self.btn_compras.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_compras, 0, Qt.AlignLeft)
+
+        self.box_productos = QFrame(self.side_bar)
+        self.box_productos.setObjectName(u"box_productos")
+        self.box_productos.setFrameShape(QFrame.StyledPanel)
+        self.box_productos.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.box_productos)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.btn_productos = QPushButton(self.box_productos)
         self.btn_productos.setObjectName(u"btn_productos")
-        self.btn_productos.setMinimumSize(QSize(0, 60))
+        self.btn_productos.setMinimumSize(QSize(45, 60))
+        self.btn_productos.setMaximumSize(QSize(45, 16777215))
+        self.btn_productos.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_productos)
+        self.horizontalLayout_8.addWidget(self.btn_productos)
 
-        self.btn_proveedores = QPushButton(self.side_bar)
+        self.lbl_productos = QPushButton(self.box_productos)
+        self.lbl_productos.setObjectName(u"lbl_productos")
+        self.lbl_productos.setMinimumSize(QSize(155, 60))
+        self.lbl_productos.setMaximumSize(QSize(155, 16777215))
+        self.lbl_productos.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_8.addWidget(self.lbl_productos, 0, Qt.AlignLeft)
+
+        self.lbl_productos.raise_()
+        self.btn_productos.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_productos, 0, Qt.AlignLeft)
+
+        self.box_proveedores = QFrame(self.side_bar)
+        self.box_proveedores.setObjectName(u"box_proveedores")
+        self.box_proveedores.setFrameShape(QFrame.StyledPanel)
+        self.box_proveedores.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.box_proveedores)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.btn_proveedores = QPushButton(self.box_proveedores)
         self.btn_proveedores.setObjectName(u"btn_proveedores")
-        self.btn_proveedores.setMinimumSize(QSize(0, 60))
+        self.btn_proveedores.setMinimumSize(QSize(45, 60))
+        self.btn_proveedores.setMaximumSize(QSize(45, 16777215))
+        self.btn_proveedores.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_proveedores)
+        self.horizontalLayout_9.addWidget(self.btn_proveedores)
 
-        self.btn_tickets = QPushButton(self.side_bar)
+        self.lbl_proveedores = QPushButton(self.box_proveedores)
+        self.lbl_proveedores.setObjectName(u"lbl_proveedores")
+        self.lbl_proveedores.setMinimumSize(QSize(155, 60))
+        self.lbl_proveedores.setMaximumSize(QSize(155, 16777215))
+        self.lbl_proveedores.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_9.addWidget(self.lbl_proveedores, 0, Qt.AlignLeft)
+
+        self.lbl_proveedores.raise_()
+        self.btn_proveedores.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_proveedores, 0, Qt.AlignLeft)
+
+        self.box_tickets = QFrame(self.side_bar)
+        self.box_tickets.setObjectName(u"box_tickets")
+        self.box_tickets.setFrameShape(QFrame.StyledPanel)
+        self.box_tickets.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.box_tickets)
+        self.horizontalLayout_10.setSpacing(0)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.btn_tickets = QPushButton(self.box_tickets)
         self.btn_tickets.setObjectName(u"btn_tickets")
         self.btn_tickets.setMinimumSize(QSize(45, 60))
+        self.btn_tickets.setMaximumSize(QSize(45, 16777215))
+        self.btn_tickets.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_tickets)
+        self.horizontalLayout_10.addWidget(self.btn_tickets)
 
-        self.btn_recorte_caja = QPushButton(self.side_bar)
+        self.lbl_tickets = QPushButton(self.box_tickets)
+        self.lbl_tickets.setObjectName(u"lbl_tickets")
+        self.lbl_tickets.setMinimumSize(QSize(155, 60))
+        self.lbl_tickets.setMaximumSize(QSize(155, 16777215))
+        self.lbl_tickets.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_10.addWidget(self.lbl_tickets, 0, Qt.AlignLeft)
+
+        self.lbl_tickets.raise_()
+        self.btn_tickets.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_tickets)
+
+        self.box_recorte_caja = QFrame(self.side_bar)
+        self.box_recorte_caja.setObjectName(u"box_recorte_caja")
+        self.box_recorte_caja.setFrameShape(QFrame.StyledPanel)
+        self.box_recorte_caja.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.box_recorte_caja)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.btn_recorte_caja = QPushButton(self.box_recorte_caja)
         self.btn_recorte_caja.setObjectName(u"btn_recorte_caja")
         self.btn_recorte_caja.setMinimumSize(QSize(45, 60))
+        self.btn_recorte_caja.setMaximumSize(QSize(45, 16777215))
+        self.btn_recorte_caja.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_recorte_caja)
+        self.horizontalLayout_11.addWidget(self.btn_recorte_caja)
 
-        self.btn_copia_seguridad = QPushButton(self.side_bar)
+        self.lbl_recorte_caja = QPushButton(self.box_recorte_caja)
+        self.lbl_recorte_caja.setObjectName(u"lbl_recorte_caja")
+        self.lbl_recorte_caja.setMinimumSize(QSize(155, 60))
+        self.lbl_recorte_caja.setMaximumSize(QSize(155, 16777215))
+        self.lbl_recorte_caja.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_11.addWidget(self.lbl_recorte_caja, 0, Qt.AlignLeft)
+
+        self.lbl_recorte_caja.raise_()
+        self.btn_recorte_caja.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_recorte_caja)
+
+        self.box_copia_seguridad = QFrame(self.side_bar)
+        self.box_copia_seguridad.setObjectName(u"box_copia_seguridad")
+        self.box_copia_seguridad.setFrameShape(QFrame.StyledPanel)
+        self.box_copia_seguridad.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.box_copia_seguridad)
+        self.horizontalLayout_12.setSpacing(0)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.btn_copia_seguridad = QPushButton(self.box_copia_seguridad)
         self.btn_copia_seguridad.setObjectName(u"btn_copia_seguridad")
         self.btn_copia_seguridad.setMinimumSize(QSize(45, 60))
+        self.btn_copia_seguridad.setMaximumSize(QSize(45, 16777215))
+        self.btn_copia_seguridad.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_4.addWidget(self.btn_copia_seguridad)
+        self.horizontalLayout_12.addWidget(self.btn_copia_seguridad)
+
+        self.lbl_copia_seguridad = QPushButton(self.box_copia_seguridad)
+        self.lbl_copia_seguridad.setObjectName(u"lbl_copia_seguridad")
+        self.lbl_copia_seguridad.setMinimumSize(QSize(155, 60))
+        self.lbl_copia_seguridad.setMaximumSize(QSize(155, 16777215))
+        self.lbl_copia_seguridad.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_12.addWidget(self.lbl_copia_seguridad, 0, Qt.AlignLeft)
+
+        self.lbl_copia_seguridad.raise_()
+        self.btn_copia_seguridad.raise_()
+
+        self.verticalLayout_4.addWidget(self.box_copia_seguridad)
 
         self.frame = QFrame(self.side_bar)
         self.frame.setObjectName(u"frame")
+        self.frame.setMaximumSize(QSize(200, 16777215))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
 
@@ -279,89 +478,6 @@ class Ui_MainWindows(object):
 
 
         self.horizontalLayout_2.addWidget(self.side_bar)
-
-        self.toggle_bar = QFrame(self.container)
-        self.toggle_bar.setObjectName(u"toggle_bar")
-        self.toggle_bar.setMaximumSize(QSize(0, 16777215))
-        self.toggle_bar.setFrameShape(QFrame.StyledPanel)
-        self.toggle_bar.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.toggle_bar)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.lbl_toggle = QLabel(self.toggle_bar)
-        self.lbl_toggle.setObjectName(u"lbl_toggle")
-        self.lbl_toggle.setMinimumSize(QSize(150, 60))
-        self.lbl_toggle.setMaximumSize(QSize(16777215, 60))
-        self.lbl_toggle.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_toggle)
-
-        self.lbl_ventas = QLabel(self.toggle_bar)
-        self.lbl_ventas.setObjectName(u"lbl_ventas")
-        self.lbl_ventas.setMinimumSize(QSize(150, 60))
-        self.lbl_ventas.setMaximumSize(QSize(16777215, 60))
-        self.lbl_ventas.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_ventas)
-
-        self.lbl_compras = QLabel(self.toggle_bar)
-        self.lbl_compras.setObjectName(u"lbl_compras")
-        self.lbl_compras.setMinimumSize(QSize(150, 60))
-        self.lbl_compras.setMaximumSize(QSize(16777215, 60))
-        self.lbl_compras.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_compras)
-
-        self.lbl_productos = QLabel(self.toggle_bar)
-        self.lbl_productos.setObjectName(u"lbl_productos")
-        self.lbl_productos.setMinimumSize(QSize(150, 60))
-        self.lbl_productos.setMaximumSize(QSize(16777215, 60))
-        self.lbl_productos.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_productos)
-
-        self.lbl_proveedores = QLabel(self.toggle_bar)
-        self.lbl_proveedores.setObjectName(u"lbl_proveedores")
-        self.lbl_proveedores.setMinimumSize(QSize(150, 60))
-        self.lbl_proveedores.setMaximumSize(QSize(16777215, 60))
-        self.lbl_proveedores.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_proveedores)
-
-        self.lbl_tickets = QLabel(self.toggle_bar)
-        self.lbl_tickets.setObjectName(u"lbl_tickets")
-        self.lbl_tickets.setMinimumSize(QSize(150, 60))
-        self.lbl_tickets.setMaximumSize(QSize(16777215, 60))
-        self.lbl_tickets.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_tickets)
-
-        self.lbl_recorte_caja = QLabel(self.toggle_bar)
-        self.lbl_recorte_caja.setObjectName(u"lbl_recorte_caja")
-        self.lbl_recorte_caja.setMinimumSize(QSize(150, 60))
-        self.lbl_recorte_caja.setMaximumSize(QSize(16777215, 60))
-        self.lbl_recorte_caja.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_recorte_caja)
-
-        self.lbl_copia_seguridad = QLabel(self.toggle_bar)
-        self.lbl_copia_seguridad.setObjectName(u"lbl_copia_seguridad")
-        self.lbl_copia_seguridad.setMinimumSize(QSize(150, 60))
-        self.lbl_copia_seguridad.setMaximumSize(QSize(16777215, 60))
-        self.lbl_copia_seguridad.setIndent(10)
-
-        self.verticalLayout_5.addWidget(self.lbl_copia_seguridad)
-
-        self.frame_2 = QFrame(self.toggle_bar)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_5.addWidget(self.frame_2)
-
-
-        self.horizontalLayout_2.addWidget(self.toggle_bar)
 
         self.content = QFrame(self.container)
         self.content.setObjectName(u"content")
@@ -468,7 +584,7 @@ class Ui_MainWindows(object):
 
         self.box_version = QFrame(self.bottom)
         self.box_version.setObjectName(u"box_version")
-        self.box_version.setMaximumSize(QSize(150, 16777215))
+        self.box_version.setMaximumSize(QSize(100, 16777215))
         self.box_version.setFrameShape(QFrame.StyledPanel)
         self.box_version.setFrameShadow(QFrame.Raised)
         self.gridLayout_3 = QGridLayout(self.box_version)
@@ -509,7 +625,7 @@ class Ui_MainWindows(object):
 
         self.retranslateUi(MainWindows)
 
-        self.stackedWidget.setCurrentIndex(8)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindows)
@@ -523,20 +639,20 @@ class Ui_MainWindows(object):
         self.btn_maximized.setText("")
         self.btn_closed.setText("")
         self.btn_toggle.setText("")
-        self.btn_compras.setText("")
+        self.lbl_toggle.setText(QCoreApplication.translate("MainWindows", u"Ocultar", None))
         self.btn_ventas.setText("")
-        self.btn_productos.setText("")
-        self.btn_proveedores.setText("")
-        self.btn_tickets.setText("")
-        self.btn_recorte_caja.setText("")
-        self.btn_copia_seguridad.setText("")
-        self.lbl_toggle.setText(QCoreApplication.translate("MainWindows", u"Toggle", None))
         self.lbl_ventas.setText(QCoreApplication.translate("MainWindows", u"Ventas", None))
+        self.btn_compras.setText("")
         self.lbl_compras.setText(QCoreApplication.translate("MainWindows", u"Compras", None))
+        self.btn_productos.setText("")
         self.lbl_productos.setText(QCoreApplication.translate("MainWindows", u"Productos", None))
+        self.btn_proveedores.setText("")
         self.lbl_proveedores.setText(QCoreApplication.translate("MainWindows", u"Proveedores", None))
+        self.btn_tickets.setText("")
         self.lbl_tickets.setText(QCoreApplication.translate("MainWindows", u"Tickets", None))
+        self.btn_recorte_caja.setText("")
         self.lbl_recorte_caja.setText(QCoreApplication.translate("MainWindows", u"Recorte de caja", None))
+        self.btn_copia_seguridad.setText("")
         self.lbl_copia_seguridad.setText(QCoreApplication.translate("MainWindows", u"Copia de seguridad", None))
         self.label.setText(QCoreApplication.translate("MainWindows", u"ventas", None))
         self.label_3.setText(QCoreApplication.translate("MainWindows", u"compras", None))
