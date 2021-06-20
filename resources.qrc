@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>assets/icons/toggle menu.png</file>
+    <file>assets/icons/minimized.png</file>
+    <file>assets/icons/profile.png</file>
+    <file>assets/icons/arrow-down.png</file>
+    <file>assets/icons/backup.png</file>
+    <file>assets/icons/closed.png</file>
+    <file>assets/icons/compras.png</file>
+    <file>assets/icons/corte caja.png</file>
+    <file>assets/icons/maximized.png</file>
+    <file>assets/icons/productos.png</file>
+    <file>assets/icons/proveedores.png</file>
+    <file>assets/icons/remove.png</file>
+    <file>assets/icons/resize.png</file>
+    <file>assets/icons/tickets.png</file>
+    <file>assets/icons/ventas.png</file>
+  </qresource>
+</RCC>

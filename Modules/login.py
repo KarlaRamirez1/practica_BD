@@ -22,7 +22,7 @@ class Login(QDialog):#faltan validaciones
 		self.Access.clicked.connect(self.connect)
 	
 	def connect(self):
-		if self.User.text() != "Admin":
+		if self.User.text() != "admin":
 			QMessageBox.about(self,"Error", "Usuario Incorrecto.")
 			return
 		if self.Password.text() != "1234":

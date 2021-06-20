@@ -5,21 +5,23 @@
 * RFC cliente - Text
 * Lista
     - Producto (Categoria, Nombre) - ComboBox
-    - Precio    - SpinBox Double "round(2)"
+    - Precio    - SpinBox Double Disabled "round(2)"
     - Cantidad  - SpinBox Int
     - Color     - Text
     - Total     - SpinBox Double Disabled "round(2)"
     - Eliminar este producto de la venta - Button
 * Agregar - Button
+
 ## 2 - Compras
 * Fecha - Date
 * Nombre provedor - ComboBox
 * Lista
     - Producto (Categoria, Nombre) - ComboBox
-    - Precio    - SpinBox Double "round(2)"
+    - Precio    - SpinBox Double Disabled "round(2)"
     - Cantidad  - SpinBox Int
     - Total     - SpinBox Double Disabled "round(2)"
     - Eliminar este producto de la venta - Button
+
 ## 3 - Productos
 * Ver
     - Categoria      - ComboBox
@@ -28,7 +30,8 @@
     - Resurtible     - CheckBox Disabled
     - Ver existencia - SpinBox Int Disabled
 * Agregar
-    - Categoria          - Text
+    - Categoria          - ComboBox "si existe"
+    - Categoria          - Text     "si no existe"
     - Nombre             - Text
     - Precio             - SpinBox Double "round(2)"
     - Resurtible         - CheckBox True
@@ -41,6 +44,7 @@
     - Resurtible         - CheckBox 
     - existe             - CheckBox False
     - Agregar existencia - SpinBox Int "solo si *existe esta activado*"
+
 ## 4 - Provedores
 * Ver
     - Nombre         - ComboBox
@@ -59,6 +63,7 @@
     - Telefono       - Text
     - Direccion      - Text
     - Activo         - CheckBox
+
 ## 5 - Tickets
 * Opiones de Filtro - Radio Button
     - Buscar folio - Text
@@ -79,6 +84,7 @@
         - Rfc                   - Campo
     - Total ticket              - Campo
 * Generar ticket - Button "creara un excel"
+
 ## 6 - Corte de caja
 * Lista de folios - Table
     - Folio                 - Campo
@@ -86,9 +92,11 @@
     - Total ticket          - Campo
 * Total General             - Campo
 * Generar ticket - Button "creara un excel"
+
 ## 7 - Respaldos
 * Generar respaldo    - Button
 * Recuperar respaldo  - Button
+
 ## 8 - Perfil
 ### Empleado
 * Editar sus datos personales
