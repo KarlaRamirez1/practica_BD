@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>assets/icons/toggle menu.png</file>
+    <file>assets/icons/check.png</file>
     <file>assets/icons/minimized.png</file>
     <file>assets/icons/profile.png</file>
     <file>assets/icons/arrow-down.png</file>
