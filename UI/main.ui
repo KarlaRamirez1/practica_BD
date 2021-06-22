@@ -24,13 +24,6 @@
 border: none;
 }
 
-
-
-#page_admin,
-#page_empleado {
-background: #333;
-}
-
 #top { border-top-left-radius: 4px; border-top-right-radius: 4px; }
 #side_bar { border-bottom-left-radius: 4px; }
 #bottom { border-bottom-right-radius: 4px }
@@ -80,6 +73,7 @@ background: #293546;
 
 
 
+
 /********************************/
 #btn_toggle { image: url(:/icons/assets/icons/toggle menu.png); }
 #btn_compras { image: url(:/icons/assets/icons/compras.png); }
@@ -124,7 +118,7 @@ background: transparent;
 color: white;
 }
 
-#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket {
+#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket, #empleados_guardar_cambios {
 background: #2A91FF;
 border-radius: 5px;
 }
@@ -132,6 +126,10 @@ border-radius: 5px;
 #proveedores_agregar_guardar, #proveedores_editar_guardar {
 background: #2EAC4B;
 border-radius: 5px;
+}
+
+QTextEdit {
+font: 12pt;
 }
 
 QDateEdit {
@@ -173,7 +171,8 @@ QSpinBox::down-button, QSpinBox::up-button { image: none; }
 
 
 #productos_stacked &gt; QWidget,
-#proveedores_stacked &gt; QWidget {
+#proveedores_stacked &gt; QWidget,
+#administrador_stacked &gt; QWidget {
 border: 2px solid #38C3DD;
 border-radius: 5px;
 border-top-left-radius: 0px;
@@ -181,7 +180,8 @@ background: transparent;
 }
 
 #box_productos_top_buttons  &gt; QPushButton,
-#box_proveedores_top_buttons &gt; QPushButton {
+#box_proveedores_top_buttons &gt; QPushButton,
+#box_administrador_top_buttons &gt; QPushButton {
 background: transparent;
 border: 2px solid #38C3DD;
 border-radius: 5px;
@@ -358,15 +358,24 @@ background: #2EAC4B;
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#line, #line_1, #line_2, #line_3, #line_4, #line_5, #line_6, #line_7, #line_8, #line9, #line_10,
+    <string notr="true">#line, #line_1, #line_2, #line_3, #line_4, #line_5, #line_6, #line_7, #line_8, #line_9, #line_10,
 #line_11, #line_12, #line_13, #line_14, #line_15, #line_16, #line_17, #line_18, #line_19, #line_20,
 #line_21, #line_22, #line_23, #line_24, #line_25, #line_26, #line_27, #line_28, #line_29, #line_30,
 #line_31, #line_32, #line_33, #line_34, #line_35, #line_36, #line_37, #line_38, #line_39, #line_40,
 #line_41, #line_42, #line_43, #line_44, #line_45, #line_46, #line_47, #line_48, #line_49, #line_50,
 #line_51, #line_52, #line_53, #line_54, #line_55, #line_56, #line_57, #line_58, #line_59, #line_60,
-#line_61, #line_62, #line_63, #line_64, #line_65, #line_66, #line_67, #line_68, #line_69, #line_70 {
+#line_61, #line_62, #line_63, #line_64, #line_65, #line_66, #line_67, #line_68, #line_69, #line_70,
+#line_71, #line_72, #line_73, #line_74, #line_75, #line_76, #line_77, #line_78, #line_79, #line_80,
+#line_81, #line_82, #line_83, #line_84, #line_85, #line_86, #line_87, #line_88, #line_89, #line_90,
+#line_91, #line_92, #line_93, #line_94, #line_95, #line_96, #line_97, #line_98, #line_99, #line_100 {
 background: #fff;
-}</string>
+}
+
+#line_vertical,  #line_vertical_2, #line_vertical_3, #line_vertical_4 {
+background: #374553;
+}
+
+/*background: #374553;*/</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
@@ -1393,7 +1402,7 @@ background: #fff;
                 <item row="0" column="0">
                  <widget class="QStackedWidget" name="stackedWidget">
                   <property name="currentIndex">
-                   <number>6</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_ventas">
                    <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1501,8 +1510,8 @@ background: #fff;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>70</width>
-                         <height>425</height>
+                         <width>1011</width>
+                         <height>376</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1511,7 +1520,7 @@ background: #fff;
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
-                            <height>403</height>
+                            <height>250</height>
                            </size>
                           </property>
                           <property name="frameShape">
@@ -1779,474 +1788,6 @@ background: #fff;
                             </property>
                            </widget>
                           </widget>
-                          <widget class="QFrame" name="box_venta_2">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>100</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_4">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_19">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_20">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_21">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_22">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
-                          <widget class="QFrame" name="box_venta_3">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>160</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_5">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_23">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_24">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_25">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_26">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_6">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
-                          <widget class="QFrame" name="box_venta_4">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>220</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_7">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_31">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_32">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_33">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_34">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_8">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
                          </widget>
                         </item>
                        </layout>
@@ -2383,8 +1924,8 @@ background: #fff;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>70</width>
-                         <height>425</height>
+                         <width>1011</width>
+                         <height>376</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -2393,7 +1934,7 @@ background: #fff;
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
-                            <height>403</height>
+                            <height>250</height>
                            </size>
                           </property>
                           <property name="frameShape">
@@ -2661,474 +2202,6 @@ background: #fff;
                             </property>
                            </widget>
                           </widget>
-                          <widget class="QFrame" name="box_compra_2">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>100</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_9">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_39">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_40">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_41">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_42">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
-                          <widget class="QFrame" name="box_compra_3">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>160</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_10">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_43">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_44">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_45">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_46">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
-                          <widget class="QFrame" name="box_compra_4">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>220</y>
-                             <width>880</width>
-                             <height>35</height>
-                            </rect>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                           <widget class="QDoubleSpinBox" name="venta_precio_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>5</y>
-                              <width>62</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QDoubleSpinBox" name="venta_total_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>5</y>
-                              <width>75</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QSpinBox" name="venta_unidades_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>5</y>
-                              <width>42</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                           </widget>
-                           <widget class="QPushButton" name="venta_remove_11">
-                            <property name="geometry">
-                             <rect>
-                              <x>840</x>
-                              <y>0</y>
-                              <width>35</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_47">
-                            <property name="geometry">
-                             <rect>
-                              <x>740</x>
-                              <y>30</y>
-                              <width>75</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_categoria_producto_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="QComboBox" name="venta_nombre_producto_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>220</x>
-                              <y>0</y>
-                              <width>200</width>
-                              <height>35</height>
-                             </rect>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_48">
-                            <property name="geometry">
-                             <rect>
-                              <x>520</x>
-                              <y>30</y>
-                              <width>90</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_49">
-                            <property name="geometry">
-                             <rect>
-                              <x>440</x>
-                              <y>30</y>
-                              <width>60</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="Line" name="line_50">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="venta_color_12">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </widget>
                          </widget>
                         </item>
                        </layout>
@@ -3269,7 +2342,7 @@ background: #fff;
                     <item>
                      <widget class="QStackedWidget" name="productos_stacked">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="page_productos_ver">
                        <widget class="QComboBox" name="producto_ver_categoria">
@@ -3296,6 +2369,9 @@ background: #fff;
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="productos_ver_proveedor">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3393,6 +2469,9 @@ background: #fff;
                         </property>
                        </widget>
                        <widget class="QSpinBox" name="productos_ver_existencia">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3403,6 +2482,9 @@ background: #fff;
                         </property>
                        </widget>
                        <widget class="QDoubleSpinBox" name="productos_ver_precio">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3426,6 +2508,9 @@ background: #fff;
                         </property>
                        </widget>
                        <widget class="QCheckBox" name="productos_ver_resurtible">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>300</x>
@@ -3452,6 +2537,9 @@ background: #fff;
                         </property>
                        </widget>
                        <widget class="QTextEdit" name="productos_ver_descripcion">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>373</x>
@@ -3508,7 +2596,7 @@ background: #fff;
                         <property name="geometry">
                          <rect>
                           <x>370</x>
-                          <y>164</y>
+                          <y>170</y>
                           <width>150</width>
                           <height>20</height>
                          </rect>
@@ -3561,7 +2649,7 @@ background: #fff;
                          <rect>
                           <x>75</x>
                           <y>94</y>
-                          <width>150</width>
+                          <width>221</width>
                           <height>20</height>
                          </rect>
                         </property>
@@ -4042,7 +3130,7 @@ background: #fff;
                     <item>
                      <widget class="QStackedWidget" name="proveedores_stacked">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="page_proveedores_ver">
                        <widget class="QComboBox" name="proveedores_ver_proveedor">
@@ -4487,8 +3575,8 @@ background: #fff;
                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si un Proovedor no esta activo no podras verlo al mento de comprar porductos, asegurate de no descactivar la vista de un provedor activo.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:7.8pt;&quot;&gt;Si un Proovedor no esta activo no podras verlo al mento de comprar porductos, asegurate de no descactivar la vista de un provedor activo.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="proveedores_editar_rfc">
@@ -5017,6 +4105,9 @@ p, li { white-space: pre-wrap; }
                        </property>
                       </widget>
                       <widget class="QDateEdit" name="recorte_caja_fecha">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="geometry">
                         <rect>
                          <x>30</x>
@@ -5230,34 +4321,1375 @@ p, li { white-space: pre-wrap; }
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_admin">
-                   <widget class="QLabel" name="label_9">
-                    <property name="geometry">
-                     <rect>
-                      <x>360</x>
-                      <y>180</y>
-                      <width>55</width>
-                      <height>16</height>
-                     </rect>
+                   <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <property name="spacing">
+                     <number>0</number>
                     </property>
-                    <property name="text">
-                     <string>admin</string>
+                    <property name="leftMargin">
+                     <number>30</number>
                     </property>
-                   </widget>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>30</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>20</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="box_administrador_top_buttons">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QPushButton" name="pushButton">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>20</y>
+                         <width>150</width>
+                         <height>30</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Datos personales</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="pushButton_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>150</x>
+                         <y>20</y>
+                         <width>150</width>
+                         <height>30</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Agregar empleado</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="pushButton_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>300</x>
+                         <y>20</y>
+                         <width>150</width>
+                         <height>30</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Ver empleados</string>
+                       </property>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QStackedWidget" name="administrador_stacked">
+                      <property name="currentIndex">
+                       <number>0</number>
+                      </property>
+                      <widget class="QWidget" name="datos_personales">
+                       <widget class="Line" name="line_70">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>94</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_64">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>44</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Nombre</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_nombre">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>70</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_65">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>110</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido paterno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_71">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>160</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_apellido_p">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>136</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_66">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>180</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido materno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_72">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>230</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_apellido_m">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>206</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_67">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>250</y>
+                          <width>231</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Salario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_73">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>300</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QDoubleSpinBox" name="administrador_ver_salario">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>276</y>
+                          <width>251</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="maximum">
+                         <double>100000.000000000000000</double>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_vertical_2">
+                        <property name="geometry">
+                         <rect>
+                          <x>500</x>
+                          <y>60</y>
+                          <width>1</width>
+                          <height>240</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_68">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>44</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Usuario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_74">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>94</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_editar_nombre_usuario">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>70</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_69">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>110</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Correo</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_75">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>160</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_editar_correo">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>136</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_70">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>180</y>
+                          <width>251</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Contraseña antigua</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_76">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>230</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_contrasenia_antigua">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>206</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_71">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>250</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Contraseña nueva</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_77">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>300</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_cambiar_contrasenia">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>276</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="administrador_guardar_cambios">
+                        <property name="geometry">
+                         <rect>
+                          <x>430</x>
+                          <y>376</y>
+                          <width>150</width>
+                          <height>30</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Guardar Cambios</string>
+                        </property>
+                       </widget>
+                      </widget>
+                      <widget class="QWidget" name="agregar_empleado">
+                       <widget class="QLabel" name="label_72">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>250</y>
+                          <width>231</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Salario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_vertical_3">
+                        <property name="geometry">
+                         <rect>
+                          <x>500</x>
+                          <y>60</y>
+                          <width>1</width>
+                          <height>240</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_contrasenia">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>206</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_78">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>300</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_73">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>110</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Correo</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_apellido_m">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>206</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_79">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>230</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_75">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>110</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido paterno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_80">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>160</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_81">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>94</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_82">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>94</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_83">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>230</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_apellido_p">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>136</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_76">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>180</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido materno</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_77">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>44</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Usuario</string>
+                        </property>
+                       </widget>
+                       <widget class="QDoubleSpinBox" name="administrador_agregar_salario">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>276</y>
+                          <width>251</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="maximum">
+                         <double>100000.000000000000000</double>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_78">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>180</y>
+                          <width>251</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Contraseña</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_79">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>44</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Nombre</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_nombre">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>70</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_correo">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>136</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_85">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>160</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="administrador_nuevo_empleado_guardar_cambios">
+                        <property name="geometry">
+                         <rect>
+                          <x>430</x>
+                          <y>376</y>
+                          <width>150</width>
+                          <height>30</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Agregar empleado</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_agregar_nombre_usuario">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>70</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </widget>
+                      <widget class="QWidget" name="ver_empleados">
+                       <widget class="QLineEdit" name="administrador_ver_empleado_apellido_p">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>210</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_80">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>254</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido materno</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_empleado_correo">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>210</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_empleado_apellido_m">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>280</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QDoubleSpinBox" name="administrador_ver_empleado_salario">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>350</y>
+                          <width>251</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="maximum">
+                         <double>100000.000000000000000</double>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_81">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>118</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Nombre</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_74">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>184</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Correo</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_86">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>168</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_82">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>324</y>
+                          <width>231</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Salario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_87">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>234</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_88">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>374</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_vertical_4">
+                        <property name="geometry">
+                         <rect>
+                          <x>500</x>
+                          <y>134</y>
+                          <width>1</width>
+                          <height>240</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_83">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>118</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Usuario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_89">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>304</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_empleado_nombre">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>144</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_90">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>234</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_84">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>184</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido paterno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_91">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>168</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="administrador_ver_empleado_nombre_usuario">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>144</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QComboBox" name="administrador_buscar_empleado">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>20</y>
+                          <width>300</width>
+                          <height>35</height>
+                         </rect>
+                        </property>
+                       </widget>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                   <widget class="QWidget" name="page_empleado">
-                   <widget class="QLabel" name="label_10">
-                    <property name="geometry">
-                     <rect>
-                      <x>230</x>
-                      <y>120</y>
-                      <width>55</width>
-                      <height>16</height>
-                     </rect>
+                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <property name="spacing">
+                     <number>0</number>
                     </property>
-                    <property name="text">
-                     <string>empleado</string>
+                    <property name="leftMargin">
+                     <number>0</number>
                     </property>
-                   </widget>
+                    <property name="topMargin">
+                     <number>50</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QStackedWidget" name="empleados_stacked">
+                      <widget class="QWidget" name="page">
+                       <widget class="Line" name="line_62">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>98</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_47">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>48</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Nombre</string>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_ver_nombre">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>74</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_50">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>114</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido paterno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_63">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>164</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_ver_apellido_p">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>140</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_58">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>184</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Apellido materno</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_64">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>234</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_ver_apellido_m">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>210</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_59">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>254</y>
+                          <width>231</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Salario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_65">
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>304</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QDoubleSpinBox" name="empleados_ver_salario">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="geometry">
+                         <rect>
+                          <x>220</x>
+                          <y>280</y>
+                          <width>251</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="maximum">
+                         <double>100000.000000000000000</double>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_vertical">
+                        <property name="geometry">
+                         <rect>
+                          <x>500</x>
+                          <y>64</y>
+                          <width>1</width>
+                          <height>240</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_60">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>48</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Usuario</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_66">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>98</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_editar_nombre_usuario">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>74</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_61">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>114</y>
+                          <width>150</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Correo</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_67">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>164</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_editar_correo">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>140</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_62">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>184</y>
+                          <width>251</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Contraseña antigua</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_68">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>234</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_contrasenia_antigua">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>210</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_63">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>254</y>
+                          <width>241</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Contraseña nueva</string>
+                        </property>
+                       </widget>
+                       <widget class="Line" name="line_69">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>304</y>
+                          <width>250</width>
+                          <height>2</height>
+                         </rect>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </widget>
+                       <widget class="QLineEdit" name="empleados_cambiar_contrasenia">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>280</y>
+                          <width>250</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="empleados_guardar_cambios">
+                        <property name="geometry">
+                         <rect>
+                          <x>430</x>
+                          <y>380</y>
+                          <width>150</width>
+                          <height>30</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Guardar Cambios</string>
+                        </property>
+                       </widget>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </widget>
                 </item>

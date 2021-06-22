@@ -105,7 +105,6 @@
 * Editar contraseña
 #### Acciones
 * Generar ventas
-* Ver tickets
 * productos
     - Ver
     - Agregar
@@ -114,7 +113,7 @@
     - Agregar
 * Tickets
 ### Administrador
-* Editar datos personales de empleados
+* Editar datos personales de empleados y salario
 * ver correo y username de empleados
 * Crear empleados
 * Habilitar/deshabilitar empleados
