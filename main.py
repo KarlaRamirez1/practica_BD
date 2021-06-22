@@ -1,10 +1,25 @@
 import sys
+<<<<<<< HEAD
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6 import QtCore
 
 # from modules.login import Login
 from modules.main_ui import Ui_MainWindows
 from modules.ui_functions import Ui_functions
+=======
+import sqlite3
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import (QApplication, QDialog, QMainWindow, QMessageBox,
+							QPushButton, QLabel,QTableWidgetItem,
+							QAbstractItemView)
+from PyQt5.QtGui import QIcon, QColor
+from PyQt5 import QtWidgets, QtCore #,QtGui
+from PyQt5.uic import loadUi
+from Modules.login import Login
+
+conexion = sqlite3.connect("BD_BaniosCharly_Master")
+
+>>>>>>> aa5c7cda059fffbee59b45f14cd5395a25a59c62
 
 
 import os
@@ -120,9 +135,15 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
+<<<<<<< HEAD
 	window = MainWindow()
 	window.show()
 	sys.exit(app.exec_())
 
     # pyside6-uic main.ui > main_ui.py
     # pyside6-rcc resources.qrc -o resources_rc.py
+=======
+	GUI = Main()
+	GUI.show()
+	sys.exit(app.exec_())
+>>>>>>> aa5c7cda059fffbee59b45f14cd5395a25a59c62
