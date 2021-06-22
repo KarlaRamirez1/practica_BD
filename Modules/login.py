@@ -14,6 +14,10 @@ class Login(QDialog):#faltan validaciones
 
 		global this
 		this = self.ui
+
+		# with open('./css/style.css') as f:
+		# 	self.setStyleSheet(f.read())
+		
 		        
 		flags = QtCore.Qt.WindowFlags(QtCore.Qt.Dialog)
 		self.setWindowFlags(flags|QtCore.Qt.FramelessWindowHint |QtCore.Qt.CustomizeWindowHint)

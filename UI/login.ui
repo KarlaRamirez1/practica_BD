@@ -50,6 +50,25 @@ background: transparent;
 color: #fff;
 }
 
+
+
+
+QDialog QDialog QPushButton, QDialog QDialog QPushButton:hover, QDialog QDialog QPushButton:focus {
+    background: #2A91FF;
+    border-radius: 5px;
+	color: #fff;
+	font-size: 18px;
+	width: 80px;
+}
+
+QDialog QDialog {
+	background-color: #212634;
+}
+
+QDialog QDialog QLabel {
+	font: 17px;
+	color: #eaeaea;
+}
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
