@@ -24,6 +24,13 @@ class Ui_MainWindows(object):
 "border: none;\n"
 "}\n"
 "\n"
+"\n"
+"\n"
+"#page_admin,\n"
+"#page_empleado {\n"
+"background: #333;\n"
+"}\n"
+"\n"
 "#top { border-top-left-radius: 4px; border-top-right-radius: 4px; }\n"
 "#side_bar { border-bottom-left-radius: 4px; }\n"
 "#bottom { border-bottom-right-radius: 4px }\n"
@@ -73,10 +80,10 @@ class Ui_MainWindows(object):
 "\n"
 "\n"
 "\n"
-"/********************************/\n"
+"/********************************/"
+                        "\n"
 "#btn_toggle { image: url(:/icons/assets/icons/toggle menu.png); }\n"
-"#btn_c"
-                        "ompras { image: url(:/icons/assets/icons/compras.png); }\n"
+"#btn_compras { image: url(:/icons/assets/icons/compras.png); }\n"
 "#btn_ventas { image: url(:/icons/assets/icons/ventas.png); }\n"
 "#btn_productos { image: url(:/icons/assets/icons/productos.png); }\n"
 "#btn_proveedores { image: url(:/icons/assets/icons/proveedores.png); }\n"
@@ -94,17 +101,13 @@ class Ui_MainWindows(object):
 "#btn_closed { image: url(:/icons/assets/icons/closed.png); }\n"
 "#btn_minimized, #btn_maximized, #btn_closed { border-radius: 4px; }\n"
 "\n"
-"#btn_minimized:hover, #btn_maximized:hover,  #btn_closed:hover { background: #293546; }\n"
+"#btn_minimized:hover, "
+                        "#btn_maximized:hover,  #btn_closed:hover { background: #293546; }\n"
 "\n"
 "\n"
-"/"
-                        "********************************/\n"
+"/********************************/\n"
 "\n"
 "\n"
-"\n"
-"#page_proveedores, #page_tickets, #page_recorte_caja, #page_copia_seguridad, #page_admin, #page_empleado {\n"
-"background: #333;\n"
-"}\n"
 "\n"
 "QScrollArea {\n"
 "background: transparent;\n"
@@ -117,18 +120,18 @@ class Ui_MainWindows(object):
 "border-radius: 5px;\n"
 "}\n"
 "\n"
-"\n"
 "#page_container QLabel, #page_container QLineEdit {\n"
 "font: 12pt;\n"
 "background: transparent;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"#ventas_agregar, #compras_agregar {\n"
+"#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket {\n"
 "background: #2A91FF;\n"
 "border-radius: 5px;\n"
 "}\n"
-"#ventas_generar, #compras_generar {\n"
+"#ventas_generar, #compras_generar, #productos_agregar_guardar, #productos_editar_guardar,\n"
+"#proveedores_agregar_guardar, #proveedores_editar_guardar {\n"
 "background: #2EAC4B;\n"
 "border-radius: 5px;\n"
 "}\n"
@@ -142,14 +145,14 @@ class Ui_MainWindows(object):
 "\n"
 "QDateEdit::down-button, QDateEdit::up-button { image: none; }\n"
 "\n"
-"QComboBox {\n"
+""
+                        "QComboBox {\n"
 "background: #212634;\n"
 "border-radius: 5px;\n"
 "}\n"
 "\n"
 "\n"
-"QComboBox::drop-down {"
-                        " \n"
+"QComboBox::drop-down { \n"
 "image: url(:/icons/assets/icons/arrow-down.png);\n"
 "margin-top: 5px;\n"
 "margin-bottom: 4px;\n"
@@ -172,42 +175,50 @@ class Ui_MainWindows(object):
 "\n"
 "\n"
 "\n"
-"#productos_stacked > QWidget {\n"
+"#productos_stacked > QWidget,\n"
+"#proveedores_stacked > QWidget {\n"
 "border: 2px solid #38C3DD;\n"
 "border-radius: 5px;\n"
 "border-top-left-radius: 0px;\n"
 "background: transparent;\n"
 "}\n"
 "\n"
-"#box_productos_top_buttons  > QPushButton{\n"
+"#box_productos_top_buttons  > QPushButton,\n"
+"#box_proveedores_top_buttons > QPushButton {\n"
 "background: transparent;\n"
 "border: 2px solid #38C3DD;\n"
 "border-radius: 5px;\n"
 "border-bottom-left-radius: 0px;\n"
-"border-bottom-right-radius: 0px;\n"
+"border-bottom"
+                        "-right-radius: 0px;\n"
 "}\n"
 "\n"
+"\n"
+"\n"
+"#tickets_borrar_filtros {\n"
+"background: #FF5C67;\n"
+"border-radius: 5px;\n"
+"}\n"
 "\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "ScrollBars */\n"
-"QScrollBar:horizonta"
-                        "l {\n"
+"QScrollBar:horizontal {\n"
 "    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
+"    background: #707070;\n"
 "    height: 8px;\n"
-"    margin: 0px 21px 0 21px;\n"
+"    margin: 0px;\n"
 "	border-radius: 0px;\n"
 "}\n"
 "QScrollBar::handle:horizontal {\n"
-"    background: rgb(189, 147, 249);\n"
+"    background: #38C3DD;\n"
 "    min-width: 25px;\n"
 "	border-radius: 4px\n"
 "}\n"
 "QScrollBar::add-line:horizontal {\n"
 "    border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"    width: 20px;\n"
+"    background: transparent;\n"
+"    width: 0px;\n"
 "	border-top-right-radius: 4px;\n"
 "    border-bottom-right-radius: 4px;\n"
 "    subcontrol-position: right;\n"
@@ -215,12 +226,13 @@ class Ui_MainWindows(object):
 "}\n"
 "QScrollBar::sub-line:horizontal {\n"
 "    border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"    width: 20px;\n"
+"    background: transparent;\n"
+"    width: 0px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-bottom-left-radius: 4px;\n"
 "    subcontrol-position: left;\n"
-"    subcontrol-origin: margin;\n"
+"  "
+                        "  subcontrol-origin: margin;\n"
 "}\n"
 "\n"
 " QScrollBar:vertical {\n"
@@ -231,8 +243,7 @@ class Ui_MainWindows(object):
 "	border-radius: 4px;\n"
 " }\n"
 " QScrollBar::handle:vertical {	\n"
-"	background: #"
-                        "38C3DD;\n"
+"	background: #38C3DD;\n"
 "    min-height: 25px;\n"
 "	border-radius: 4px\n"
 " }\n"
@@ -257,14 +268,16 @@ class Ui_MainWindows(object):
 "\n"
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical { background: none; }\n"
 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: none; }\n"
+"Q"
+                        "ScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal { background: none; }\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { background: none; }\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "CheckBox */\n"
-"QC"
-                        "heckBox::indicator {\n"
+"QCheckBox::indicator {\n"
 "    border: 3px solid #D0D9DC;\n"
 "	width: 17px;\n"
 "	height: 17px;\n"
@@ -287,6 +300,65 @@ class Ui_MainWindows(object):
 "color: #fff;\n"
 "}\n"
 "\n"
+"\n"
+"\n"
+"/* //////////////////////////////////////////////////"
+                        "///////////////////////////////////////////////\n"
+"QTableWidget */\n"
+"QTableWidget {	\n"
+"	background-color: transparent;\n"
+"	gridline-color: #374553;\n"
+"}\n"
+"QTableWidget::item {\n"
+"	border-color: transparent;\n"
+"	padding-left: 5px;\n"
+"	padding-right: 5px;\n"
+"	color: #fff;\n"
+"}\n"
+"QTableWidget::item:selected {\n"
+"	background-color: #202531;\n"
+"}\n"
+"QHeaderView::section {\n"
+"	height: 20px;\n"
+"}\n"
+"\n"
+"QHeaderView::section:horizontal {\n"
+"    border: none;\n"
+"    border-right: 1px solid #374553;\n"
+"	background-color: #293546;\n"
+"	/*background-color: #202531;*/\n"
+"	padding: 3px;\n"
+"color: #fff;\n"
+"}\n"
+"\n"
+"/* ///////////////////////////////////////////////////////////////////////////////////////////////// */\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"#donwload, #upload {\n"
+"border-radius: 75px;\n"
+"}\n"
+"\n"
+"#donwload {\n"
+"image: url(:/icons/assets/icons/download.png);\n"
+"background: #2A91FF;\n"
+"}\n"
+"\n"
+"\n"
+"#upload {\n"
+"image: url(:/icons/assets/icons/upl"
+                        "oad.png);\n"
+"background: #2EAC4B;\n"
+"}\n"
 "")
         self.main = QWidget(MainWindows)
         self.main.setObjectName(u"main")
@@ -295,7 +367,9 @@ class Ui_MainWindows(object):
 "#line_11, #line_12, #line_13, #line_14, #line_15, #line_16, #line_17, #line_18, #line_19, #line_20,\n"
 "#line_21, #line_22, #line_23, #line_24, #line_25, #line_26, #line_27, #line_28, #line_29, #line_30,\n"
 "#line_31, #line_32, #line_33, #line_34, #line_35, #line_36, #line_37, #line_38, #line_39, #line_40,\n"
-"#line_41, #line_42, #line_43, #line_44, #line_45, #line_46, #line_47, #line_48, #line_49, #line_50 {\n"
+"#line_41, #line_42, #line_43, #line_44, #line_45, #line_46, #line_47, #line_48, #line_49, #line_50,\n"
+"#line_51, #line_52, #line_53, #line_54, #line_55, #line_56, #line_57, #line_58, #line_59, #line_60,\n"
+"#line_61, #line_62, #line_63, #line_64, #line_65, #line_66, #line_67, #line_68, #line_69, #line_70 {\n"
 "background: #fff;\n"
 "}")
         self.verticalLayout = QVBoxLayout(self.main)
@@ -1021,7 +1095,7 @@ class Ui_MainWindows(object):
         self.compras_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 92, 425))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 70, 425))
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.compras_scrolling = QFrame(self.scrollAreaWidgetContents_2)
@@ -1284,7 +1358,7 @@ class Ui_MainWindows(object):
         self.verticalLayout_9 = QVBoxLayout(self.page_productos)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(150, 40, 150, 40)
+        self.verticalLayout_9.setContentsMargins(150, 30, 150, 30)
         self.box_productos_top_buttons = QFrame(self.page_productos)
         self.box_productos_top_buttons.setObjectName(u"box_productos_top_buttons")
         self.box_productos_top_buttons.setMinimumSize(QSize(0, 30))
@@ -1446,6 +1520,10 @@ class Ui_MainWindows(object):
         self.productos_agregar_nombre = QLineEdit(self.page_productos_agregar)
         self.productos_agregar_nombre.setObjectName(u"productos_agregar_nombre")
         self.productos_agregar_nombre.setGeometry(QRect(370, 120, 251, 22))
+        self.productos_agregar_guardar = QPushButton(self.page_productos_agregar)
+        self.productos_agregar_guardar.setObjectName(u"productos_agregar_guardar")
+        self.productos_agregar_guardar.setGeometry(QRect(300, 390, 150, 30))
+        self.productos_agregar_guardar.setCursor(QCursor(Qt.PointingHandCursor))
         self.productos_stacked.addWidget(self.page_productos_agregar)
         self.page_productos_editar = QWidget()
         self.page_productos_editar.setObjectName(u"page_productos_editar")
@@ -1507,6 +1585,10 @@ class Ui_MainWindows(object):
         self.productos_editar_proveedor = QComboBox(self.page_productos_editar)
         self.productos_editar_proveedor.setObjectName(u"productos_editar_proveedor")
         self.productos_editar_proveedor.setGeometry(QRect(75, 100, 200, 35))
+        self.productos_editar_guardar = QPushButton(self.page_productos_editar)
+        self.productos_editar_guardar.setObjectName(u"productos_editar_guardar")
+        self.productos_editar_guardar.setGeometry(QRect(300, 390, 150, 30))
+        self.productos_editar_guardar.setCursor(QCursor(Qt.PointingHandCursor))
         self.productos_stacked.addWidget(self.page_productos_editar)
 
         self.verticalLayout_9.addWidget(self.productos_stacked)
@@ -1514,27 +1596,428 @@ class Ui_MainWindows(object):
         self.stackedWidget.addWidget(self.page_productos)
         self.page_proveedores = QWidget()
         self.page_proveedores.setObjectName(u"page_proveedores")
-        self.label_5 = QLabel(self.page_proveedores)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(240, 160, 55, 16))
+        self.verticalLayout_10 = QVBoxLayout(self.page_proveedores)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(150, 40, 150, 40)
+        self.box_proveedores_top_buttons = QFrame(self.page_proveedores)
+        self.box_proveedores_top_buttons.setObjectName(u"box_proveedores_top_buttons")
+        self.box_proveedores_top_buttons.setMinimumSize(QSize(0, 30))
+        self.box_proveedores_top_buttons.setFrameShape(QFrame.StyledPanel)
+        self.box_proveedores_top_buttons.setFrameShadow(QFrame.Raised)
+        self.proveedores_ver = QPushButton(self.box_proveedores_top_buttons)
+        self.proveedores_ver.setObjectName(u"proveedores_ver")
+        self.proveedores_ver.setGeometry(QRect(0, 0, 150, 30))
+        self.proveedores_ver.setCursor(QCursor(Qt.PointingHandCursor))
+        self.proveedores_agregar = QPushButton(self.box_proveedores_top_buttons)
+        self.proveedores_agregar.setObjectName(u"proveedores_agregar")
+        self.proveedores_agregar.setGeometry(QRect(150, 0, 150, 30))
+        self.proveedores_agregar.setCursor(QCursor(Qt.PointingHandCursor))
+        self.proveedores_editar = QPushButton(self.box_proveedores_top_buttons)
+        self.proveedores_editar.setObjectName(u"proveedores_editar")
+        self.proveedores_editar.setGeometry(QRect(300, 0, 150, 30))
+        self.proveedores_editar.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_10.addWidget(self.box_proveedores_top_buttons)
+
+        self.proveedores_stacked = QStackedWidget(self.page_proveedores)
+        self.proveedores_stacked.setObjectName(u"proveedores_stacked")
+        self.page_proveedores_ver = QWidget()
+        self.page_proveedores_ver.setObjectName(u"page_proveedores_ver")
+        self.proveedores_ver_proveedor = QComboBox(self.page_proveedores_ver)
+        self.proveedores_ver_proveedor.setObjectName(u"proveedores_ver_proveedor")
+        self.proveedores_ver_proveedor.setGeometry(QRect(75, 40, 200, 35))
+        self.proveedores_ver_proveedor.setCursor(QCursor(Qt.PointingHandCursor))
+        self.proveedores_ver_rfc = QLineEdit(self.page_proveedores_ver)
+        self.proveedores_ver_rfc.setObjectName(u"proveedores_ver_rfc")
+        self.proveedores_ver_rfc.setGeometry(QRect(75, 116, 250, 22))
+        self.label_37 = QLabel(self.page_proveedores_ver)
+        self.label_37.setObjectName(u"label_37")
+        self.label_37.setGeometry(QRect(75, 90, 150, 20))
+        self.line_15 = QFrame(self.page_proveedores_ver)
+        self.line_15.setObjectName(u"line_15")
+        self.line_15.setGeometry(QRect(75, 140, 250, 2))
+        self.line_15.setFrameShadow(QFrame.Plain)
+        self.line_15.setLineWidth(1)
+        self.line_15.setFrameShape(QFrame.HLine)
+        self.label_41 = QLabel(self.page_proveedores_ver)
+        self.label_41.setObjectName(u"label_41")
+        self.label_41.setGeometry(QRect(75, 160, 150, 20))
+        self.line_16 = QFrame(self.page_proveedores_ver)
+        self.line_16.setObjectName(u"line_16")
+        self.line_16.setGeometry(QRect(75, 210, 250, 2))
+        self.line_16.setFrameShape(QFrame.HLine)
+        self.line_16.setFrameShadow(QFrame.Sunken)
+        self.label_42 = QLabel(self.page_proveedores_ver)
+        self.label_42.setObjectName(u"label_42")
+        self.label_42.setGeometry(QRect(75, 230, 150, 20))
+        self.line_17 = QFrame(self.page_proveedores_ver)
+        self.line_17.setObjectName(u"line_17")
+        self.line_17.setGeometry(QRect(75, 280, 250, 2))
+        self.line_17.setFrameShape(QFrame.HLine)
+        self.line_17.setFrameShadow(QFrame.Sunken)
+        self.label_43 = QLabel(self.page_proveedores_ver)
+        self.label_43.setObjectName(u"label_43")
+        self.label_43.setGeometry(QRect(370, 60, 161, 20))
+        self.productos_ver_check_activo = QCheckBox(self.page_proveedores_ver)
+        self.productos_ver_check_activo.setObjectName(u"productos_ver_check_activo")
+        self.productos_ver_check_activo.setGeometry(QRect(540, 60, 23, 23))
+        self.proveedores_ver_telefono = QLineEdit(self.page_proveedores_ver)
+        self.proveedores_ver_telefono.setObjectName(u"proveedores_ver_telefono")
+        self.proveedores_ver_telefono.setGeometry(QRect(75, 185, 250, 22))
+        self.proveedores_ver_direccion = QLineEdit(self.page_proveedores_ver)
+        self.proveedores_ver_direccion.setObjectName(u"proveedores_ver_direccion")
+        self.proveedores_ver_direccion.setGeometry(QRect(75, 255, 250, 22))
+        self.proveedores_stacked.addWidget(self.page_proveedores_ver)
+        self.page_proveedores_agregar = QWidget()
+        self.page_proveedores_agregar.setObjectName(u"page_proveedores_agregar")
+        self.line_18 = QFrame(self.page_proveedores_agregar)
+        self.line_18.setObjectName(u"line_18")
+        self.line_18.setGeometry(QRect(75, 300, 250, 2))
+        self.line_18.setFrameShape(QFrame.HLine)
+        self.line_18.setFrameShadow(QFrame.Sunken)
+        self.label_45 = QLabel(self.page_proveedores_agregar)
+        self.label_45.setObjectName(u"label_45")
+        self.label_45.setGeometry(QRect(75, 250, 150, 20))
+        self.productos_agregar_nueva_categoria_2 = QLineEdit(self.page_proveedores_agregar)
+        self.productos_agregar_nueva_categoria_2.setObjectName(u"productos_agregar_nueva_categoria_2")
+        self.productos_agregar_nueva_categoria_2.setGeometry(QRect(75, 66, 221, 22))
+        self.label_48 = QLabel(self.page_proveedores_agregar)
+        self.label_48.setObjectName(u"label_48")
+        self.label_48.setGeometry(QRect(75, 40, 221, 20))
+        self.line_28 = QFrame(self.page_proveedores_agregar)
+        self.line_28.setObjectName(u"line_28")
+        self.line_28.setGeometry(QRect(75, 90, 220, 2))
+        self.line_28.setFrameShape(QFrame.HLine)
+        self.line_28.setFrameShadow(QFrame.Sunken)
+        self.productos_agregar_nombre_2 = QLineEdit(self.page_proveedores_agregar)
+        self.productos_agregar_nombre_2.setObjectName(u"productos_agregar_nombre_2")
+        self.productos_agregar_nombre_2.setGeometry(QRect(370, 120, 251, 22))
+        self.proveedores_agregar_guardar = QPushButton(self.page_proveedores_agregar)
+        self.proveedores_agregar_guardar.setObjectName(u"proveedores_agregar_guardar")
+        self.proveedores_agregar_guardar.setGeometry(QRect(300, 350, 150, 30))
+        self.label_49 = QLabel(self.page_proveedores_agregar)
+        self.label_49.setObjectName(u"label_49")
+        self.label_49.setGeometry(QRect(75, 110, 150, 20))
+        self.productos_agregar_nueva_categoria_3 = QLineEdit(self.page_proveedores_agregar)
+        self.productos_agregar_nueva_categoria_3.setObjectName(u"productos_agregar_nueva_categoria_3")
+        self.productos_agregar_nueva_categoria_3.setGeometry(QRect(75, 136, 221, 22))
+        self.line_30 = QFrame(self.page_proveedores_agregar)
+        self.line_30.setObjectName(u"line_30")
+        self.line_30.setGeometry(QRect(75, 160, 220, 2))
+        self.line_30.setFrameShape(QFrame.HLine)
+        self.line_30.setFrameShadow(QFrame.Sunken)
+        self.line_51 = QFrame(self.page_proveedores_agregar)
+        self.line_51.setObjectName(u"line_51")
+        self.line_51.setGeometry(QRect(75, 234, 220, 2))
+        self.line_51.setFrameShape(QFrame.HLine)
+        self.line_51.setFrameShadow(QFrame.Sunken)
+        self.label_56 = QLabel(self.page_proveedores_agregar)
+        self.label_56.setObjectName(u"label_56")
+        self.label_56.setGeometry(QRect(75, 184, 150, 20))
+        self.productos_agregar_nueva_categoria_4 = QLineEdit(self.page_proveedores_agregar)
+        self.productos_agregar_nueva_categoria_4.setObjectName(u"productos_agregar_nueva_categoria_4")
+        self.productos_agregar_nueva_categoria_4.setGeometry(QRect(75, 210, 221, 22))
+        self.productos_agregar_nueva_categoria_5 = QLineEdit(self.page_proveedores_agregar)
+        self.productos_agregar_nueva_categoria_5.setObjectName(u"productos_agregar_nueva_categoria_5")
+        self.productos_agregar_nueva_categoria_5.setGeometry(QRect(75, 275, 221, 22))
+        self.proveedores_stacked.addWidget(self.page_proveedores_agregar)
+        self.page_proveedores_editar = QWidget()
+        self.page_proveedores_editar.setObjectName(u"page_proveedores_editar")
+        self.label_51 = QLabel(self.page_proveedores_editar)
+        self.label_51.setObjectName(u"label_51")
+        self.label_51.setGeometry(QRect(75, 110, 150, 20))
+        self.label_52 = QLabel(self.page_proveedores_editar)
+        self.label_52.setObjectName(u"label_52")
+        self.label_52.setGeometry(QRect(360, 170, 150, 20))
+        self.proveedores_editar_check_activo = QCheckBox(self.page_proveedores_editar)
+        self.proveedores_editar_check_activo.setObjectName(u"proveedores_editar_check_activo")
+        self.proveedores_editar_check_activo.setGeometry(QRect(530, 50, 23, 23))
+        self.proveedores_editar_nombre = QComboBox(self.page_proveedores_editar)
+        self.proveedores_editar_nombre.setObjectName(u"proveedores_editar_nombre")
+        self.proveedores_editar_nombre.setGeometry(QRect(75, 40, 200, 35))
+        self.proveedores_editar_nombre.setCursor(QCursor(Qt.PointingHandCursor))
+        self.line_56 = QFrame(self.page_proveedores_editar)
+        self.line_56.setObjectName(u"line_56")
+        self.line_56.setGeometry(QRect(75, 160, 250, 2))
+        self.line_56.setFrameShape(QFrame.HLine)
+        self.line_56.setFrameShadow(QFrame.Sunken)
+        self.label_54 = QLabel(self.page_proveedores_editar)
+        self.label_54.setObjectName(u"label_54")
+        self.label_54.setGeometry(QRect(360, 50, 161, 20))
+        self.proveedores_editar_nota = QTextEdit(self.page_proveedores_editar)
+        self.proveedores_editar_nota.setObjectName(u"proveedores_editar_nota")
+        self.proveedores_editar_nota.setEnabled(False)
+        self.proveedores_editar_nota.setGeometry(QRect(360, 194, 200, 111))
+        self.proveedores_editar_rfc = QLineEdit(self.page_proveedores_editar)
+        self.proveedores_editar_rfc.setObjectName(u"proveedores_editar_rfc")
+        self.proveedores_editar_rfc.setGeometry(QRect(75, 135, 250, 22))
+        self.label_53 = QLabel(self.page_proveedores_editar)
+        self.label_53.setObjectName(u"label_53")
+        self.label_53.setGeometry(QRect(360, 105, 150, 20))
+        self.proveedores_editar_editar_nombre = QLineEdit(self.page_proveedores_editar)
+        self.proveedores_editar_editar_nombre.setObjectName(u"proveedores_editar_editar_nombre")
+        self.proveedores_editar_editar_nombre.setGeometry(QRect(360, 130, 250, 22))
+        self.line_57 = QFrame(self.page_proveedores_editar)
+        self.line_57.setObjectName(u"line_57")
+        self.line_57.setGeometry(QRect(360, 155, 200, 2))
+        self.line_57.setFrameShape(QFrame.HLine)
+        self.line_57.setFrameShadow(QFrame.Sunken)
+        self.label_55 = QLabel(self.page_proveedores_editar)
+        self.label_55.setObjectName(u"label_55")
+        self.label_55.setGeometry(QRect(75, 180, 150, 20))
+        self.proveedores_editar_telefono = QLineEdit(self.page_proveedores_editar)
+        self.proveedores_editar_telefono.setObjectName(u"proveedores_editar_telefono")
+        self.proveedores_editar_telefono.setGeometry(QRect(75, 205, 250, 22))
+        self.line_58 = QFrame(self.page_proveedores_editar)
+        self.line_58.setObjectName(u"line_58")
+        self.line_58.setGeometry(QRect(75, 230, 250, 2))
+        self.line_58.setFrameShape(QFrame.HLine)
+        self.line_58.setFrameShadow(QFrame.Sunken)
+        self.label_57 = QLabel(self.page_proveedores_editar)
+        self.label_57.setObjectName(u"label_57")
+        self.label_57.setGeometry(QRect(75, 250, 150, 20))
+        self.proveedores_editar_direccion = QLineEdit(self.page_proveedores_editar)
+        self.proveedores_editar_direccion.setObjectName(u"proveedores_editar_direccion")
+        self.proveedores_editar_direccion.setGeometry(QRect(75, 275, 250, 22))
+        self.line_59 = QFrame(self.page_proveedores_editar)
+        self.line_59.setObjectName(u"line_59")
+        self.line_59.setGeometry(QRect(75, 300, 250, 2))
+        self.line_59.setFrameShape(QFrame.HLine)
+        self.line_59.setFrameShadow(QFrame.Sunken)
+        self.proveedores_editar_guardar = QPushButton(self.page_proveedores_editar)
+        self.proveedores_editar_guardar.setObjectName(u"proveedores_editar_guardar")
+        self.proveedores_editar_guardar.setGeometry(QRect(310, 360, 150, 30))
+        self.proveedores_stacked.addWidget(self.page_proveedores_editar)
+
+        self.verticalLayout_10.addWidget(self.proveedores_stacked)
+
         self.stackedWidget.addWidget(self.page_proveedores)
         self.page_tickets = QWidget()
         self.page_tickets.setObjectName(u"page_tickets")
-        self.label_6 = QLabel(self.page_tickets)
+        self.verticalLayout_11 = QVBoxLayout(self.page_tickets)
+        self.verticalLayout_11.setSpacing(10)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 15, 0, 0)
+        self.frame_2 = QFrame(self.page_tickets)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(0, 85))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.tickets_check_filtro_folio = QRadioButton(self.frame_2)
+        self.tickets_check_filtro_folio.setObjectName(u"tickets_check_filtro_folio")
+        self.tickets_check_filtro_folio.setGeometry(QRect(30, 0, 23, 23))
+        self.tickets_check_filtro_fecha = QRadioButton(self.frame_2)
+        self.tickets_check_filtro_fecha.setObjectName(u"tickets_check_filtro_fecha")
+        self.tickets_check_filtro_fecha.setGeometry(QRect(200, 0, 23, 23))
+        self.tickets_check_filtro_rango_fechas = QRadioButton(self.frame_2)
+        self.tickets_check_filtro_rango_fechas.setObjectName(u"tickets_check_filtro_rango_fechas")
+        self.tickets_check_filtro_rango_fechas.setGeometry(QRect(370, 0, 23, 23))
+        self.line_27 = QFrame(self.frame_2)
+        self.line_27.setObjectName(u"line_27")
+        self.line_27.setGeometry(QRect(30, 80, 130, 2))
+        self.line_27.setFrameShape(QFrame.HLine)
+        self.line_27.setFrameShadow(QFrame.Sunken)
+        self.tickets_filtro_fecha_f = QDateEdit(self.frame_2)
+        self.tickets_filtro_fecha_f.setObjectName(u"tickets_filtro_fecha_f")
+        self.tickets_filtro_fecha_f.setEnabled(False)
+        self.tickets_filtro_fecha_f.setGeometry(QRect(510, 50, 130, 22))
+        self.label_4 = QLabel(self.frame_2)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(30, 30, 150, 20))
+        self.tickets_filtro_fecha = QDateEdit(self.frame_2)
+        self.tickets_filtro_fecha.setObjectName(u"tickets_filtro_fecha")
+        self.tickets_filtro_fecha.setEnabled(False)
+        self.tickets_filtro_fecha.setGeometry(QRect(199, 55, 130, 22))
+        self.line_29 = QFrame(self.frame_2)
+        self.line_29.setObjectName(u"line_29")
+        self.line_29.setGeometry(QRect(199, 80, 110, 2))
+        self.line_29.setFrameShape(QFrame.HLine)
+        self.line_29.setFrameShadow(QFrame.Sunken)
+        self.label_5 = QLabel(self.frame_2)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(200, 34, 150, 20))
+        self.tickets_filtro_folio = QLineEdit(self.frame_2)
+        self.tickets_filtro_folio.setObjectName(u"tickets_filtro_folio")
+        self.tickets_filtro_folio.setGeometry(QRect(30, 55, 113, 22))
+        self.line_55 = QFrame(self.frame_2)
+        self.line_55.setObjectName(u"line_55")
+        self.line_55.setGeometry(QRect(370, 80, 110, 2))
+        self.line_55.setFrameShape(QFrame.HLine)
+        self.line_55.setFrameShadow(QFrame.Sunken)
+        self.label_6 = QLabel(self.frame_2)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(260, 120, 55, 16))
+        self.label_6.setGeometry(QRect(370, 29, 171, 20))
+        self.tickets_filtro_fecha_i = QDateEdit(self.frame_2)
+        self.tickets_filtro_fecha_i.setObjectName(u"tickets_filtro_fecha_i")
+        self.tickets_filtro_fecha_i.setEnabled(False)
+        self.tickets_filtro_fecha_i.setGeometry(QRect(370, 50, 130, 22))
+        self.line_60 = QFrame(self.frame_2)
+        self.line_60.setObjectName(u"line_60")
+        self.line_60.setGeometry(QRect(510, 80, 110, 2))
+        self.line_60.setFrameShape(QFrame.HLine)
+        self.line_60.setFrameShadow(QFrame.Sunken)
+        self.label_44 = QLabel(self.frame_2)
+        self.label_44.setObjectName(u"label_44")
+        self.label_44.setGeometry(QRect(490, 50, 21, 20))
+        self.tickets_borrar_filtros = QPushButton(self.frame_2)
+        self.tickets_borrar_filtros.setObjectName(u"tickets_borrar_filtros")
+        self.tickets_borrar_filtros.setGeometry(QRect(660, 50, 120, 30))
+        self.tickets_borrar_filtros.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_11.addWidget(self.frame_2)
+
+        self.frame_3 = QFrame(self.page_tickets)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.tickets_table_widget = QTableWidget(self.frame_3)
+        if (self.tickets_table_widget.columnCount() < 10):
+            self.tickets_table_widget.setColumnCount(10)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(7, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(8, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        self.tickets_table_widget.setObjectName(u"tickets_table_widget")
+        self.tickets_table_widget.setRowCount(0)
+        self.tickets_table_widget.setColumnCount(10)
+
+        self.verticalLayout_12.addWidget(self.tickets_table_widget)
+
+
+        self.verticalLayout_11.addWidget(self.frame_3)
+
+        self.frame_4 = QFrame(self.page_tickets)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMinimumSize(QSize(0, 40))
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.Tickets_generar_ticket = QPushButton(self.frame_4)
+        self.Tickets_generar_ticket.setObjectName(u"Tickets_generar_ticket")
+        self.Tickets_generar_ticket.setGeometry(QRect(450, 0, 150, 30))
+        self.Tickets_generar_ticket.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_11.addWidget(self.frame_4)
+
         self.stackedWidget.addWidget(self.page_tickets)
         self.page_recorte_caja = QWidget()
         self.page_recorte_caja.setObjectName(u"page_recorte_caja")
-        self.label_7 = QLabel(self.page_recorte_caja)
+        self.verticalLayout_14 = QVBoxLayout(self.page_recorte_caja)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.frame_7 = QFrame(self.page_recorte_caja)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setMinimumSize(QSize(0, 85))
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.line_61 = QFrame(self.frame_7)
+        self.line_61.setObjectName(u"line_61")
+        self.line_61.setGeometry(QRect(30, 80, 130, 2))
+        self.line_61.setFrameShape(QFrame.HLine)
+        self.line_61.setFrameShadow(QFrame.Sunken)
+        self.label_7 = QLabel(self.frame_7)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(420, 140, 55, 16))
+        self.label_7.setGeometry(QRect(30, 30, 161, 20))
+        self.recorte_caja_fecha = QDateEdit(self.frame_7)
+        self.recorte_caja_fecha.setObjectName(u"recorte_caja_fecha")
+        self.recorte_caja_fecha.setGeometry(QRect(30, 55, 131, 22))
+
+        self.verticalLayout_14.addWidget(self.frame_7)
+
+        self.frame_5 = QFrame(self.page_recorte_caja)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_13 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.recorte_caja_table_widget = QTableWidget(self.frame_5)
+        if (self.recorte_caja_table_widget.columnCount() < 3):
+            self.recorte_caja_table_widget.setColumnCount(3)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem12)
+        self.recorte_caja_table_widget.setObjectName(u"recorte_caja_table_widget")
+        self.recorte_caja_table_widget.setRowCount(0)
+        self.recorte_caja_table_widget.setColumnCount(3)
+
+        self.verticalLayout_13.addWidget(self.recorte_caja_table_widget)
+
+
+        self.verticalLayout_14.addWidget(self.frame_5)
+
+        self.frame_6 = QFrame(self.page_recorte_caja)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setMinimumSize(QSize(0, 40))
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.recorte_caja_generar_ticket = QPushButton(self.frame_6)
+        self.recorte_caja_generar_ticket.setObjectName(u"recorte_caja_generar_ticket")
+        self.recorte_caja_generar_ticket.setGeometry(QRect(450, 0, 150, 30))
+        self.recorte_caja_generar_ticket.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_14.addWidget(self.frame_6)
+
         self.stackedWidget.addWidget(self.page_recorte_caja)
         self.page_copia_seguridad = QWidget()
         self.page_copia_seguridad.setObjectName(u"page_copia_seguridad")
-        self.label_8 = QLabel(self.page_copia_seguridad)
+        self.horizontalLayout_13 = QHBoxLayout(self.page_copia_seguridad)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.frame_8 = QFrame(self.page_copia_seguridad)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setMinimumSize(QSize(150, 0))
+        self.frame_8.setMaximumSize(QSize(150, 16777215))
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.donwload = QPushButton(self.frame_8)
+        self.donwload.setObjectName(u"donwload")
+        self.donwload.setGeometry(QRect(0, 150, 150, 150))
+        self.donwload.setMinimumSize(QSize(150, 150))
+        self.donwload.setMaximumSize(QSize(150, 150))
+        self.donwload.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_8 = QLabel(self.frame_8)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(350, 130, 55, 16))
+        self.label_8.setGeometry(QRect(24, 310, 101, 24))
+
+        self.horizontalLayout_13.addWidget(self.frame_8)
+
+        self.frame_9 = QFrame(self.page_copia_seguridad)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setMinimumSize(QSize(150, 0))
+        self.frame_9.setMaximumSize(QSize(150, 16777215))
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.upload = QPushButton(self.frame_9)
+        self.upload.setObjectName(u"upload")
+        self.upload.setGeometry(QRect(0, 150, 150, 150))
+        self.upload.setMinimumSize(QSize(150, 150))
+        self.upload.setMaximumSize(QSize(150, 150))
+        self.upload.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_46 = QLabel(self.frame_9)
+        self.label_46.setObjectName(u"label_46")
+        self.label_46.setGeometry(QRect(0, 310, 139, 24))
+
+        self.horizontalLayout_13.addWidget(self.frame_9)
+
         self.stackedWidget.addWidget(self.page_copia_seguridad)
         self.page_admin = QWidget()
         self.page_admin.setObjectName(u"page_admin")
@@ -1624,7 +2107,9 @@ class Ui_MainWindows(object):
 
         self.retranslateUi(MainWindows)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(6)
+        self.productos_stacked.setCurrentIndex(2)
+        self.proveedores_stacked.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindows)
@@ -1709,6 +2194,7 @@ class Ui_MainWindows(object):
         self.productos_agregar_check_nueva_categoria.setText("")
         self.label_34.setText(QCoreApplication.translate("MainWindows", u"Nombre", None))
         self.productos_agregar_nombre.setText("")
+        self.productos_agregar_guardar.setText(QCoreApplication.translate("MainWindows", u"Agregar producto", None))
         self.label_35.setText(QCoreApplication.translate("MainWindows", u"Precio", None))
         self.label_36.setText(QCoreApplication.translate("MainWindows", u"Proveedor", None))
         self.productos_editar_check_nuevo_nombre.setText("")
@@ -1717,10 +2203,82 @@ class Ui_MainWindows(object):
         self.label_39.setText(QCoreApplication.translate("MainWindows", u"Cambiar nombre", None))
         self.productos_editar_resurtible.setText("")
         self.label_40.setText(QCoreApplication.translate("MainWindows", u"Resurtible", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindows", u"proveedores", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindows", u"tickets", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindows", u"recorte de caja", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindows", u"copia de seguridad", None))
+        self.productos_editar_guardar.setText(QCoreApplication.translate("MainWindows", u"Agregar producto", None))
+        self.proveedores_ver.setText(QCoreApplication.translate("MainWindows", u"Ver", None))
+        self.proveedores_agregar.setText(QCoreApplication.translate("MainWindows", u"Agregar", None))
+        self.proveedores_editar.setText(QCoreApplication.translate("MainWindows", u"Editar", None))
+        self.proveedores_ver_rfc.setText("")
+        self.label_37.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
+        self.label_41.setText(QCoreApplication.translate("MainWindows", u"Telefono", None))
+        self.label_42.setText(QCoreApplication.translate("MainWindows", u"Direccion", None))
+        self.label_43.setText(QCoreApplication.translate("MainWindows", u"Proveedor activo", None))
+        self.productos_ver_check_activo.setText("")
+        self.proveedores_ver_telefono.setText("")
+        self.proveedores_ver_direccion.setText("")
+        self.label_45.setText(QCoreApplication.translate("MainWindows", u"Direccion", None))
+        self.productos_agregar_nueva_categoria_2.setText("")
+        self.label_48.setText(QCoreApplication.translate("MainWindows", u"Nombre del proveedor", None))
+        self.productos_agregar_nombre_2.setText("")
+        self.proveedores_agregar_guardar.setText(QCoreApplication.translate("MainWindows", u"Crear Proveedor", None))
+        self.label_49.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
+        self.productos_agregar_nueva_categoria_3.setText("")
+        self.label_56.setText(QCoreApplication.translate("MainWindows", u"Telefono", None))
+        self.productos_agregar_nueva_categoria_4.setText("")
+        self.productos_agregar_nueva_categoria_5.setText("")
+        self.label_51.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
+        self.label_52.setText(QCoreApplication.translate("MainWindows", u"Nota", None))
+        self.proveedores_editar_check_activo.setText("")
+        self.label_54.setText(QCoreApplication.translate("MainWindows", u"Proveedor activo", None))
+        self.proveedores_editar_nota.setHtml(QCoreApplication.translate("MainWindows", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Si un Proovedor no esta activo no podras verlo al mento de comprar porductos, asegurate de no descactivar la vista de un provedor activo.</p></body></html>", None))
+        self.label_53.setText(QCoreApplication.translate("MainWindows", u"Cambiar nombre", None))
+        self.label_55.setText(QCoreApplication.translate("MainWindows", u"Telefono", None))
+        self.label_57.setText(QCoreApplication.translate("MainWindows", u"Direccion", None))
+        self.proveedores_editar_guardar.setText(QCoreApplication.translate("MainWindows", u"Guardar cambios", None))
+        self.tickets_check_filtro_folio.setText("")
+        self.tickets_check_filtro_fecha.setText("")
+        self.tickets_check_filtro_rango_fechas.setText("")
+        self.label_4.setText(QCoreApplication.translate("MainWindows", u"folio", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindows", u"Fecha", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindows", u"Rango de fechas", None))
+        self.label_44.setText(QCoreApplication.translate("MainWindows", u"a", None))
+        self.tickets_borrar_filtros.setText(QCoreApplication.translate("MainWindows", u"Borrar Filtros", None))
+        ___qtablewidgetitem = self.tickets_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
+        ___qtablewidgetitem1 = self.tickets_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
+        ___qtablewidgetitem2 = self.tickets_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindows", u"Tipo", None));
+        ___qtablewidgetitem3 = self.tickets_table_widget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
+        ___qtablewidgetitem4 = self.tickets_table_widget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
+        ___qtablewidgetitem5 = self.tickets_table_widget.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
+        ___qtablewidgetitem6 = self.tickets_table_widget.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindows", u"Total", None));
+        ___qtablewidgetitem7 = self.tickets_table_widget.horizontalHeaderItem(7)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindows", u"Color", None));
+        ___qtablewidgetitem8 = self.tickets_table_widget.horizontalHeaderItem(8)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindows", u"Empleado", None));
+        ___qtablewidgetitem9 = self.tickets_table_widget.horizontalHeaderItem(9)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindows", u"Rfc", None));
+        self.Tickets_generar_ticket.setText(QCoreApplication.translate("MainWindows", u"Guardar copia", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindows", u"Fecha de recorte", None))
+        ___qtablewidgetitem10 = self.recorte_caja_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
+        ___qtablewidgetitem11 = self.recorte_caja_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
+        ___qtablewidgetitem12 = self.recorte_caja_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindows", u"Total", None));
+        self.recorte_caja_generar_ticket.setText(QCoreApplication.translate("MainWindows", u"Guardar copia", None))
+        self.donwload.setText("")
+        self.label_8.setText(QCoreApplication.translate("MainWindows", u"Crear copia", None))
+        self.upload.setText("")
+        self.label_46.setText(QCoreApplication.translate("MainWindows", u"Restaurar copia", None))
         self.label_9.setText(QCoreApplication.translate("MainWindows", u"admin", None))
         self.label_10.setText(QCoreApplication.translate("MainWindows", u"empleado", None))
         self.label_2.setText(QCoreApplication.translate("MainWindows", u"Team Lost Souls", None))

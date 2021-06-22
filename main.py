@@ -128,6 +128,8 @@ class MainWindow(QMainWindow):
             select(this.page_recorte_caja)
         elif btn_name == "copia_seguridad":
             select(this.page_copia_seguridad)
+        
+        this.title.setText("Baños Charly - " + btn_name.replace("_", " de "))
 
 
     def mousePressEvent(self, event):
