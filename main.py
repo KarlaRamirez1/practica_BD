@@ -35,6 +35,8 @@ class MainWindow(QMainWindow):
 		if self.login.cancel:
 			sys.exit(self)
 
+		self.init()
+
 		this.btn_toggle.clicked.connect(self.toggle_menu)
 		this.lbl_toggle.clicked.connect(self.toggle_menu)
 
@@ -59,9 +61,14 @@ class MainWindow(QMainWindow):
 		this.btn_maximized.clicked.connect(self.show_windows)
 		this.btn_minimized.clicked.connect(self.showMinimized)
 
-
+		
 		this.title.setText("Baños Charly - " + self.login.user[4])
 
+
+	def init(self):
+		#verificar si es admin o empleado
+		if self.login.user[7] == 0:
+			this.administrador_editar_nombre_usuario.setText(self.login.user[4])
 
 
 	def toggle_menu(self):
