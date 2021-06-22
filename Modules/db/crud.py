@@ -5,11 +5,20 @@
 
 
 
-def read(conn, table, campos='', values=''):
-	print('_'*50)
-	usuarios = [row[0] for row in conn.execute("SELECT count() FROM EMPLEADO")][0]
 
 
+
+def read_admin(conn, table, usuario, contrasenia):
+	query = "SELECT * FROM {} WHERE Nombre_usuario = '{}' AND contrasenia = '{}'".format(table, usuario, contrasenia)
+	
+	cursor = conn.cursor()
+	cursor.execute(query)
+	
+	return cursor.fetchone()
+
+
+def get_count(conn, table):
+	return [row[0] for row in conn.execute("SELECT count() FROM {}".format(table))][0]
 
 
 def create(conn, table, json):

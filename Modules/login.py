@@ -3,7 +3,7 @@ from PySide6 import QtCore
 
 
 from modules.login_ui import Ui_Dialog
-from modules.db.crud import create, read
+from modules.db.crud import create, get_count, read_admin
 
 ################################################################################
 class Login(QDialog):#faltan validaciones
@@ -28,26 +28,36 @@ class Login(QDialog):#faltan validaciones
 		this.btn_closed.clicked.connect(self.close)
 		this.Password.setEchoMode(QLineEdit.Password)
 		this.btn_accept.clicked.connect(self.connect)
+
+		if get_count(self.conn, "Empleado") == 0:
+			QMessageBox.about(self, "Hola", "Es la primera vez que entras?\ncrea tu nombre de\nusuario y tu contraseña.")
 	
 	def connect(self):
-		json = {  
-			"Nombre" : 'david',
-			"Apellido_p": 'Gutierrez',
-			"Apellido_m": 'Alvarez',
-			"Nombre_usuario": 'Baco',
-			"Email": 'support@baco.com',
-			"contrasenia": '1234',
-			"Puesto": '0',
-			"Salario": '1500'
-		}
-		create(self.conn, "Empleado", json)
-		
-		if this.User.text() != "admin":
-			QMessageBox.about(self,"Error", "Usuario Incorrecto.")
-			return
-		if this.Password.text() != "1234":
-			QMessageBox.about(self,"Error", "Contraseña Incorrecta.")
-			return
+		if get_count(self.conn, "Empleado") == 0:
+			#crear nuevo usuario
+			json = {  
+				"Nombre" : 'david',
+				"Apellido_p": 'Gutierrez',
+				"Apellido_m": 'Alvarez',
+				"Nombre_usuario": 'Baco',
+				"Email": 'support@baco.com',
+				"contrasenia": '1234',
+				"Puesto": '0',
+				"Salario": '1500'
+			}
+			json2 = {  
+				"Nombre_usuario": this.User.text(),
+				"contrasenia": this.Password.text(),
+			}
+			create(self.conn, "Empleado", json2)
+		else:
+    		#evaluar si el usuario existe
+			user = read_admin(self.conn, "Empleado", this.User.text(), this.Password.text())
+			if user == None:
+				QMessageBox.about(self, "Error", "Usuario o contraseña incorrectos")
+				return
+
+
 		#Recoger datos usuario.
 		#self.UserType = 0
 		self.btn_active = True
