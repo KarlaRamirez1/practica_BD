@@ -1,4 +1,4 @@
-CREATE TABLE Producto(
+CREATE TABLE IF NOT EXISTS Producto(
     Id VARCHAR(14),
     Tipo VARCHAR(200),
     Nombre VARCHAR(200),
@@ -9,7 +9,7 @@ CREATE TABLE Producto(
     PRIMARY KEY(Id)
 );
 
-CREATE TABLE Empleado(
+CREATE TABLE IF NOT EXISTS Empleado(
     Id INT AUTO_INCREMENT,
     Nombre VARCHAR(100),
     Apellido_p VARCHAR(100),
@@ -23,7 +23,7 @@ CREATE TABLE Empleado(
     PRIMARY KEY(Id)
 );
 
-CREATE TABLE Proveedor(
+CREATE TABLE IF NOT EXISTS Proveedor(
     Id INT AUTO_INCREMENT,
     Rfc VARCHAR(13),
     Nombre VARCHAR(350),
@@ -33,18 +33,17 @@ CREATE TABLE Proveedor(
     PRIMARY KEY(Id)
 );
 
-CREATE TABLE Compra(
+CREATE TABLE IF NOT EXISTS Compra(
     Id INT,
-    Folio INT, --conjunto de compras
+    Folio INT,
     Producto INT,
-    Precio DECIMAL(7,2),
-    Cantidad INT,
+    Unidades INT,
     PRIMARY KEY(Id),
     FOREIGN KEY(Folio)REFERENCES Ticket_compra(Folio),
     FOREIGN KEY(Producto)REFERENCES Producto(Id)
 );
 
-CREATE TABLE Ticket_compra(
+CREATE TABLE IF NOT EXISTS Ticket_compra(
     Folio INT,
     Fecha DATE,
     Id_empleado int,
@@ -53,21 +52,21 @@ CREATE TABLE Ticket_compra(
     FOREIGN KEY(Id_proveedor)REFERENCES Proveedor(RFC)
 );
 
-CREATE TABLE Venta(
+CREATE TABLE IF NOT EXISTS Venta(
     Id INT,
-    Folio INT AUTO_INCREMENT,
+    Folio INT,
     Producto INT,
     Color VARCHAR(150),
-    Cantidad INT,
-    FOREIGN KEY(Folio)REFERENCES Ticket_venta(Folio),
+    Unidades INT,
     PRIMARY KEY(Id),
-    FOREIGN KEY(Producto)REFERENCES Producto(Id),
+    FOREIGN KEY(Folio)REFERENCES Ticket_venta(Folio),
+    FOREIGN KEY(Producto)REFERENCES Producto(Id)
 );
 
-CREATE TABLE Ticket_venta(
+CREATE TABLE IF NOT EXISTS Ticket_venta(
     Folio INT,
     Fecha DATE,
     Id_empleado int,
     RFC_Cliente VARCHAR(13),
-    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id),
+    FOREIGN KEY(Id_empleado)REFERENCES Empleado(Id)
 );

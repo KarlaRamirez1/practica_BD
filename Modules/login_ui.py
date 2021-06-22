@@ -130,7 +130,7 @@ class Ui_Dialog(object):
         self.btn_closed.setCursor(QCursor(Qt.PointingHandCursor))
         self.line_2 = QFrame(self.App)
         self.line_2.setObjectName(u"line_2")
-        self.line_2.setGeometry(QRect(60, 270, 150, 3))
+        self.line_2.setGeometry(QRect(60, 260, 150, 3))
         self.line_2.setFrameShape(QFrame.HLine)
         self.line_2.setFrameShadow(QFrame.Sunken)
 

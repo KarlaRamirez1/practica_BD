@@ -3,11 +3,11 @@ from PySide6 import QtCore
 
 
 from modules.login_ui import Ui_Dialog
-
+from modules.db.crud import create, read
 
 ################################################################################
 class Login(QDialog):#faltan validaciones
-	def __init__(self):
+	def __init__(self, conn):
 		super().__init__()
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self)
@@ -15,26 +15,33 @@ class Login(QDialog):#faltan validaciones
 		global this
 		this = self.ui
 
-		# with open('./css/style.css') as f:
-		# 	self.setStyleSheet(f.read())
-		
+		self.conn = conn
+		self.cancel = False
+		self.btn_active = False
 		        
 		flags = QtCore.Qt.WindowFlags(QtCore.Qt.Dialog)
 		self.setWindowFlags(flags|QtCore.Qt.FramelessWindowHint |QtCore.Qt.CustomizeWindowHint)
 		self.setAttribute(QtCore.Qt.WA_TranslucentBackground)#fondo de la ventana transparente
 
 
-		self.cancel = False
-		self.btnActive = False
-		self.UserType = -1
 
 		this.btn_closed.clicked.connect(self.close)
-		# this.User.setPlaceholderText("Nombre o correo")
-		# this.Password.setPlaceholderText("Contraseña")
 		this.Password.setEchoMode(QLineEdit.Password)
 		this.btn_accept.clicked.connect(self.connect)
 	
 	def connect(self):
+		json = {  
+			"Nombre" : 'david',
+			"Apellido_p": 'Gutierrez',
+			"Apellido_m": 'Alvarez',
+			"Nombre_usuario": 'Baco',
+			"Email": 'support@baco.com',
+			"contrasenia": '1234',
+			"Puesto": '0',
+			"Salario": '1500'
+		}
+		create(self.conn, "Empleado", json)
+		
 		if this.User.text() != "admin":
 			QMessageBox.about(self,"Error", "Usuario Incorrecto.")
 			return
@@ -43,12 +50,8 @@ class Login(QDialog):#faltan validaciones
 			return
 		#Recoger datos usuario.
 		#self.UserType = 0
-		self.btnActive = True
+		self.btn_active = True
 		self.close()
-	
-	def closeEvent(self, event):
-		if self.btnActive == False:
-			self.cancel = True
 
 	def mousePressEvent(self, event):
 		if event.button() == QtCore.Qt.LeftButton:
@@ -66,3 +69,8 @@ class Login(QDialog):#faltan validaciones
 				event.accept()
 			except Exception as e:
 				pass
+
+	def closeEvent(self, event):
+		if not self.btn_active:
+			self.cancel = True
+			self.conn.close()

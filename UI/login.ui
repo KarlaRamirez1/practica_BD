@@ -244,7 +244,7 @@ QDialog QDialog QLabel {
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>270</y>
+        <y>260</y>
         <width>150</width>
         <height>3</height>
        </rect>
