@@ -53,10 +53,14 @@ class MainWindow(QMainWindow):
 		this.lbl_recorte_caja.clicked.connect(self.menu)
 		this.btn_copia_seguridad.clicked.connect(self.menu)
 		this.lbl_copia_seguridad.clicked.connect(self.menu)
+		this.btn_usuario.clicked.connect(self.menu)
 
 		this.btn_closed.clicked.connect(self.close)
 		this.btn_maximized.clicked.connect(self.show_windows)
 		this.btn_minimized.clicked.connect(self.showMinimized)
+
+
+		this.title.setText("Baños Charly - " + self.login.user[4])
 
 
 
@@ -88,7 +92,7 @@ class MainWindow(QMainWindow):
 	
 	def menu(self):
 		btn_name = self.sender().objectName()
-
+		print(btn_name)
 		btn_name = btn_name.split("btn_")[1] if "btn" in btn_name else btn_name.split("lbl_")[1]
 
 		select = this.stackedWidget.setCurrentWidget
@@ -107,8 +111,14 @@ class MainWindow(QMainWindow):
 			select(this.page_recorte_caja)
 		elif btn_name == "copia_seguridad":
 			select(this.page_copia_seguridad)
-		
-		this.title.setText("Baños Charly - " + btn_name.replace("_", " de "))
+		elif btn_name == "usuario":
+			print(self.login.user[7])
+			if self.login.user[7] == 0: #admin
+				select(this.page_admin)
+			else:
+				select(this.page_empleado)
+				
+		this.title.setText("Baños Charly - " + self.login.user[4] + " - " + btn_name.replace("_", " de "))
 
 
 	def mousePressEvent(self, event):

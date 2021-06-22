@@ -17,7 +17,7 @@ class Login(QDialog):#faltan validaciones
 
 		self.conn = conn
 		self.cancel = False
-		self.btn_active = False
+		self.user = None
 		        
 		flags = QtCore.Qt.WindowFlags(QtCore.Qt.Dialog)
 		self.setWindowFlags(flags|QtCore.Qt.FramelessWindowHint |QtCore.Qt.CustomizeWindowHint)
@@ -48,19 +48,17 @@ class Login(QDialog):#faltan validaciones
 			json2 = {  
 				"Nombre_usuario": this.User.text(),
 				"contrasenia": this.Password.text(),
+				"Puesto": '0',
 			}
 			create(self.conn, "Empleado", json2)
+			self.user = read_admin(self.conn, "Empleado", this.User.text(), this.Password.text())
 		else:
     		#evaluar si el usuario existe
-			user = read_admin(self.conn, "Empleado", this.User.text(), this.Password.text())
-			if user == None:
+			self.user = read_admin(self.conn, "Empleado", this.User.text(), this.Password.text())
+			if self.user == None:
 				QMessageBox.about(self, "Error", "Usuario o contraseña incorrectos")
 				return
 
-
-		#Recoger datos usuario.
-		#self.UserType = 0
-		self.btn_active = True
 		self.close()
 
 	def mousePressEvent(self, event):
@@ -81,6 +79,6 @@ class Login(QDialog):#faltan validaciones
 				pass
 
 	def closeEvent(self, event):
-		if not self.btn_active:
+		if self.user == None:
 			self.cancel = True
 			self.conn.close()
