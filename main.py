@@ -1,15 +1,12 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PySide6 import QtCore
 
-# from modules.login import Login
-from modules.ui_main import Ui_MainWindows
-from modules.ui_functions import Ui_functions
-
+from modules.login import Login
+from modules.main_ui import Ui_MainWindows
 
 import os
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
-
 
 
 class MainWindow(QMainWindow):
@@ -23,9 +20,6 @@ class MainWindow(QMainWindow):
         this = self.ui
 
         self.windows_maximized = False
-
-        self.ui_functions = Ui_functions(self)
-        # self.ui_functions.remove_border()
         
 
         
@@ -37,11 +31,10 @@ class MainWindow(QMainWindow):
 
         self.init()
 
-        # self.login = Login()
-        # self.login.exec_()
-        # if self.login.cancel:
-        #     QMessageBox.about(self,"Error","No se puede cerrar sin acceder.")
-        #     sys.exit(self)
+        self.login = Login()
+        self.login.exec_()
+        if self.login.cancel:
+            sys.exit(self)
 
         this.btn_toggle.clicked.connect(self.toggle_menu)
         this.lbl_toggle.clicked.connect(self.toggle_menu)
