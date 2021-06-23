@@ -37,6 +37,8 @@ class MainWindow(QMainWindow):
 		self.login.exec_()
 		if self.login.cancel:
 			sys.exit(self)
+		
+		self.id_producto = 1
 
 		self.init()
 
@@ -74,9 +76,6 @@ class MainWindow(QMainWindow):
 		this.administrador_buscar_empleado.currentIndexChanged.connect(self.update_ver_empleados)
 		this.administrador_buscar_empleado.addItems([row[4] for row in self.empleados])
 
-        # self.comboBox_employees.clear()
-        # self.comboBox_employees.setCurrentIndex(idx)
-
 
 		this.proveedores_ver.clicked.connect(lambda: this.proveedores_stacked.setCurrentWidget(this.page_proveedores_ver))
 		this.proveedores_agregar.clicked.connect(lambda: this.proveedores_stacked.setCurrentWidget(this.page_proveedores_agregar))
@@ -110,6 +109,20 @@ class MainWindow(QMainWindow):
 		this.title.setText("Baños Charly - " + self.login.user[4])
 
 
+		this.recorte_caja_fecha.setDate(QtCore.QDate.currentDate())
+		this.ventas_fecha.setDate(QtCore.QDate.currentDate())
+		this.compras_fecha.setDate(QtCore.QDate.currentDate())
+
+
+		# menu de administrador y empleado solo falta editar datos personales
+		# proveedores falta editar
+		# productos falta editar y ver
+		# compras falta todo
+		# ventas falta todo
+		# tickets falta todo [X]
+		# corte de caja falta todo
+
+
 	def init(self):
 		#verificar si es admin o empleado
 		if self.login.user[7] == 0:
@@ -139,7 +152,7 @@ class MainWindow(QMainWindow):
 		self.animation.setDuration(1000)
 		self.animation.setStartValue(begin_width)
 		self.animation.setEndValue(end_width)
-		self.animation.setEasingCurve(QtCore.QEasingCurve.InOutCubic)
+		self.animation.setEasingCurve(QtCore.QEasingCurve.OutBounce)
 		# InOutQuart
 		# InOutCubic
 		# OutBounce 
@@ -266,20 +279,12 @@ class MainWindow(QMainWindow):
 			"Descripcion": this.productos_agregar_descripcion.toPlainText(),
 		}
 
-		
 		create(self.conn, "Producto", nuevo_producto)
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 		
 
 
 	def comprar_nuevo_producto(self):	
-		self.box_compra_2 = QFrame(this.compras_scrolling)
-		self.box_compra_2.setObjectName(u"box_compra_2")
-		self.box_compra_2.setGeometry(QRect(0, 70, 880, 35))
-		self.box_compra_2.setStyleSheet(u"background: red;")
-		self.box_compra_2.setFrameShape(QFrame.StyledPanel)
-		self.box_compra_2.setFrameShadow(QFrame.Raised)
-
 		self.box_compra_1 = QFrame(this.compras_scrolling)
 		self.box_compra_1.setObjectName(u"box_compra_" + str(self.compras_totales+1))
 		self.box_compra_1.setGeometry(QRect(0, self.compras_totales*35+50 , 880, 35))
