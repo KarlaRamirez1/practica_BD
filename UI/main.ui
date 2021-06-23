@@ -118,7 +118,8 @@ background: transparent;
 color: white;
 }
 
-#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket, #empleados_guardar_cambios {
+#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket, #empleados_guardar_cambios,
+#administrador_guardar_cambios, #administrador_nuevo_empleado_guardar_cambios {
 background: #2A91FF;
 border-radius: 5px;
 }
@@ -141,9 +142,10 @@ color: #fff;
 
 QDateEdit::down-button, QDateEdit::up-button { image: none; }
 
-QComboBox {
+QComboBox, QListView {
 background: #212634;
 border-radius: 5px;
+color: #fff;
 }
 
 
@@ -351,6 +353,38 @@ background: #2A91FF;
 image: url(:/icons/assets/icons/upload.png);
 background: #2EAC4B;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+QDialog QPushButton, QDialog QPushButton:hover, QDialog QPushButton:focus {
+    background: #2A91FF;
+    border-radius: 5px;
+	color: #fff;
+	font-size: 18px;
+	width: 80px;
+}
+QDialog {
+	background-color: #212634;
+}
+
+QDialog QLabel {
+	font: 17px;
+	color: #eaeaea;
+}
+
 </string>
   </property>
   <widget class="QWidget" name="main">
@@ -1402,7 +1436,7 @@ background: #374553;
                 <item row="0" column="0">
                  <widget class="QStackedWidget" name="stackedWidget">
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="page_ventas">
                    <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1943,7 +1977,7 @@ background: #374553;
                           <property name="frameShadow">
                            <enum>QFrame::Raised</enum>
                           </property>
-                          <widget class="QFrame" name="venta_header_2">
+                          <widget class="QFrame" name="compra_header">
                            <property name="geometry">
                             <rect>
                              <x>0</x>
@@ -3130,7 +3164,7 @@ background: #374553;
                     <item>
                      <widget class="QStackedWidget" name="proveedores_stacked">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="page_proveedores_ver">
                        <widget class="QComboBox" name="proveedores_ver_proveedor">
@@ -3257,6 +3291,9 @@ background: #374553;
                         </property>
                        </widget>
                        <widget class="QCheckBox" name="productos_ver_check_activo">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>540</x>
@@ -3323,7 +3360,7 @@ background: #374553;
                          <string>Direccion</string>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="productos_agregar_nueva_categoria_2">
+                       <widget class="QLineEdit" name="proveedor_agregar_nombre">
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3362,19 +3399,6 @@ background: #374553;
                          <enum>Qt::Horizontal</enum>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="productos_agregar_nombre_2">
-                        <property name="geometry">
-                         <rect>
-                          <x>370</x>
-                          <y>120</y>
-                          <width>251</width>
-                          <height>22</height>
-                         </rect>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
                        <widget class="QPushButton" name="proveedores_agregar_guardar">
                         <property name="geometry">
                          <rect>
@@ -3401,7 +3425,7 @@ background: #374553;
                          <string>RFC</string>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="productos_agregar_nueva_categoria_3">
+                       <widget class="QLineEdit" name="proveedor_agregar_rfc">
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3453,7 +3477,7 @@ background: #374553;
                          <string>Telefono</string>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="productos_agregar_nueva_categoria_4">
+                       <widget class="QLineEdit" name="proveedor_agregar_telefono">
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3466,7 +3490,7 @@ background: #374553;
                          <string/>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="productos_agregar_nueva_categoria_5">
+                       <widget class="QLineEdit" name="proveedor_agregar_direccion">
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -3515,6 +3539,9 @@ background: #374553;
                           <width>23</width>
                           <height>23</height>
                          </rect>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="text">
                          <string/>
@@ -3607,7 +3634,7 @@ p, li { white-space: pre-wrap; }
                          <rect>
                           <x>360</x>
                           <y>130</y>
-                          <width>250</width>
+                          <width>201</width>
                           <height>22</height>
                          </rect>
                         </property>
@@ -4351,7 +4378,7 @@ p, li { white-space: pre-wrap; }
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <widget class="QPushButton" name="pushButton">
+                      <widget class="QPushButton" name="administrador_ver_tados">
                        <property name="geometry">
                         <rect>
                          <x>0</x>
@@ -4360,11 +4387,14 @@ p, li { white-space: pre-wrap; }
                          <height>30</height>
                         </rect>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>Datos personales</string>
                        </property>
                       </widget>
-                      <widget class="QPushButton" name="pushButton_2">
+                      <widget class="QPushButton" name="administrador_agregar_empleado">
                        <property name="geometry">
                         <rect>
                          <x>150</x>
@@ -4373,11 +4403,14 @@ p, li { white-space: pre-wrap; }
                          <height>30</height>
                         </rect>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>Agregar empleado</string>
                        </property>
                       </widget>
-                      <widget class="QPushButton" name="pushButton_3">
+                      <widget class="QPushButton" name="administrador_ver_empleados">
                        <property name="geometry">
                         <rect>
                          <x>300</x>
@@ -4385,6 +4418,9 @@ p, li { white-space: pre-wrap; }
                          <width>150</width>
                          <height>30</height>
                         </rect>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="text">
                         <string>Ver empleados</string>
@@ -4735,6 +4771,9 @@ p, li { white-space: pre-wrap; }
                           <height>30</height>
                          </rect>
                         </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="text">
                          <string>Guardar Cambios</string>
                         </property>
@@ -5025,6 +5064,9 @@ p, li { white-space: pre-wrap; }
                           <width>150</width>
                           <height>30</height>
                          </rect>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="text">
                          <string>Agregar empleado</string>
@@ -5319,6 +5361,9 @@ p, li { white-space: pre-wrap; }
                           <height>35</height>
                          </rect>
                         </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                        </widget>
                       </widget>
                      </widget>
@@ -5372,6 +5417,9 @@ p, li { white-space: pre-wrap; }
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_nombre">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>220</x>
@@ -5411,6 +5459,9 @@ p, li { white-space: pre-wrap; }
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_apellido_p">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>220</x>
@@ -5450,6 +5501,9 @@ p, li { white-space: pre-wrap; }
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_apellido_m">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>220</x>
@@ -5681,6 +5735,9 @@ p, li { white-space: pre-wrap; }
                           <width>150</width>
                           <height>30</height>
                          </rect>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="text">
                          <string>Guardar Cambios</string>

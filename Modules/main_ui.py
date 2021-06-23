@@ -120,7 +120,8 @@ class Ui_MainWindows(object):
 "color: white;\n"
 "}\n"
 "\n"
-"#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket, #empleados_guardar_cambios {\n"
+"#ventas_agregar, #compras_agregar, #Tickets_generar_ticket, #recorte_caja_generar_ticket, #empleados_guardar_cambios,\n"
+"#administrador_guardar_cambios, #administrador_nuevo_empleado_guardar_cambios {\n"
 "background: #2A91FF;\n"
 "border-radius: 5px;\n"
 "}\n"
@@ -140,13 +141,14 @@ class Ui_MainWindows(object):
 "font: 12pt;\n"
 "color: #fff;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QDateEdit::down-button, QDateEdit::up-button { image: none; }\n"
 "\n"
-"QComboB"
-                        "ox {\n"
+"QComboBox, QListView {\n"
 "background: #212634;\n"
 "border-radius: 5px;\n"
+"color: #fff;\n"
 "}\n"
 "\n"
 "\n"
@@ -183,11 +185,11 @@ class Ui_MainWindows(object):
 "}\n"
 "\n"
 "#box_productos_top_buttons  > QPushButton,\n"
-"#box_proveedores_top_buttons > QPushButton,\n"
+"#box_proveedores_top_buttons > QPushButt"
+                        "on,\n"
 "#box_administrador_top_buttons > QPushButton {\n"
 "background: transparent;\n"
-"border: 2px solid #38C3"
-                        "DD;\n"
+"border: 2px solid #38C3DD;\n"
 "border-radius: 5px;\n"
 "border-bottom-left-radius: 0px;\n"
 "border-bottom-right-radius: 0px;\n"
@@ -224,13 +226,13 @@ class Ui_MainWindows(object):
 "    subcontrol-position: right;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
-"QScrollBar::sub-line:horizontal {\n"
+"QScrollBar::sub-line:horizontal "
+                        "{\n"
 "    border: none;\n"
 "    background: transparent;\n"
 "    width: 0px;\n"
 "	border-top-left-radius: 4px;\n"
-""
-                        "    border-bottom-left-radius: 4px;\n"
+"    border-bottom-left-radius: 4px;\n"
 "    subcontrol-position: left;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
@@ -264,11 +266,11 @@ class Ui_MainWindows(object):
 "    border-top-right-radius: 4px;\n"
 "     subcontrol-position: top;\n"
 "     subcontrol-origin: margin;\n"
-" }\n"
+""
+                        " }\n"
 "\n"
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical { background: none; }\n"
-"QScrollBar:"
-                        ":add-page:vertical, QScrollBar::sub-page:vertical { background: none; }\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: none; }\n"
 "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal { background: none; }\n"
 "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { background: none; }\n"
 "\n"
@@ -292,14 +294,14 @@ class Ui_MainWindows(object):
 "}\n"
 "\n"
 "\n"
-"/* ///////////////////////////////////////////////////////////////////////////////////////////////// */\n"
+"/* //////////////////////////////////////////////////////////"
+                        "/////////////////////////////////////// */\n"
 "\n"
 "\n"
 "QTextEdit {\n"
 "background: #212634;\n"
 "color: #fff;\n"
-""
-                        "}\n"
+"}\n"
 "\n"
 "\n"
 "\n"
@@ -345,13 +347,13 @@ class Ui_MainWindows(object):
 "\n"
 "\n"
 "#donwload, #upload {\n"
-"border-radius: 75px;\n"
+"bord"
+                        "er-radius: 75px;\n"
 "}\n"
 "\n"
 "#donwload {\n"
 "image: url(:/icons/assets/icons/download.png);\n"
-"background: #2A9"
-                        "1FF;\n"
+"background: #2A91FF;\n"
 "}\n"
 "\n"
 "\n"
@@ -359,6 +361,38 @@ class Ui_MainWindows(object):
 "image: url(:/icons/assets/icons/upload.png);\n"
 "background: #2EAC4B;\n"
 "}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QDialog QPushButton, QDialog QPushButton:hover, QDialog QPushButton:focus {\n"
+"    background: #2A91FF;\n"
+"    border-radius: 5px;\n"
+"	color: #fff;\n"
+"	font-size: 18px;\n"
+"	width: 80px;\n"
+"}\n"
+"QDialog {\n"
+"	background-color: #212634;\n"
+"}\n"
+"\n"
+"QDialog QLabel {\n"
+"	font: 17px;\n"
+"	color: #eaeaea;\n"
+"}\n"
+"\n"
 "")
         self.main = QWidget(MainWindows)
         self.main.setObjectName(u"main")
@@ -1376,6 +1410,7 @@ class Ui_MainWindows(object):
         self.label_43.setGeometry(QRect(370, 60, 161, 20))
         self.productos_ver_check_activo = QCheckBox(self.page_proveedores_ver)
         self.productos_ver_check_activo.setObjectName(u"productos_ver_check_activo")
+        self.productos_ver_check_activo.setEnabled(False)
         self.productos_ver_check_activo.setGeometry(QRect(540, 60, 23, 23))
         self.proveedores_ver_telefono = QLineEdit(self.page_proveedores_ver)
         self.proveedores_ver_telefono.setObjectName(u"proveedores_ver_telefono")
@@ -1394,9 +1429,9 @@ class Ui_MainWindows(object):
         self.label_45 = QLabel(self.page_proveedores_agregar)
         self.label_45.setObjectName(u"label_45")
         self.label_45.setGeometry(QRect(75, 250, 150, 20))
-        self.productos_agregar_nueva_categoria_2 = QLineEdit(self.page_proveedores_agregar)
-        self.productos_agregar_nueva_categoria_2.setObjectName(u"productos_agregar_nueva_categoria_2")
-        self.productos_agregar_nueva_categoria_2.setGeometry(QRect(75, 66, 221, 22))
+        self.proveedor_agregar_nombre = QLineEdit(self.page_proveedores_agregar)
+        self.proveedor_agregar_nombre.setObjectName(u"proveedor_agregar_nombre")
+        self.proveedor_agregar_nombre.setGeometry(QRect(75, 66, 221, 22))
         self.label_48 = QLabel(self.page_proveedores_agregar)
         self.label_48.setObjectName(u"label_48")
         self.label_48.setGeometry(QRect(75, 40, 221, 20))
@@ -1405,18 +1440,15 @@ class Ui_MainWindows(object):
         self.line_28.setGeometry(QRect(75, 90, 220, 2))
         self.line_28.setFrameShape(QFrame.HLine)
         self.line_28.setFrameShadow(QFrame.Sunken)
-        self.productos_agregar_nombre_2 = QLineEdit(self.page_proveedores_agregar)
-        self.productos_agregar_nombre_2.setObjectName(u"productos_agregar_nombre_2")
-        self.productos_agregar_nombre_2.setGeometry(QRect(370, 120, 251, 22))
         self.proveedores_agregar_guardar = QPushButton(self.page_proveedores_agregar)
         self.proveedores_agregar_guardar.setObjectName(u"proveedores_agregar_guardar")
         self.proveedores_agregar_guardar.setGeometry(QRect(300, 350, 150, 30))
         self.label_49 = QLabel(self.page_proveedores_agregar)
         self.label_49.setObjectName(u"label_49")
         self.label_49.setGeometry(QRect(75, 110, 150, 20))
-        self.productos_agregar_nueva_categoria_3 = QLineEdit(self.page_proveedores_agregar)
-        self.productos_agregar_nueva_categoria_3.setObjectName(u"productos_agregar_nueva_categoria_3")
-        self.productos_agregar_nueva_categoria_3.setGeometry(QRect(75, 136, 221, 22))
+        self.proveedor_agregar_rfc = QLineEdit(self.page_proveedores_agregar)
+        self.proveedor_agregar_rfc.setObjectName(u"proveedor_agregar_rfc")
+        self.proveedor_agregar_rfc.setGeometry(QRect(75, 136, 221, 22))
         self.line_30 = QFrame(self.page_proveedores_agregar)
         self.line_30.setObjectName(u"line_30")
         self.line_30.setGeometry(QRect(75, 160, 220, 2))
@@ -1430,12 +1462,12 @@ class Ui_MainWindows(object):
         self.label_56 = QLabel(self.page_proveedores_agregar)
         self.label_56.setObjectName(u"label_56")
         self.label_56.setGeometry(QRect(75, 184, 150, 20))
-        self.productos_agregar_nueva_categoria_4 = QLineEdit(self.page_proveedores_agregar)
-        self.productos_agregar_nueva_categoria_4.setObjectName(u"productos_agregar_nueva_categoria_4")
-        self.productos_agregar_nueva_categoria_4.setGeometry(QRect(75, 210, 221, 22))
-        self.productos_agregar_nueva_categoria_5 = QLineEdit(self.page_proveedores_agregar)
-        self.productos_agregar_nueva_categoria_5.setObjectName(u"productos_agregar_nueva_categoria_5")
-        self.productos_agregar_nueva_categoria_5.setGeometry(QRect(75, 275, 221, 22))
+        self.proveedor_agregar_telefono = QLineEdit(self.page_proveedores_agregar)
+        self.proveedor_agregar_telefono.setObjectName(u"proveedor_agregar_telefono")
+        self.proveedor_agregar_telefono.setGeometry(QRect(75, 210, 221, 22))
+        self.proveedor_agregar_direccion = QLineEdit(self.page_proveedores_agregar)
+        self.proveedor_agregar_direccion.setObjectName(u"proveedor_agregar_direccion")
+        self.proveedor_agregar_direccion.setGeometry(QRect(75, 275, 221, 22))
         self.proveedores_stacked.addWidget(self.page_proveedores_agregar)
         self.page_proveedores_editar = QWidget()
         self.page_proveedores_editar.setObjectName(u"page_proveedores_editar")
@@ -1448,6 +1480,7 @@ class Ui_MainWindows(object):
         self.proveedores_editar_check_activo = QCheckBox(self.page_proveedores_editar)
         self.proveedores_editar_check_activo.setObjectName(u"proveedores_editar_check_activo")
         self.proveedores_editar_check_activo.setGeometry(QRect(530, 50, 23, 23))
+        self.proveedores_editar_check_activo.setCursor(QCursor(Qt.PointingHandCursor))
         self.proveedores_editar_nombre = QComboBox(self.page_proveedores_editar)
         self.proveedores_editar_nombre.setObjectName(u"proveedores_editar_nombre")
         self.proveedores_editar_nombre.setGeometry(QRect(75, 40, 200, 35))
@@ -1472,7 +1505,7 @@ class Ui_MainWindows(object):
         self.label_53.setGeometry(QRect(360, 105, 150, 20))
         self.proveedores_editar_editar_nombre = QLineEdit(self.page_proveedores_editar)
         self.proveedores_editar_editar_nombre.setObjectName(u"proveedores_editar_editar_nombre")
-        self.proveedores_editar_editar_nombre.setGeometry(QRect(360, 130, 250, 22))
+        self.proveedores_editar_editar_nombre.setGeometry(QRect(360, 130, 201, 22))
         self.line_57 = QFrame(self.page_proveedores_editar)
         self.line_57.setObjectName(u"line_57")
         self.line_57.setGeometry(QRect(360, 155, 200, 2))
@@ -1746,15 +1779,18 @@ class Ui_MainWindows(object):
         self.box_administrador_top_buttons.setMinimumSize(QSize(0, 50))
         self.box_administrador_top_buttons.setFrameShape(QFrame.StyledPanel)
         self.box_administrador_top_buttons.setFrameShadow(QFrame.Raised)
-        self.pushButton = QPushButton(self.box_administrador_top_buttons)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(0, 20, 150, 30))
-        self.pushButton_2 = QPushButton(self.box_administrador_top_buttons)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(150, 20, 150, 30))
-        self.pushButton_3 = QPushButton(self.box_administrador_top_buttons)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(300, 20, 150, 30))
+        self.administrador_ver_tados = QPushButton(self.box_administrador_top_buttons)
+        self.administrador_ver_tados.setObjectName(u"administrador_ver_tados")
+        self.administrador_ver_tados.setGeometry(QRect(0, 20, 150, 30))
+        self.administrador_ver_tados.setCursor(QCursor(Qt.PointingHandCursor))
+        self.administrador_agregar_empleado = QPushButton(self.box_administrador_top_buttons)
+        self.administrador_agregar_empleado.setObjectName(u"administrador_agregar_empleado")
+        self.administrador_agregar_empleado.setGeometry(QRect(150, 20, 150, 30))
+        self.administrador_agregar_empleado.setCursor(QCursor(Qt.PointingHandCursor))
+        self.administrador_ver_empleados = QPushButton(self.box_administrador_top_buttons)
+        self.administrador_ver_empleados.setObjectName(u"administrador_ver_empleados")
+        self.administrador_ver_empleados.setGeometry(QRect(300, 20, 150, 30))
+        self.administrador_ver_empleados.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_15.addWidget(self.box_administrador_top_buttons)
 
@@ -1860,6 +1896,7 @@ class Ui_MainWindows(object):
         self.administrador_guardar_cambios = QPushButton(self.datos_personales)
         self.administrador_guardar_cambios.setObjectName(u"administrador_guardar_cambios")
         self.administrador_guardar_cambios.setGeometry(QRect(430, 376, 150, 30))
+        self.administrador_guardar_cambios.setCursor(QCursor(Qt.PointingHandCursor))
         self.administrador_stacked.addWidget(self.datos_personales)
         self.agregar_empleado = QWidget()
         self.agregar_empleado.setObjectName(u"agregar_empleado")
@@ -1947,6 +1984,7 @@ class Ui_MainWindows(object):
         self.administrador_nuevo_empleado_guardar_cambios = QPushButton(self.agregar_empleado)
         self.administrador_nuevo_empleado_guardar_cambios.setObjectName(u"administrador_nuevo_empleado_guardar_cambios")
         self.administrador_nuevo_empleado_guardar_cambios.setGeometry(QRect(430, 376, 150, 30))
+        self.administrador_nuevo_empleado_guardar_cambios.setCursor(QCursor(Qt.PointingHandCursor))
         self.administrador_agregar_nombre_usuario = QLineEdit(self.agregar_empleado)
         self.administrador_agregar_nombre_usuario.setObjectName(u"administrador_agregar_nombre_usuario")
         self.administrador_agregar_nombre_usuario.setGeometry(QRect(530, 70, 250, 22))
@@ -2034,6 +2072,7 @@ class Ui_MainWindows(object):
         self.administrador_buscar_empleado = QComboBox(self.ver_empleados)
         self.administrador_buscar_empleado.setObjectName(u"administrador_buscar_empleado")
         self.administrador_buscar_empleado.setGeometry(QRect(220, 20, 300, 35))
+        self.administrador_buscar_empleado.setCursor(QCursor(Qt.PointingHandCursor))
         self.administrador_stacked.addWidget(self.ver_empleados)
 
         self.verticalLayout_15.addWidget(self.administrador_stacked)
@@ -2059,6 +2098,7 @@ class Ui_MainWindows(object):
         self.label_47.setGeometry(QRect(220, 48, 241, 20))
         self.empleados_ver_nombre = QLineEdit(self.page)
         self.empleados_ver_nombre.setObjectName(u"empleados_ver_nombre")
+        self.empleados_ver_nombre.setEnabled(False)
         self.empleados_ver_nombre.setGeometry(QRect(220, 74, 250, 22))
         self.label_50 = QLabel(self.page)
         self.label_50.setObjectName(u"label_50")
@@ -2070,6 +2110,7 @@ class Ui_MainWindows(object):
         self.line_63.setFrameShadow(QFrame.Sunken)
         self.empleados_ver_apellido_p = QLineEdit(self.page)
         self.empleados_ver_apellido_p.setObjectName(u"empleados_ver_apellido_p")
+        self.empleados_ver_apellido_p.setEnabled(False)
         self.empleados_ver_apellido_p.setGeometry(QRect(220, 140, 250, 22))
         self.label_58 = QLabel(self.page)
         self.label_58.setObjectName(u"label_58")
@@ -2081,6 +2122,7 @@ class Ui_MainWindows(object):
         self.line_64.setFrameShadow(QFrame.Sunken)
         self.empleados_ver_apellido_m = QLineEdit(self.page)
         self.empleados_ver_apellido_m.setObjectName(u"empleados_ver_apellido_m")
+        self.empleados_ver_apellido_m.setEnabled(False)
         self.empleados_ver_apellido_m.setGeometry(QRect(220, 210, 250, 22))
         self.label_59 = QLabel(self.page)
         self.label_59.setObjectName(u"label_59")
@@ -2147,6 +2189,7 @@ class Ui_MainWindows(object):
         self.empleados_guardar_cambios = QPushButton(self.page)
         self.empleados_guardar_cambios.setObjectName(u"empleados_guardar_cambios")
         self.empleados_guardar_cambios.setGeometry(QRect(430, 380, 150, 30))
+        self.empleados_guardar_cambios.setCursor(QCursor(Qt.PointingHandCursor))
         self.empleados_stacked.addWidget(self.page)
 
         self.horizontalLayout_14.addWidget(self.empleados_stacked)
@@ -2230,7 +2273,7 @@ class Ui_MainWindows(object):
 
         self.stackedWidget.setCurrentIndex(0)
         self.productos_stacked.setCurrentIndex(0)
-        self.proveedores_stacked.setCurrentIndex(0)
+        self.proveedores_stacked.setCurrentIndex(2)
         self.administrador_stacked.setCurrentIndex(0)
 
 
@@ -2326,15 +2369,14 @@ class Ui_MainWindows(object):
         self.proveedores_ver_telefono.setText("")
         self.proveedores_ver_direccion.setText("")
         self.label_45.setText(QCoreApplication.translate("MainWindows", u"Direccion", None))
-        self.productos_agregar_nueva_categoria_2.setText("")
+        self.proveedor_agregar_nombre.setText("")
         self.label_48.setText(QCoreApplication.translate("MainWindows", u"Nombre del proveedor", None))
-        self.productos_agregar_nombre_2.setText("")
         self.proveedores_agregar_guardar.setText(QCoreApplication.translate("MainWindows", u"Crear Proveedor", None))
         self.label_49.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
-        self.productos_agregar_nueva_categoria_3.setText("")
+        self.proveedor_agregar_rfc.setText("")
         self.label_56.setText(QCoreApplication.translate("MainWindows", u"Telefono", None))
-        self.productos_agregar_nueva_categoria_4.setText("")
-        self.productos_agregar_nueva_categoria_5.setText("")
+        self.proveedor_agregar_telefono.setText("")
+        self.proveedor_agregar_direccion.setText("")
         self.label_51.setText(QCoreApplication.translate("MainWindows", u"RFC", None))
         self.label_52.setText(QCoreApplication.translate("MainWindows", u"Nota", None))
         self.proveedores_editar_check_activo.setText("")
@@ -2389,9 +2431,9 @@ class Ui_MainWindows(object):
         self.label_8.setText(QCoreApplication.translate("MainWindows", u"Crear copia", None))
         self.upload.setText("")
         self.label_46.setText(QCoreApplication.translate("MainWindows", u"Restaurar copia", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindows", u"Datos personales", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindows", u"Agregar empleado", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindows", u"Ver empleados", None))
+        self.administrador_ver_tados.setText(QCoreApplication.translate("MainWindows", u"Datos personales", None))
+        self.administrador_agregar_empleado.setText(QCoreApplication.translate("MainWindows", u"Agregar empleado", None))
+        self.administrador_ver_empleados.setText(QCoreApplication.translate("MainWindows", u"Ver empleados", None))
         self.label_64.setText(QCoreApplication.translate("MainWindows", u"Nombre", None))
         self.administrador_ver_nombre.setText("")
         self.label_65.setText(QCoreApplication.translate("MainWindows", u"Apellido paterno", None))

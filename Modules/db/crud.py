@@ -12,7 +12,18 @@ def read_admin(conn, table, usuario, contrasenia):
 	return cursor.fetchone()
 
 
+def read_empleados(conn):
+	query = "SELECT * FROM EMPLEADO WHERE Puesto = 1"
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return cursor.fetchall()
 
+
+def read_proveedores(conn):
+	query = "SELECT * FROM PROVEEDOR"
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return cursor.fetchall()
 
 
 def get_count(conn, table):
@@ -27,6 +38,8 @@ def create(conn, table, json):
 	print(query)
 	conn.execute(query)
 	conn.commit()
+
+
 
 def update(conn, table, json):
 	keys = list_to_string([*json.keys()])

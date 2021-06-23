@@ -29,26 +29,19 @@ class Login(QDialog):#faltan validaciones
 		this.Password.setEchoMode(QLineEdit.Password)
 		this.btn_accept.clicked.connect(self.connect)
 
+		this.User.setText("Baco")
+		this.Password.setText("1234")
+
 		if get_count(self.conn, "Empleado") == 0:
 			QMessageBox.about(self, "Hola", "Es la primera vez que entras?\ncrea tu nombre de\nusuario y tu contraseña.")
 	
 	def connect(self):
 		if get_count(self.conn, "Empleado") == 0:
 			#crear nuevo usuario
-			json = {  
-				"Nombre" : 'david',
-				"Apellido_p": 'Gutierrez',
-				"Apellido_m": 'Alvarez',
-				"Nombre_usuario": 'Baco',
-				"Email": 'support@baco.com',
-				"contrasenia": '1234',
-				"Puesto": '0',
-				"Salario": '1500'
-			}
 			json2 = {  
 				"Nombre_usuario": this.User.text(),
 				"contrasenia": this.Password.text(),
-				"Puesto": '0',
+				"Puesto": '0'
 			}
 			create(self.conn, "Empleado", json2)
 			self.user = read_admin(self.conn, "Empleado", this.User.text(), this.Password.text())
