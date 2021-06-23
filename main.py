@@ -82,6 +82,10 @@ class MainWindow(QMainWindow):
 		this.proveedores_agregar.clicked.connect(lambda: this.proveedores_stacked.setCurrentWidget(this.page_proveedores_agregar))
 		this.proveedores_editar.clicked.connect(lambda: this.proveedores_stacked.setCurrentWidget(this.page_proveedores_editar))
 
+		this.productos_ver.clicked.connect(lambda: this.productos_stacked.setCurrentWidget(this.page_productos_ver))
+		this.productos_agregar.clicked.connect(lambda: this.productos_stacked.setCurrentWidget(this.page_productos_agregar))
+		this.productos_editar.clicked.connect(lambda: this.productos_stacked.setCurrentWidget(this.page_productos_editar))
+
 		this.proveedores_agregar_guardar.clicked.connect(self.guardar_nuevo_proveedor)
 		self.proveedores = read_proveedores(self.conn)
 
@@ -89,6 +93,8 @@ class MainWindow(QMainWindow):
 		this.proveedores_ver_proveedor.addItems([row[2] for row in self.proveedores])
 		this.proveedores_editar_nombre.currentIndexChanged.connect(self.update_editar_proveedores)
 		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
+
+		this.productos_agregar_guardar.clicked.connect(self.crear_nuevo_producto)
 
 		this.compras_proveedor.addItems([row[2] for row in self.proveedores])
 
@@ -249,6 +255,21 @@ class MainWindow(QMainWindow):
 		check = True if proveedor[5] == "TRUE" else False
 		this.proveedores_editar_check_activo.setChecked(check)
 		this.proveedores_editar_editar_nombre.setText(proveedor[2])
+
+	def crear_nuevo_producto(self):
+		nuevo_producto = {
+			"Tipo": this.productos_agregar_nueva_categoria.text(),
+			"Precio": this.productos_agregar_precio.value(),
+			"Existencia": this.productos_agregar_existencia.text(),
+			"Resurtible": this.productos_agregar_resurtible.isChecked(),
+			"Nombre": this.productos_agregar_nombre.text(),
+			"Descripcion": this.productos_agregar_descripcion.toPlainText(),
+		}
+
+		
+		create(self.conn, "Producto", nuevo_producto)
+		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+		
 
 
 	def comprar_nuevo_producto(self):	
