@@ -1,7 +1,5 @@
-
-
-
 #hacer crud a todos las tablas
+
 
 def read_admin(conn, table, usuario, contrasenia):
 	query = "SELECT * FROM {} WHERE Nombre_usuario = '{}' AND contrasenia = '{}'".format(table, usuario, contrasenia)
@@ -39,21 +37,23 @@ def create(conn, table, json):
 	conn.execute(query)
 	conn.commit()
 
+def update(conn, table, json, where=""):
+	query = "UPDATE {} SET ".format(table)
+	query += json_to_sql(json)
+	query += where
 
-
-def update(conn, table, json):
-	keys = list_to_string([*json.keys()])
-	values = list_to_string([*json.values()], True)
-
-	#modificar query
-	query = ('INSERT INTO {} ({}) VALUES ({})'.format(table, keys, values))
-	print(query)
 	conn.execute(query)
 	conn.commit()
 
-	for row in conn.execute("SELECT * FROM EMPLEADO"):
-		print(row)
 
+def json_to_sql(json):
+	string = ''
+	for i, v in enumerate(json):
+		if i+1 < len(json):
+			string += "{} = '{}', ".format(v, json[v])
+		else:
+			string += "{} = '{}' ".format(v, json[v])
+	return string
 
 
 def list_to_string(list_convert, is_value=False):

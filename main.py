@@ -66,10 +66,14 @@ class MainWindow(QMainWindow):
 		this.administrador_ver_tados.clicked.connect(lambda: this.administrador_stacked.setCurrentWidget(this.datos_personales))
 		this.administrador_ver_empleados.clicked.connect(lambda: this.administrador_stacked.setCurrentWidget(this.ver_empleados))
 		this.administrador_agregar_empleado.clicked.connect(lambda: this.administrador_stacked.setCurrentWidget(this.agregar_empleado))
+
+		this.administrador_guardar_cambios.clicked.connect(self.administrador_update)
 		
 		this.administrador_agregar_contrasenia.setEchoMode(QLineEdit.Password)
 
 		this.administrador_nuevo_empleado_guardar_cambios.clicked.connect(self.nuevo_empleado)
+
+		this.empleados_guardar_cambios.clicked.connect(self.empleado_update)
 
 		self.empleados = read_empleados(self.conn)
 
@@ -93,6 +97,8 @@ class MainWindow(QMainWindow):
 		this.proveedores_editar_nombre.currentIndexChanged.connect(self.update_editar_proveedores)
 		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
 
+		this.proveedores_editar_guardar.clicked.connect(self.change_editar_proveedores)
+
 		this.productos_agregar_guardar.clicked.connect(self.crear_nuevo_producto)
 
 		this.compras_proveedor.addItems([row[2] for row in self.proveedores])
@@ -114,13 +120,12 @@ class MainWindow(QMainWindow):
 		this.compras_fecha.setDate(QtCore.QDate.currentDate())
 
 
-		# menu de administrador y empleado solo falta editar datos personales
-		# proveedores falta editar
 		# productos falta editar y ver
 		# compras falta todo
 		# ventas falta todo
 		# tickets falta todo [X]
 		# corte de caja falta todo
+
 
 
 	def init(self):
@@ -220,7 +225,69 @@ class MainWindow(QMainWindow):
 		this.administrador_buscar_empleado.clear()
 		this.administrador_buscar_empleado.addItems([row[4] for row in self.empleados])
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+
+	def administrador_update(self):
+		update_admin = { 
+			"Nombre" : this.administrador_ver_nombre.text(),
+			"Apellido_p": this.administrador_ver_apellido_p.text(),
+			"Apellido_m": this.administrador_ver_apellido_m.text(),
+			"Nombre_usuario": this.administrador_editar_nombre_usuario.text(),
+			"Email": this.administrador_editar_correo.text()
+		}
+		passw = self.login.user[6]
+		if this.administrador_contrasenia_antigua.text() == '' and this.administrador_cambiar_contrasenia.text() != '':
+			QMessageBox.about(self, "Error", "Debes colocar tu contraseña antigua")
+			return
 		
+			
+		if this.administrador_contrasenia_antigua.text() != '':
+			if this.administrador_contrasenia_antigua.text() != self.login.user[6]:
+				QMessageBox.about(self, "Error", "La contraseña es incorrecta")
+				return
+			if this.administrador_cambiar_contrasenia.text() == '':
+				QMessageBox.about(self, "Error", "Tu nueva contraseña no puede estar vacia")
+				return
+			update_admin['Contrasenia'] = this.administrador_cambiar_contrasenia.text()
+			passw = this.administrador_cambiar_contrasenia.text()
+			this.administrador_contrasenia_antigua.setText('')
+			# self.login.user[6] = this.administrador_cambiar_contrasenia.text()
+			this.administrador_cambiar_contrasenia.setText('')
+
+		update(self.conn, 'Empleado', update_admin, "WHERE nombre_usuario = '{}'".format(self.login.user[4]))
+		
+		self.login.user = read_admin(self.conn, "Empleado", this.administrador_editar_nombre_usuario.text(), passw)
+		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+
+	def empleado_update(self):
+		update_admin = { 
+			"Nombre" : this.empleados_ver_nombre.text(),
+			"Apellido_p": this.empleados_ver_apellido_p.text(),
+			"Apellido_m": this.empleados_ver_apellido_m.text(),
+			"Nombre_usuario": this.empleados_editar_nombre_usuario.text(),
+			"Email": this.empleados_editar_correo.text()
+		}
+		passw = self.login.user[6]
+		if this.empleados_contrasenia_antigua.text() == '' and this.empleados_cambiar_contrasenia.text() != '':
+			QMessageBox.about(self, "Error", "Debes colocar tu contraseña antigua")
+			return
+
+		if this.empleados_contrasenia_antigua.text() != '':
+			if this.empleados_contrasenia_antigua.text() != self.login.user[6]:
+				QMessageBox.about(self, "Error", "La contraseña es incorrecta")
+				return
+			if this.empleados_cambiar_contrasenia.text() == '':
+				QMessageBox.about(self, "Error", "Tu nueva contraseña no puede estar vacia")
+				return
+			update_admin['Contrasenia'] = this.empleados_cambiar_contrasenia.text()
+			passw = this.empleados_cambiar_contrasenia.text()
+			this.empleados_contrasenia_antigua.setText('')
+			this.empleados_cambiar_contrasenia.setText('')
+
+		update(self.conn, 'Empleado', update_admin, "WHERE nombre_usuario = '{}'".format(self.login.user[4]))
+		self.login.user = read_admin(self.conn, "Empleado", this.empleados_editar_nombre_usuario.text(), passw)
+		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+
+
 	def update_ver_empleados(self):
 		empleado = self.empleados[this.administrador_buscar_empleado.currentIndex()]
 		this.administrador_ver_empleado_nombre.setText(empleado[1])
@@ -249,6 +316,9 @@ class MainWindow(QMainWindow):
 		self.proveedores = read_proveedores(self.conn)
 		this.proveedores_ver_proveedor.clear()
 		this.proveedores_ver_proveedor.addItems([row[2] for row in self.proveedores])
+		
+		this.proveedores_editar_nombre.clear()
+		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 		
 		
@@ -268,6 +338,32 @@ class MainWindow(QMainWindow):
 		check = True if proveedor[5] == "TRUE" else False
 		this.proveedores_editar_check_activo.setChecked(check)
 		this.proveedores_editar_editar_nombre.setText(proveedor[2])
+
+	def change_editar_proveedores(self):
+		check = "TRUE" if this.proveedores_editar_check_activo.isChecked() else "FALSE"
+		update_proveedor = {
+			"Rfc": this.proveedores_editar_rfc.text(),
+			"Nombre": this.proveedores_editar_editar_nombre.text(),
+			"Telefono": this.proveedores_editar_telefono.text(),
+			"Direccion": this.proveedores_editar_direccion.text(),
+			"Activo": check
+		}
+		
+		update(self.conn, 'Proveedor', update_proveedor, "WHERE iD = '{}'".format(this.proveedores_editar_nombre.currentIndex()+1))
+		
+		self.proveedores = read_proveedores(self.conn)
+		this.proveedores_ver_proveedor.clear()
+		this.proveedores_ver_proveedor.addItems([row[2] for row in self.proveedores])
+		this.proveedores_editar_nombre.clear()
+		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
+
+		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+		
+		
+		
+		
+		
+
 
 	def crear_nuevo_producto(self):
 		nuevo_producto = {

@@ -3087,7 +3087,7 @@ background: #374553;
                     <item>
                      <widget class="QStackedWidget" name="proveedores_stacked">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="page_proveedores_ver">
                        <widget class="QComboBox" name="proveedores_ver_proveedor">
@@ -3339,6 +3339,9 @@ background: #374553;
                           <width>150</width>
                           <height>30</height>
                          </rect>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="text">
                          <string>Crear Proveedor</string>
@@ -3664,6 +3667,9 @@ p, li { white-space: pre-wrap; }
                           <width>150</width>
                           <height>30</height>
                          </rect>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="text">
                          <string>Guardar cambios</string>
@@ -5350,7 +5356,7 @@ p, li { white-space: pre-wrap; }
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_nombre">
                         <property name="enabled">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <property name="geometry">
                          <rect>
@@ -5392,7 +5398,7 @@ p, li { white-space: pre-wrap; }
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_apellido_p">
                         <property name="enabled">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <property name="geometry">
                          <rect>
@@ -5434,7 +5440,7 @@ p, li { white-space: pre-wrap; }
                        </widget>
                        <widget class="QLineEdit" name="empleados_ver_apellido_m">
                         <property name="enabled">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <property name="geometry">
                          <rect>
