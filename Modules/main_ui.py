@@ -1193,6 +1193,7 @@ class Ui_MainWindows(object):
         self.line_8.setFrameShadow(QFrame.Sunken)
         self.productos_agregar_nueva_categoria = QLineEdit(self.page_productos_agregar)
         self.productos_agregar_nueva_categoria.setObjectName(u"productos_agregar_nueva_categoria")
+        self.productos_agregar_nueva_categoria.setEnabled(False)
         self.productos_agregar_nueva_categoria.setGeometry(QRect(75, 120, 221, 22))
         self.label_31 = QLabel(self.page_productos_agregar)
         self.label_31.setObjectName(u"label_31")
@@ -1414,6 +1415,7 @@ class Ui_MainWindows(object):
         self.proveedores_agregar_guardar = QPushButton(self.page_proveedores_agregar)
         self.proveedores_agregar_guardar.setObjectName(u"proveedores_agregar_guardar")
         self.proveedores_agregar_guardar.setGeometry(QRect(300, 350, 150, 30))
+        self.proveedores_agregar_guardar.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_49 = QLabel(self.page_proveedores_agregar)
         self.label_49.setObjectName(u"label_49")
         self.label_49.setGeometry(QRect(75, 110, 150, 20))
@@ -1507,6 +1509,7 @@ class Ui_MainWindows(object):
         self.proveedores_editar_guardar = QPushButton(self.page_proveedores_editar)
         self.proveedores_editar_guardar.setObjectName(u"proveedores_editar_guardar")
         self.proveedores_editar_guardar.setGeometry(QRect(310, 360, 150, 30))
+        self.proveedores_editar_guardar.setCursor(QCursor(Qt.PointingHandCursor))
         self.proveedores_stacked.addWidget(self.page_proveedores_editar)
 
         self.verticalLayout_10.addWidget(self.proveedores_stacked)
@@ -2105,7 +2108,7 @@ class Ui_MainWindows(object):
         self.line_65.setFrameShadow(QFrame.Sunken)
         self.empleados_ver_salario = QDoubleSpinBox(self.page)
         self.empleados_ver_salario.setObjectName(u"empleados_ver_salario")
-        self.empleados_ver_salario.setEnabled(True)
+        self.empleados_ver_salario.setEnabled(False)
         self.empleados_ver_salario.setGeometry(QRect(220, 280, 251, 22))
         self.empleados_ver_salario.setMaximum(100000.000000000000000)
         self.line_vertical = QFrame(self.page)
@@ -2243,8 +2246,8 @@ class Ui_MainWindows(object):
         self.retranslateUi(MainWindows)
 
         self.stackedWidget.setCurrentIndex(0)
-        self.productos_stacked.setCurrentIndex(2)
-        self.proveedores_stacked.setCurrentIndex(0)
+        self.productos_stacked.setCurrentIndex(1)
+        self.proveedores_stacked.setCurrentIndex(2)
         self.administrador_stacked.setCurrentIndex(0)
 
 

@@ -1436,7 +1436,7 @@ background: #374553;
                 <item row="0" column="0">
                  <widget class="QStackedWidget" name="stackedWidget">
                   <property name="currentIndex">
-                   <number>3</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="page_ventas">
                    <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -2376,7 +2376,7 @@ background: #374553;
                     <item>
                      <widget class="QStackedWidget" name="productos_stacked">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="page_productos_ver">
                        <widget class="QComboBox" name="producto_ver_categoria">
@@ -2519,7 +2519,7 @@ background: #374553;
                          </rect>
                         </property>
                         <property name="text">
-                         <string>Proveedor</string>
+                         <string>Descripcion</string>
                         </property>
                        </widget>
                        <widget class="QTextEdit" name="productos_ver_descripcion">
@@ -2590,6 +2590,9 @@ background: #374553;
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="productos_agregar_nueva_categoria">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
                         <property name="geometry">
                          <rect>
                           <x>75</x>
@@ -2809,7 +2812,7 @@ background: #374553;
                          </rect>
                         </property>
                         <property name="text">
-                         <string>Proveedor</string>
+                         <string>Descripcion</string>
                         </property>
                        </widget>
                        <widget class="QCheckBox" name="productos_editar_check_nuevo_nombre">

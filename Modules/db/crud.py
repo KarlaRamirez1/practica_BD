@@ -23,6 +23,24 @@ def read_proveedores(conn):
 	cursor.execute(query)
 	return cursor.fetchall()
 
+def get_categorias(conn):
+	query = "SELECT Tipo FROM PRODUCTO "
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return list(dict.fromkeys([row[0] for row in cursor.fetchall()]))
+
+def get_nombres_producto(conn, tipo):
+	query = "SELECT * FROM PRODUCTO WHERE Tipo = '{}'".format(tipo)
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return [row[2] for row in cursor.fetchall()]
+
+def get_producto(conn, tipo, nombre):
+	query = "SELECT * FROM PRODUCTO WHERE Tipo = '{}' AND Nombre = '{}'".format(tipo, nombre)
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return [row for row in cursor.fetchone()]
+
 
 def get_count(conn, table):
 	return [row[0] for row in conn.execute("SELECT count() FROM {}".format(table))][0]

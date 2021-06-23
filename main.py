@@ -70,6 +70,10 @@ class MainWindow(QMainWindow):
 		this.administrador_guardar_cambios.clicked.connect(self.administrador_update)
 		
 		this.administrador_agregar_contrasenia.setEchoMode(QLineEdit.Password)
+		this.administrador_cambiar_contrasenia.setEchoMode(QLineEdit.Password)
+		this.administrador_contrasenia_antigua.setEchoMode(QLineEdit.Password)
+		this.empleados_contrasenia_antigua.setEchoMode(QLineEdit.Password)
+		this.empleados_cambiar_contrasenia.setEchoMode(QLineEdit.Password)
 
 		this.administrador_nuevo_empleado_guardar_cambios.clicked.connect(self.nuevo_empleado)
 
@@ -99,7 +103,18 @@ class MainWindow(QMainWindow):
 
 		this.proveedores_editar_guardar.clicked.connect(self.change_editar_proveedores)
 
+		self.categoria_producto = get_categorias(self.conn)
+		print(self.categoria_producto)
+
+		this.productos_agregar_categoria.currentIndexChanged.connect(self.update_ver_empleados)
+		this.productos_agregar_categoria.addItems(self.categoria_producto)
 		this.productos_agregar_guardar.clicked.connect(self.crear_nuevo_producto)
+		this.producto_ver_categoria.currentIndexChanged.connect(self.update_ver_nombre_producto)
+		this.producto_ver_categoria.addItems(self.categoria_producto)
+		this.producto_ver_nombre.currentIndexChanged.connect(self.ver_producto)
+
+		this.productos_agregar_check_nueva_categoria.stateChanged.connect(self.activar_categoria)
+
 
 		this.compras_proveedor.addItems([row[2] for row in self.proveedores])
 
@@ -120,7 +135,7 @@ class MainWindow(QMainWindow):
 		this.compras_fecha.setDate(QtCore.QDate.currentDate())
 
 
-		# productos falta editar y ver
+		# productos falta editar
 		# compras falta todo
 		# ventas falta todo
 		# tickets falta todo [X]
@@ -288,6 +303,21 @@ class MainWindow(QMainWindow):
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 
 
+	def update_ver_nombre_producto(self):
+		productos = get_nombres_producto(self.conn, this.producto_ver_categoria.currentText())
+		
+		this.producto_ver_nombre.clear()
+		this.producto_ver_nombre.addItems(productos)
+
+	def ver_producto(self):
+		producto = get_producto(self.conn, this.producto_ver_categoria.currentText(), this.producto_ver_nombre.currentText())
+		print(producto)
+		this.productos_ver_precio.setValue(producto[3])
+		this.productos_ver_existencia.setValue(producto[5])
+		this.productos_ver_descripcion.setPlainText(producto[4])
+		this.productos_ver_resurtible.setChecked( True if producto[6] else False)
+		
+
 	def update_ver_empleados(self):
 		empleado = self.empleados[this.administrador_buscar_empleado.currentIndex()]
 		this.administrador_ver_empleado_nombre.setText(empleado[1])
@@ -358,27 +388,44 @@ class MainWindow(QMainWindow):
 		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
 
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
-		
-		
-		
-		
-		
+				
 
 
 	def crear_nuevo_producto(self):
 		nuevo_producto = {
-			"Tipo": this.productos_agregar_nueva_categoria.text(),
+			"Tipo": this.productos_agregar_categoria.currentText(),
 			"Precio": this.productos_agregar_precio.value(),
 			"Existencia": this.productos_agregar_existencia.text(),
 			"Resurtible": this.productos_agregar_resurtible.isChecked(),
 			"Nombre": this.productos_agregar_nombre.text(),
 			"Descripcion": this.productos_agregar_descripcion.toPlainText(),
 		}
+		if this.productos_agregar_check_nueva_categoria.isChecked():
+			nuevo_producto["Tipo"] = this.productos_agregar_nueva_categoria.text()
 
 		create(self.conn, "Producto", nuevo_producto)
+		self.categoria_producto = get_categorias(self.conn)
+		this.productos_agregar_categoria.clear()
+		this.productos_agregar_categoria.addItems(self.categoria_producto)
+		this.producto_ver_categoria.clear()
+		this.producto_ver_categoria.addItems(self.categoria_producto)
+		
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 		
-
+	def activar_categoria(self):
+		if this.productos_agregar_check_nueva_categoria.isChecked():
+			this.productos_agregar_nueva_categoria.setEnabled(True)
+			this.productos_agregar_nueva_categoria.setStyleSheet("color: #fff;")
+			this.productos_agregar_categoria.setEnabled(False)
+			this.productos_agregar_categoria.setStyleSheet("color: #aaa;")
+			print(True)
+		else:
+			this.productos_agregar_nueva_categoria.setEnabled(False)
+			this.productos_agregar_nueva_categoria.setStyleSheet("color: #aaa;")
+			this.productos_agregar_categoria.setEnabled(True)
+			this.productos_agregar_categoria.setStyleSheet("color: #fff;")
+			print(False)
+			
 
 	def comprar_nuevo_producto(self):	
 		self.box_compra_1 = QFrame(this.compras_scrolling)
