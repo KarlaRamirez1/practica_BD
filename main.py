@@ -104,16 +104,19 @@ class MainWindow(QMainWindow):
 		this.proveedores_editar_guardar.clicked.connect(self.change_editar_proveedores)
 
 		self.categoria_producto = get_categorias(self.conn)
-		print(self.categoria_producto)
 
-		this.productos_agregar_categoria.currentIndexChanged.connect(self.update_ver_empleados)
 		this.productos_agregar_categoria.addItems(self.categoria_producto)
 		this.productos_agregar_guardar.clicked.connect(self.crear_nuevo_producto)
-		this.producto_ver_categoria.currentIndexChanged.connect(self.update_ver_nombre_producto)
 		this.producto_ver_categoria.addItems(self.categoria_producto)
+		this.producto_ver_categoria.currentIndexChanged.connect(self.update_ver_nombre_producto)
 		this.producto_ver_nombre.currentIndexChanged.connect(self.ver_producto)
 
 		this.productos_agregar_check_nueva_categoria.stateChanged.connect(self.activar_categoria)
+
+		this.productos_editar_categoria.addItems(self.categoria_producto)
+		this.productos_editar_categoria.currentIndexChanged.connect(self.update_editar_nombre_producto)
+		this.productos_editar_nombre.currentIndexChanged.connect(self.editar_producto)
+		this.productos_editar_guardar.clicked.connect(self.update_producto)
 
 
 		this.compras_proveedor.addItems([row[2] for row in self.proveedores])
@@ -135,7 +138,6 @@ class MainWindow(QMainWindow):
 		this.compras_fecha.setDate(QtCore.QDate.currentDate())
 
 
-		# productos falta editar
 		# compras falta todo
 		# ventas falta todo
 		# tickets falta todo [X]
@@ -304,19 +306,47 @@ class MainWindow(QMainWindow):
 
 
 	def update_ver_nombre_producto(self):
-		productos = get_nombres_producto(self.conn, this.producto_ver_categoria.currentText())
-		
+		productos = get_nombres_producto(self.conn, this.producto_ver_categoria.currentText())	
 		this.producto_ver_nombre.clear()
 		this.producto_ver_nombre.addItems(productos)
 
+	def update_editar_nombre_producto(self):
+		productos = get_nombres_producto(self.conn, this.productos_editar_categoria.currentText())	
+		this.productos_editar_nombre.clear()
+		this.productos_editar_nombre.addItems(productos)
+
 	def ver_producto(self):
 		producto = get_producto(self.conn, this.producto_ver_categoria.currentText(), this.producto_ver_nombre.currentText())
-		print(producto)
 		this.productos_ver_precio.setValue(producto[3])
 		this.productos_ver_existencia.setValue(producto[5])
 		this.productos_ver_descripcion.setPlainText(producto[4])
-		this.productos_ver_resurtible.setChecked( True if producto[6] else False)
+		this.productos_ver_resurtible.setChecked( True if producto[6] == "TRUE" else False)
+	
+	
+	def editar_producto(self):
+		producto = get_producto(self.conn, this.productos_editar_categoria.currentText(), this.productos_editar_nombre.currentText())
+
+		this.productos_editar_nuevo_nombre.setText(producto[2])
+		this.productos_editar_precio.setValue(producto[3])
+		this.productos_editar_existencia.setValue(producto[5])
+		this.productos_editar_descripcion.setPlainText(producto[4])
+		this.productos_editar_resurtible.setChecked( True if producto[6] == "TRUE" else False)
+		print(producto[6])
 		
+	def update_producto(self):
+		update_producto = {
+			"Nombre": this.productos_editar_nuevo_nombre.text(),
+			"Precio": this.productos_editar_precio.value(),
+			"Descripcion": this.productos_editar_descripcion.toPlainText(),
+			"Existencia": this.productos_editar_existencia.value(),
+			"Resurtible": "TRUE" if this.productos_editar_resurtible.isChecked() else "FALSE"
+		}
+
+		update(self.conn, "Producto", update_producto, "WHERE Tipo = '{}' AND Nombre = '{}'".format(this.productos_editar_categoria.currentText(), this.productos_editar_nombre.currentText()))
+		
+		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
+		
+
 
 	def update_ver_empleados(self):
 		empleado = self.empleados[this.administrador_buscar_empleado.currentIndex()]
@@ -396,7 +426,7 @@ class MainWindow(QMainWindow):
 			"Tipo": this.productos_agregar_categoria.currentText(),
 			"Precio": this.productos_agregar_precio.value(),
 			"Existencia": this.productos_agregar_existencia.text(),
-			"Resurtible": this.productos_agregar_resurtible.isChecked(),
+			"Resurtible": "TRUE" if this.productos_agregar_resurtible.isChecked() else "FALSE",
 			"Nombre": this.productos_agregar_nombre.text(),
 			"Descripcion": this.productos_agregar_descripcion.toPlainText(),
 		}

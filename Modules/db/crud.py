@@ -39,7 +39,7 @@ def get_producto(conn, tipo, nombre):
 	query = "SELECT * FROM PRODUCTO WHERE Tipo = '{}' AND Nombre = '{}'".format(tipo, nombre)
 	cursor = conn.cursor()
 	cursor.execute(query)
-	return [row for row in cursor.fetchone()]
+	return cursor.fetchone()
 
 
 def get_count(conn, table):

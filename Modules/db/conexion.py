@@ -1,6 +1,7 @@
 import sqlite3
 from os.path import exists
 
+# db = "db/database.db"
 db = "db/database.db"
 
 #si no existe una base de datos crearla

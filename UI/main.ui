@@ -2376,7 +2376,7 @@ background: #374553;
                     <item>
                      <widget class="QStackedWidget" name="productos_stacked">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="page_productos_ver">
                        <widget class="QComboBox" name="producto_ver_categoria">
@@ -2395,9 +2395,9 @@ background: #374553;
                        <widget class="QComboBox" name="producto_ver_nombre">
                         <property name="geometry">
                          <rect>
-                          <x>430</x>
+                          <x>400</x>
                           <y>40</y>
-                          <width>200</width>
+                          <width>230</width>
                           <height>35</height>
                          </rect>
                         </property>
@@ -2844,9 +2844,9 @@ background: #374553;
                        <widget class="QComboBox" name="productos_editar_nombre">
                         <property name="geometry">
                          <rect>
-                          <x>430</x>
+                          <x>400</x>
                           <y>40</y>
-                          <width>200</width>
+                          <width>230</width>
                           <height>35</height>
                          </rect>
                         </property>
