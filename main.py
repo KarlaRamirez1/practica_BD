@@ -172,6 +172,8 @@ class MainWindow(QMainWindow):
 		self.tickets = []
 
 
+		this.frame_2.setStyleSheet("background: transparent; color: transparent;")
+
 
 	def init(self):
 		#verificar si es admin o empleado
