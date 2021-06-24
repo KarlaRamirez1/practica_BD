@@ -10,7 +10,7 @@ from modules.main_ui import Ui_MainWindows
 from modules.db.conexion import conexion
 from modules.db.crud import *
 import random
-
+import xlwt
 import os
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
@@ -166,11 +166,10 @@ class MainWindow(QMainWindow):
 		this.tickets_table_widget.horizontalHeader().setStretchLastSection(True)
 		this.recorte_caja_table_widget.horizontalHeader().setStretchLastSection(True)
 
+		this.Tickets_generar_ticket.clicked.connect(self.crear_ticket_xlsx)
+		this.recorte_caja_generar_ticket.clicked.connect(self.crear_corte_caja_xlsx)
 		self.corte_caja = []
 		self.tickets = []
-		# tickets falta todo [X]
-		# Corte de caja (generar pdf) 
-
 
 
 
@@ -652,16 +651,9 @@ class MainWindow(QMainWindow):
 		self.corte_caja = tickets
 		this.recorte_caja_table_widget.setRowCount(len(tickets))
 		for column, ticket in enumerate(tickets):
-			print(column, ticket)
 			this.recorte_caja_table_widget.setItem(column, 0, QTableWidgetItem(str(ticket["Folio"])))
 			this.recorte_caja_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
 			this.recorte_caja_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Total"])))
-
-
-
-
-
-
 
 
 
@@ -726,7 +718,6 @@ class MainWindow(QMainWindow):
 		
 		this.tickets_table_widget.setRowCount(len(tickets))
 		for column, ticket in enumerate(tickets):
-			print(ticket)
 			this.tickets_table_widget.setItem(column, 0, QTableWidgetItem(str(ticket["Folio"])))
 			this.tickets_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
 			this.tickets_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Categoria"])))
@@ -739,6 +730,61 @@ class MainWindow(QMainWindow):
 			this.tickets_table_widget.setItem(column, 9, QTableWidgetItem(str(ticket["RFC"])))
 
 
+
+
+
+	def crear_ticket_xlsx(self):
+		#generar archivo .xls
+		padre = os.environ['HOMEPATH']
+		directory = QFileDialog.getSaveFileName(self, "Seleccione destino", padre,"Archivo de Excel (*.xls)")
+
+		if directory[0] == '':
+			QMessageBox.about(self,"Error","No se ha podido guardar el archivo ")
+			return
+
+		data = []
+		data.insert(0, ["Folio", "Fecha", "Categoria", "Nombre", "Precio", "Unidades", "Total", "Color", "Empleado", "RFC"])# header
+		#convertir dict a list
+		for i in self.tickets:
+			data.append(list(i.values()))
+		
+		workbook = xlwt.Workbook()
+		sheet = workbook.add_sheet('tickets')
+		
+		for x, row in enumerate(data):
+			for y, value in enumerate(row):
+				sheet.write(x, y, value)
+		
+		workbook.save(directory[0])
+		
+		QMessageBox.about(self,"Finalizado con existo","el archivo se ha guardado con exito.")
+
+
+	def crear_corte_caja_xlsx(self):
+		#generar archivo .xls
+		padre = os.environ['HOMEPATH']
+		directory = QFileDialog.getSaveFileName(self, "Seleccione destino", padre,"Archivo de Excel (*.xls)")
+
+		if directory[0] == '':
+			QMessageBox.about(self,"Error","No se ha podido guardar el archivo ")
+			return
+
+		data = []
+		data.insert(0, ["Folio", "Fecha", "Total"])# header
+		#convertir dict a list
+		for i in self.corte_caja:
+			data.append(list(i.values()))
+		
+		workbook = xlwt.Workbook()
+		sheet = workbook.add_sheet('tickets')
+		
+		for x, row in enumerate(data):
+			for y, value in enumerate(row):
+				sheet.write(x, y, value)
+		
+		workbook.save(directory[0])
+		
+		QMessageBox.about(self,"Finalizado con existo","el archivo se ha guardado con exito.")
 
 	def mousePressEvent(self, event):
 		if event.button() == QtCore.Qt.LeftButton:
