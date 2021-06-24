@@ -173,6 +173,7 @@ class MainWindow(QMainWindow):
 
 
 		this.frame_2.setStyleSheet("background: transparent; color: transparent;")
+		this.btn_copia_seguridad.setStyleSheet("image: none;")
 
 
 	def init(self):

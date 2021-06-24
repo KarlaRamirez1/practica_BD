@@ -29,8 +29,6 @@ class Login(QDialog):#faltan validaciones
 		this.Password.setEchoMode(QLineEdit.Password)
 		this.btn_accept.clicked.connect(self.connect)
 
-		this.User.setText("kelly")
-		this.Password.setText("1234")
 
 		if get_count(self.conn, "Empleado") == 0:
 			QMessageBox.about(self, "Hola", "Es la primera vez que entras?\ncrea tu nombre de\nusuario y tu contraseña.")
