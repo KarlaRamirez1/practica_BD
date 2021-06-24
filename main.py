@@ -655,7 +655,7 @@ class MainWindow(QMainWindow):
 		for column, ticket in enumerate(tickets):
 			this.recorte_caja_table_widget.setItem(column, 0, QTableWidgetItem(str(ticket["Folio"])))
 			this.recorte_caja_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
-			this.recorte_caja_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Total"])))
+			this.recorte_caja_table_widget.setItem(column, 2, QTableWidgetItem("$"+str(ticket["Total"])))
 
 
 
@@ -724,9 +724,9 @@ class MainWindow(QMainWindow):
 			this.tickets_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
 			this.tickets_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Categoria"])))
 			this.tickets_table_widget.setItem(column, 3, QTableWidgetItem(str(ticket["Nombre"])))
-			this.tickets_table_widget.setItem(column, 4, QTableWidgetItem(str(ticket["Precio"])))
+			this.tickets_table_widget.setItem(column, 4, QTableWidgetItem("$"+str(ticket["Precio"])))
 			this.tickets_table_widget.setItem(column, 5, QTableWidgetItem(str(ticket["Unidades"])))
-			this.tickets_table_widget.setItem(column, 6, QTableWidgetItem(str(ticket["Total"])))
+			this.tickets_table_widget.setItem(column, 6, QTableWidgetItem("$"+str(ticket["Total"])))
 			this.tickets_table_widget.setItem(column, 7, QTableWidgetItem(str(ticket["Color"])))
 			this.tickets_table_widget.setItem(column, 8, QTableWidgetItem(str(ticket["Empleado"])))
 			this.tickets_table_widget.setItem(column, 9, QTableWidgetItem(str(ticket["RFC"])))
