@@ -96,6 +96,7 @@ class MainWindow(QMainWindow):
 		this.proveedores_agregar_guardar.clicked.connect(self.guardar_nuevo_proveedor)
 		self.proveedores = read_proveedores(self.conn)
 
+
 		this.proveedores_ver_proveedor.currentIndexChanged.connect(self.update_ver_proveedores)
 		this.proveedores_ver_proveedor.addItems([row[2] for row in self.proveedores])
 		this.proveedores_editar_nombre.currentIndexChanged.connect(self.update_editar_proveedores)

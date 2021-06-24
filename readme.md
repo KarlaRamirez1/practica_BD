@@ -1,5 +1,20 @@
 # Baños charly
 
+
+## Crear ejecutalbe
+
+1. descargar [auto-py-to-exe](https://github.com/brentvollebregt/auto-py-to-exe) y descomprimirlo
+2. ```python run.py```
+3. dar click en navegar y selecciona el archivo main
+4. cambiar la ventana a ```basado en ventana (ocultar consola)```
+5. seleccionar archivos adicionales y agregar nueva capeta, selecciona la capeta ```db```
+6. dar click en convertir .py a .exe
+7. entrar a %appdata% regresar una carpeta atras
+8. entrar a local/programs/python/pythonX/Lib/site-packages/PySide6
+9. copiar ```plugins/``` ```translations/``` ```qt.conf```
+10. pegar estos archivos dentro de auto-py-to-exe/output/main/
+
+
 ## 1 - Ventas
 * Fecha - Date
 * RFC cliente - Text
