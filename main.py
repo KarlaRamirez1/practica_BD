@@ -9,7 +9,7 @@ from modules.login import Login
 from modules.main_ui import Ui_MainWindows
 from modules.db.conexion import conexion
 from modules.db.crud import *
-
+import random
 
 import os
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
@@ -121,10 +121,6 @@ class MainWindow(QMainWindow):
 
 		this.compras_proveedor.addItems([row[2] for row in self.proveedores])
 
-		this.compras_agregar.clicked.connect(self.comprar_nuevo_producto)
-		self.compras_totales = 1
-		# this.proveedores_editar_guardar.clicked.connect()
-
 		this.btn_closed.clicked.connect(self.close)
 		this.btn_maximized.clicked.connect(self.show_windows)
 		this.btn_minimized.clicked.connect(self.showMinimized)
@@ -138,11 +134,22 @@ class MainWindow(QMainWindow):
 		this.compras_fecha.setDate(QtCore.QDate.currentDate())
 
 
-		# compras falta todo
+		this.compra_categoria_producto_1.addItems(self.categoria_producto)
+		this.compra_categoria_producto_1.currentIndexChanged.connect(self.update_nombre_producto_ventas)
+		this.compra_nombre_producto_1.currentIndexChanged.connect(self.editar_producto_ventas)
+		# this.productos_editar_guardar.clicked.connect(self.update_producto)
+
+		self.total_productos_compras = []
+		this.compra_unidades_1.valueChanged.connect(self.update_precio_total_venta)
+		this.compras_agregar.clicked.connect(self.agregar_producto_venta)
+		this.compras_generar.clicked.connect(self.comprar_nuevo_producto)
+		this.compras_table_widget.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)  
+		this.compras_table_widget.customContextMenuRequested.connect(self.table_compras) # +++
+		this.compras_table_widget.viewport().installEventFilter(self)
+		
 		# ventas falta todo
 		# tickets falta todo [X]
 		# corte de caja falta todo
-
 
 
 	def init(self):
@@ -321,8 +328,7 @@ class MainWindow(QMainWindow):
 		this.productos_ver_existencia.setValue(producto[5])
 		this.productos_ver_descripcion.setPlainText(producto[4])
 		this.productos_ver_resurtible.setChecked( True if producto[6] == "TRUE" else False)
-	
-	
+		
 	def editar_producto(self):
 		producto = get_producto(self.conn, this.productos_editar_categoria.currentText(), this.productos_editar_nombre.currentText())
 
@@ -345,8 +351,6 @@ class MainWindow(QMainWindow):
 		
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 		
-
-
 	def update_ver_empleados(self):
 		empleado = self.empleados[this.administrador_buscar_empleado.currentIndex()]
 		this.administrador_ver_empleado_nombre.setText(empleado[1])
@@ -355,7 +359,6 @@ class MainWindow(QMainWindow):
 		this.administrador_ver_empleado_salario.setValue(empleado[8])
 		this.administrador_ver_empleado_nombre_usuario.setText(empleado[4])
 		this.administrador_ver_empleado_correo.setText(empleado[5])
-
 
 	def guardar_nuevo_proveedor(self):
 		nuevo_proveedor = {
@@ -379,8 +382,7 @@ class MainWindow(QMainWindow):
 		this.proveedores_editar_nombre.clear()
 		this.proveedores_editar_nombre.addItems([row[2] for row in self.proveedores])
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
-		
-		
+				
 	def update_ver_proveedores(self):
 		proveedor = self.proveedores[this.proveedores_ver_proveedor.currentIndex()]
 		this.proveedores_ver_rfc.setText(proveedor[1])
@@ -418,10 +420,9 @@ class MainWindow(QMainWindow):
 
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
 				
-
-
 	def crear_nuevo_producto(self):
 		nuevo_producto = {
+			"Id": this.productos_agregar_categoria.currentText()[0:2] + "-" + this.productos_agregar_nombre.text()[0:2] + "-" + str(random.randrange(1,9999)),
 			"Tipo": this.productos_agregar_categoria.currentText(),
 			"Precio": this.productos_agregar_precio.value(),
 			"Existencia": this.productos_agregar_existencia.text(),
@@ -454,8 +455,80 @@ class MainWindow(QMainWindow):
 			this.productos_agregar_categoria.setStyleSheet("color: #fff;")
 			
 
-	def comprar_nuevo_producto(self):	
-		pass
+	def update_nombre_producto_ventas(self):
+		productos = get_nombres_producto(self.conn, this.compra_categoria_producto_1.currentText())	
+		this.compra_nombre_producto_1.clear()
+		this.compra_nombre_producto_1.addItems(productos)
+		
+	def editar_producto_ventas(self):
+		producto = get_producto(self.conn, this.compra_categoria_producto_1.currentText(), this.compra_nombre_producto_1.currentText())
+		this.compra_precio_1.setValue(producto[3])
+		self.update_precio_total_venta()
+
+	def update_precio_total_venta(self):
+		this.compra_total_1.setValue(this.compra_precio_1.value() * this.compra_unidades_1.value())
+
+
+	def agregar_producto_venta(self):
+		get_producto = {
+			"Categoria" : this.compra_categoria_producto_1.currentText(),
+			"Nombre": this.compra_nombre_producto_1.currentText(),
+			"Precio": this.compra_precio_1.value(),
+			"Unidades": this.compra_unidades_1.value(),
+			"Color": this.compra_color_1.text(),
+			"Total": this.compra_total_1.value()
+		}
+		for key in get_producto:
+			if get_producto[key] == '' or get_producto[key] == 0:
+				QMessageBox.about(self, "Error", "No pueden haber campos vacios")
+				return
+		
+		self.total_productos_compras.append(get_producto)
+
+		this.compra_unidades_1.setValue(0)
+		this.compra_color_1.setText("")
+		this.compra_total_1.setValue(0)
+		#actualizar la tabla
+		self.table_compras()
+
+	def table_compras(self):
+		this.compras_table_widget.setRowCount(len(self.total_productos_compras))
+
+		for column, row in enumerate(self.total_productos_compras):
+			this.compras_table_widget.setItem(column, 0, QTableWidgetItem(row["Categoria"]))
+			this.compras_table_widget.setItem(column, 1, QTableWidgetItem(row["Nombre"]))
+			this.compras_table_widget.setItem(column, 2, QTableWidgetItem(str(row["Precio"])))
+			this.compras_table_widget.setItem(column, 3, QTableWidgetItem(str(row["Unidades"])))
+			this.compras_table_widget.setItem(column, 4, QTableWidgetItem(row["Color"]))
+			this.compras_table_widget.setItem(column, 5, QTableWidgetItem(str(row["Total"])))
+
+
+	def comprar_nuevo_producto(self):
+		if len(self.total_productos_compras) == 0:
+			QMessageBox.about(self, "Error", "No hay nada que comprar")
+			return
+		# generar un folio
+		folio = {
+			"Fecha": QtCore.QDate.currentDate().toString('yyyy/MM/dd'),
+			"Id_empleado": self.login.user[0],
+			"Id_proveedor": this.compras_proveedor.currentIndex()
+		}
+		id_folio = create(self.conn, "Ticket_compra", folio)
+		# comenzar a generar las compras
+
+		for row in self.total_productos_compras:
+			id_producto = get_producto(self.conn, row["Categoria"], row["Nombre"])[0]
+			compra = {
+				"Folio": id_folio,
+				"Producto" : id_producto,
+				"Cantidad": row["Unidades"]
+			}
+			create(self.conn, "Compra", compra)
+		QMessageBox.about(self, "Exito", "La compra se genero con exito")
+		self.total_productos_compras = []
+		self.table_compras()
+
+
 
 	def mousePressEvent(self, event):
 		if event.button() == QtCore.Qt.LeftButton:

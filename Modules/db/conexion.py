@@ -76,7 +76,6 @@ class Tables:
 			Id INTEGER PRIMARY KEY,
 			Folio INT,
 			Producto INT,
-			Precio DECIMAL(7,2),
 			Cantidad INT,
 			FOREIGN KEY(Folio)REFERENCES Ticket_compra(Folio),
 			FOREIGN KEY(Producto)REFERENCES Producto(Id)

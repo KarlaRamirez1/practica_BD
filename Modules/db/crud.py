@@ -49,11 +49,11 @@ def get_count(conn, table):
 def create(conn, table, json):
 	keys = list_to_string([*json.keys()])
 	values = list_to_string([*json.values()], True)
-
+	cursor = conn.cursor()
 	query = ('INSERT INTO {} ({}) VALUES ({})'.format(table, keys, values))
-	print(query)
-	conn.execute(query)
+	cursor.execute(query)
 	conn.commit()
+	return cursor.lastrowid
 
 def update(conn, table, json, where=""):
 	query = "UPDATE {} SET ".format(table)
