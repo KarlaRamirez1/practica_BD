@@ -160,8 +160,18 @@ class MainWindow(QMainWindow):
 		this.ventas_table_widget.customContextMenuRequested.connect(self.table_ventas) # +++
 		this.ventas_table_widget.viewport().installEventFilter(self)
 
+
+		this.ventas_table_widget.horizontalHeader().setStretchLastSection(True)
+		this.compras_table_widget.horizontalHeader().setStretchLastSection(True)
+		this.tickets_table_widget.horizontalHeader().setStretchLastSection(True)
+		this.recorte_caja_table_widget.horizontalHeader().setStretchLastSection(True)
+
+		self.corte_caja = []
+		self.tickets = []
 		# tickets falta todo [X]
-		# corte de caja falta todo
+		# Corte de caja (generar pdf) 
+
+
 
 
 	def init(self):
@@ -221,10 +231,12 @@ class MainWindow(QMainWindow):
 			select(this.page_productos)
 		elif btn_name == "tickets":
 			select(this.page_tickets)
+			self.update_tickets()
 		elif btn_name == "proveedores":
 			select(this.page_proveedores)
 		elif btn_name == "recorte_caja":
 			select(this.page_recorte_caja)
+			self.update_corte_caja()
 		elif btn_name == "copia_seguridad":
 			select(this.page_copia_seguridad)
 		elif btn_name == "usuario":
@@ -535,8 +547,6 @@ class MainWindow(QMainWindow):
 		self.table_compras()
 
 
-
-
 	def update_nombre_producto_ventas(self):
 		productos = get_nombres_producto(self.conn, this.venta_categoria_producto_1.currentText())	
 		this.venta_nombre_producto_1.clear()
@@ -613,6 +623,120 @@ class MainWindow(QMainWindow):
 
 
 
+	def update_corte_caja(self):
+		#obtener ventas
+		total_ventas_hoy = get_ventas_hoy(self.conn, QtCore.QDate.currentDate().toString('yyyy/MM/dd'))
+		#obtener precio por venta
+		
+		tickets = []
+
+		for venta in total_ventas_hoy:
+			total = 0
+			for ticket in venta:
+				id = ticket[2]
+				producto = get_producto_by_id(self.conn, id)
+
+				folio = ticket[1]
+				unidades = ticket[4]
+				precio = producto[3]
+				subtotal = unidades * precio
+				total += subtotal
+
+			#Folio, fecha, total
+			tickets.append({
+				"Folio": folio,
+				"Fecha": QtCore.QDate.currentDate().toString('yyyy/MM/dd'),
+				"Total": total
+			})
+
+		self.corte_caja = tickets
+		this.recorte_caja_table_widget.setRowCount(len(tickets))
+		for column, ticket in enumerate(tickets):
+			print(column, ticket)
+			this.recorte_caja_table_widget.setItem(column, 0, QTableWidgetItem(str(ticket["Folio"])))
+			this.recorte_caja_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
+			this.recorte_caja_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Total"])))
+
+
+
+
+
+
+
+
+
+
+
+
+	def update_tickets(self):
+		#obtener ventas
+		total_ventas_hoy = get_ventas_hoy(self.conn, QtCore.QDate.currentDate().toString('yyyy/MM/dd'))
+		#obtener precio por venta
+		
+		tickets = []
+
+		for venta in total_ventas_hoy:
+			total = 0
+			for ticket in venta:
+				id = ticket[2]
+				producto = get_producto_by_id(self.conn, id)
+				folio = ticket[1]
+				color = ticket[3]
+				unidades = ticket[4]
+
+				datos_ticket = get_ticket(self.conn, folio)
+				fecha = datos_ticket[1]
+				empleado = get_empleado_by_id(self.conn, datos_ticket[2])[0]
+				rfc = datos_ticket[3]
+				categoria = producto[1]
+				nombre = producto[2]
+				categoria = producto[1]
+				precio = producto[3]
+				subtotal = unidades * precio
+
+				total += subtotal
+				t = {
+					"Folio": folio,
+					"Fecha": fecha,
+					"Categoria": categoria,
+					"Nombre": nombre,
+					"Precio": precio,
+					"Unidades": unidades,
+					"Total": subtotal,
+					"Color": color,
+					"Empleado": empleado,
+					"RFC": rfc
+				}
+				tickets.append(t)
+			#Folio, fecha, Categoria, Nombre, Precio, Unidades, Total, Color, Empleado, RFC
+			tickets.append({
+				"Folio": folio,
+				"Fecha": "",
+				"Categoria": "",
+				"Nombre": "",
+				"Precio": "",
+				"Unidades": "",
+				"Total": total,
+				"Color": "",
+				"Empleado": "",
+				"RFC": ""
+			})
+
+		self.tickets = tickets
+		
+		this.tickets_table_widget.setRowCount(len(tickets))
+		for column, ticket in enumerate(tickets):
+			print(ticket)
+			this.tickets_table_widget.setItem(column, 0, QTableWidgetItem(str(ticket["Folio"])))
+			this.tickets_table_widget.setItem(column, 1, QTableWidgetItem(ticket["Fecha"]))
+			this.tickets_table_widget.setItem(column, 2, QTableWidgetItem(str(ticket["Categoria"])))
+			this.tickets_table_widget.setItem(column, 3, QTableWidgetItem(str(ticket["Nombre"])))
+			this.tickets_table_widget.setItem(column, 4, QTableWidgetItem(str(ticket["Precio"])))
+			this.tickets_table_widget.setItem(column, 5, QTableWidgetItem(str(ticket["Unidades"])))
+			this.tickets_table_widget.setItem(column, 6, QTableWidgetItem(str(ticket["Total"])))
+			this.tickets_table_widget.setItem(column, 7, QTableWidgetItem(str(ticket["Color"])))
+			this.tickets_table_widget.setItem(column, 8, QTableWidgetItem(str(ticket["Empleado"])))
+			this.tickets_table_widget.setItem(column, 9, QTableWidgetItem(str(ticket["RFC"])))
 
 
 

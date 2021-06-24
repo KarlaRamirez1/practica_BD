@@ -16,6 +16,13 @@ def read_empleados(conn):
 	cursor.execute(query)
 	return cursor.fetchall()
 
+def get_empleado_by_id(conn, id):
+	query = "SELECT Nombre_usuario FROM Empleado WHERE id = '{}'".format(id)
+
+	cursor = conn.cursor()
+	cursor.execute(query)
+	
+	return cursor.fetchone()
 
 def read_proveedores(conn):
 	query = "SELECT * FROM PROVEEDOR"
@@ -41,6 +48,12 @@ def get_producto(conn, tipo, nombre):
 	cursor.execute(query)
 	return cursor.fetchone()
 
+def get_producto_by_id(conn, id):
+	query = "SELECT * FROM PRODUCTO WHERE Id = '{}' ".format(id)
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return cursor.fetchone()
+
 
 def get_count(conn, table):
 	return [row[0] for row in conn.execute("SELECT count() FROM {}".format(table))][0]
@@ -62,6 +75,31 @@ def update(conn, table, json, where=""):
 
 	conn.execute(query)
 	conn.commit()
+
+
+
+def get_ventas_hoy(conn, fecha):
+	query = "SELECT * FROM TICKET_VENTA WHERE Fecha = '{}'".format(fecha)
+	cursor = conn.cursor()
+	cursor.execute(query)
+	ventas_hoy = []
+	for ticket in cursor.fetchall():
+		folio = ticket[0]# folio
+		ventas_hoy.append(get_venta(conn, folio))
+	return ventas_hoy
+
+def get_venta(conn, folio):
+	cursor = conn.cursor()
+	query = "SELECT * FROM VENTA WHERE Folio = '{}'".format(folio)
+	cursor.execute(query)
+	return cursor.fetchall()
+
+def get_ticket(conn, folio):
+	query = "SELECT * FROM TICKET_VENTA WHERE Folio = '{}' ".format(folio)
+	cursor = conn.cursor()
+	cursor.execute(query)
+	return cursor.fetchone()
+
 
 
 def json_to_sql(json):
