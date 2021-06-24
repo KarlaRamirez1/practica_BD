@@ -1690,6 +1690,9 @@ background: #374553;
                               <height>22</height>
                              </rect>
                             </property>
+                            <property name="maximum">
+                             <double>1000000.000000000000000</double>
+                            </property>
                            </widget>
                            <widget class="QDoubleSpinBox" name="venta_total_1">
                             <property name="enabled">
@@ -1703,6 +1706,9 @@ background: #374553;
                               <height>22</height>
                              </rect>
                             </property>
+                            <property name="maximum">
+                             <double>10000000.000000000000000</double>
+                            </property>
                            </widget>
                            <widget class="QSpinBox" name="venta_unidades_1">
                             <property name="geometry">
@@ -1712,6 +1718,9 @@ background: #374553;
                               <width>42</width>
                               <height>22</height>
                              </rect>
+                            </property>
+                            <property name="maximum">
+                             <number>100000</number>
                             </property>
                            </widget>
                            <widget class="Line" name="line_11">
@@ -1805,6 +1814,46 @@ background: #374553;
                              <string/>
                             </property>
                            </widget>
+                          </widget>
+                          <widget class="QTableWidget" name="ventas_table_widget">
+                           <property name="geometry">
+                            <rect>
+                             <x>0</x>
+                             <y>90</y>
+                             <width>881</width>
+                             <height>251</height>
+                            </rect>
+                           </property>
+                           <column>
+                            <property name="text">
+                             <string>Categoria</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Nombre</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Precio</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Unidades</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Color</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Total</string>
+                            </property>
+                           </column>
                           </widget>
                          </widget>
                         </item>
@@ -2005,23 +2054,10 @@ background: #374553;
                              <string>Unidades</string>
                             </property>
                            </widget>
-                           <widget class="QLabel" name="label_18">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>0</y>
-                              <width>100</width>
-                              <height>20</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string>Color</string>
-                            </property>
-                           </widget>
                            <widget class="QLabel" name="label_19">
                             <property name="geometry">
                              <rect>
-                              <x>740</x>
+                              <x>620</x>
                               <y>0</y>
                               <width>75</width>
                               <height>20</height>
@@ -2098,7 +2134,7 @@ background: #374553;
                             </property>
                             <property name="geometry">
                              <rect>
-                              <x>740</x>
+                              <x>620</x>
                               <y>5</y>
                               <width>75</width>
                               <height>22</height>
@@ -2124,7 +2160,7 @@ background: #374553;
                            <widget class="Line" name="line_35">
                             <property name="geometry">
                              <rect>
-                              <x>740</x>
+                              <x>620</x>
                               <y>30</y>
                               <width>75</width>
                               <height>2</height>
@@ -2186,39 +2222,13 @@ background: #374553;
                              <enum>Qt::Horizontal</enum>
                             </property>
                            </widget>
-                           <widget class="Line" name="line_38">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>30</y>
-                              <width>100</width>
-                              <height>2</height>
-                             </rect>
-                            </property>
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                           </widget>
-                           <widget class="QLineEdit" name="compra_color_1">
-                            <property name="geometry">
-                             <rect>
-                              <x>620</x>
-                              <y>5</y>
-                              <width>100</width>
-                              <height>22</height>
-                             </rect>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
                           </widget>
                           <widget class="QTableWidget" name="compras_table_widget">
                            <property name="geometry">
                             <rect>
-                             <x>10</x>
+                             <x>0</x>
                              <y>90</y>
-                             <width>861</width>
+                             <width>881</width>
                              <height>251</height>
                             </rect>
                            </property>
@@ -2240,11 +2250,6 @@ background: #374553;
                            <column>
                             <property name="text">
                              <string>Unidades</string>
-                            </property>
-                           </column>
-                           <column>
-                            <property name="text">
-                             <string>Color</string>
                             </property>
                            </column>
                            <column>

@@ -890,13 +890,16 @@ class Ui_MainWindows(object):
         self.venta_precio_1.setObjectName(u"venta_precio_1")
         self.venta_precio_1.setEnabled(False)
         self.venta_precio_1.setGeometry(QRect(440, 5, 62, 22))
+        self.venta_precio_1.setMaximum(1000000.000000000000000)
         self.venta_total_1 = QDoubleSpinBox(self.box_venta_1)
         self.venta_total_1.setObjectName(u"venta_total_1")
         self.venta_total_1.setEnabled(False)
         self.venta_total_1.setGeometry(QRect(740, 5, 75, 22))
+        self.venta_total_1.setMaximum(10000000.000000000000000)
         self.venta_unidades_1 = QSpinBox(self.box_venta_1)
         self.venta_unidades_1.setObjectName(u"venta_unidades_1")
         self.venta_unidades_1.setGeometry(QRect(520, 5, 42, 22))
+        self.venta_unidades_1.setMaximum(100000)
         self.line_11 = QFrame(self.box_venta_1)
         self.line_11.setObjectName(u"line_11")
         self.line_11.setGeometry(QRect(740, 30, 75, 2))
@@ -928,6 +931,23 @@ class Ui_MainWindows(object):
         self.venta_color_1 = QLineEdit(self.box_venta_1)
         self.venta_color_1.setObjectName(u"venta_color_1")
         self.venta_color_1.setGeometry(QRect(620, 5, 100, 22))
+        self.ventas_table_widget = QTableWidget(self.ventas_scrolling)
+        if (self.ventas_table_widget.columnCount() < 6):
+            self.ventas_table_widget.setColumnCount(6)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.ventas_table_widget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        self.ventas_table_widget.setObjectName(u"ventas_table_widget")
+        self.ventas_table_widget.setGeometry(QRect(0, 90, 881, 251))
 
         self.verticalLayout_5.addWidget(self.ventas_scrolling)
 
@@ -1005,12 +1025,9 @@ class Ui_MainWindows(object):
         self.label_17 = QLabel(self.compra_header)
         self.label_17.setObjectName(u"label_17")
         self.label_17.setGeometry(QRect(520, 0, 91, 20))
-        self.label_18 = QLabel(self.compra_header)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(620, 0, 100, 20))
         self.label_19 = QLabel(self.compra_header)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(740, 0, 75, 20))
+        self.label_19.setGeometry(QRect(620, 0, 75, 20))
         self.label_22 = QLabel(self.compra_header)
         self.label_22.setObjectName(u"label_22")
         self.label_22.setGeometry(QRect(0, 0, 201, 24))
@@ -1031,7 +1048,7 @@ class Ui_MainWindows(object):
         self.compra_total_1 = QDoubleSpinBox(self.box_compra_1)
         self.compra_total_1.setObjectName(u"compra_total_1")
         self.compra_total_1.setEnabled(False)
-        self.compra_total_1.setGeometry(QRect(740, 5, 75, 22))
+        self.compra_total_1.setGeometry(QRect(620, 5, 75, 22))
         self.compra_total_1.setMaximum(1000000000.000000000000000)
         self.compra_unidades_1 = QSpinBox(self.box_compra_1)
         self.compra_unidades_1.setObjectName(u"compra_unidades_1")
@@ -1039,7 +1056,7 @@ class Ui_MainWindows(object):
         self.compra_unidades_1.setMaximum(100000)
         self.line_35 = QFrame(self.box_compra_1)
         self.line_35.setObjectName(u"line_35")
-        self.line_35.setGeometry(QRect(740, 30, 75, 2))
+        self.line_35.setGeometry(QRect(620, 30, 75, 2))
         self.line_35.setFrameShape(QFrame.HLine)
         self.line_35.setFrameShadow(QFrame.Sunken)
         self.compra_categoria_producto_1 = QComboBox(self.box_compra_1)
@@ -1060,31 +1077,21 @@ class Ui_MainWindows(object):
         self.line_37.setGeometry(QRect(440, 30, 60, 2))
         self.line_37.setFrameShape(QFrame.HLine)
         self.line_37.setFrameShadow(QFrame.Sunken)
-        self.line_38 = QFrame(self.box_compra_1)
-        self.line_38.setObjectName(u"line_38")
-        self.line_38.setGeometry(QRect(620, 30, 100, 2))
-        self.line_38.setFrameShape(QFrame.HLine)
-        self.line_38.setFrameShadow(QFrame.Sunken)
-        self.compra_color_1 = QLineEdit(self.box_compra_1)
-        self.compra_color_1.setObjectName(u"compra_color_1")
-        self.compra_color_1.setGeometry(QRect(620, 5, 100, 22))
         self.compras_table_widget = QTableWidget(self.compras_scrolling)
-        if (self.compras_table_widget.columnCount() < 6):
-            self.compras_table_widget.setColumnCount(6)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.compras_table_widget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        if (self.compras_table_widget.columnCount() < 5):
+            self.compras_table_widget.setColumnCount(5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.compras_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.compras_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.compras_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.compras_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.compras_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem10)
         self.compras_table_widget.setObjectName(u"compras_table_widget")
-        self.compras_table_widget.setGeometry(QRect(10, 90, 861, 251))
+        self.compras_table_widget.setGeometry(QRect(0, 90, 881, 251))
 
         self.verticalLayout_7.addWidget(self.compras_scrolling)
 
@@ -1607,26 +1614,26 @@ class Ui_MainWindows(object):
         self.tickets_table_widget = QTableWidget(self.frame_3)
         if (self.tickets_table_widget.columnCount() < 10):
             self.tickets_table_widget.setColumnCount(10)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(5, __qtablewidgetitem11)
+        self.tickets_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(6, __qtablewidgetitem12)
+        self.tickets_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(7, __qtablewidgetitem13)
+        self.tickets_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(8, __qtablewidgetitem14)
+        self.tickets_table_widget.setHorizontalHeaderItem(3, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
-        self.tickets_table_widget.setHorizontalHeaderItem(9, __qtablewidgetitem15)
+        self.tickets_table_widget.setHorizontalHeaderItem(4, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(5, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(6, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(7, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(8, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.tickets_table_widget.setHorizontalHeaderItem(9, __qtablewidgetitem20)
         self.tickets_table_widget.setObjectName(u"tickets_table_widget")
         self.tickets_table_widget.setRowCount(0)
         self.tickets_table_widget.setColumnCount(10)
@@ -1682,12 +1689,12 @@ class Ui_MainWindows(object):
         self.recorte_caja_table_widget = QTableWidget(self.frame_5)
         if (self.recorte_caja_table_widget.columnCount() < 3):
             self.recorte_caja_table_widget.setColumnCount(3)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        self.recorte_caja_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem16)
-        __qtablewidgetitem17 = QTableWidgetItem()
-        self.recorte_caja_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem17)
-        __qtablewidgetitem18 = QTableWidgetItem()
-        self.recorte_caja_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem18)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(0, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(1, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.recorte_caja_table_widget.setHorizontalHeaderItem(2, __qtablewidgetitem23)
         self.recorte_caja_table_widget.setObjectName(u"recorte_caja_table_widget")
         self.recorte_caja_table_widget.setRowCount(0)
         self.recorte_caja_table_widget.setColumnCount(3)
@@ -2296,28 +2303,36 @@ class Ui_MainWindows(object):
         self.label_20.setText(QCoreApplication.translate("MainWindows", u"Categoria", None))
         self.label_21.setText(QCoreApplication.translate("MainWindows", u"Nombre", None))
         self.venta_color_1.setText("")
+        ___qtablewidgetitem = self.ventas_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindows", u"Categoria", None));
+        ___qtablewidgetitem1 = self.ventas_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
+        ___qtablewidgetitem2 = self.ventas_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
+        ___qtablewidgetitem3 = self.ventas_table_widget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
+        ___qtablewidgetitem4 = self.ventas_table_widget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindows", u"Color", None));
+        ___qtablewidgetitem5 = self.ventas_table_widget.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindows", u"Total", None));
         self.ventas_generar.setText(QCoreApplication.translate("MainWindows", u"Generar Venta", None))
         self.ventas_agregar.setText(QCoreApplication.translate("MainWindows", u"Agregar Producto", None))
         self.label_3.setText(QCoreApplication.translate("MainWindows", u"Fecha", None))
         self.label_16.setText(QCoreApplication.translate("MainWindows", u"Precio", None))
         self.label_17.setText(QCoreApplication.translate("MainWindows", u"Unidades", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindows", u"Color", None))
         self.label_19.setText(QCoreApplication.translate("MainWindows", u"Total", None))
         self.label_22.setText(QCoreApplication.translate("MainWindows", u"Categoria", None))
         self.label_23.setText(QCoreApplication.translate("MainWindows", u"Nombre", None))
-        self.compra_color_1.setText("")
-        ___qtablewidgetitem = self.compras_table_widget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindows", u"Categoria", None));
-        ___qtablewidgetitem1 = self.compras_table_widget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
-        ___qtablewidgetitem2 = self.compras_table_widget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
-        ___qtablewidgetitem3 = self.compras_table_widget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
-        ___qtablewidgetitem4 = self.compras_table_widget.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindows", u"Color", None));
-        ___qtablewidgetitem5 = self.compras_table_widget.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindows", u"Total", None));
+        ___qtablewidgetitem6 = self.compras_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindows", u"Categoria", None));
+        ___qtablewidgetitem7 = self.compras_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
+        ___qtablewidgetitem8 = self.compras_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
+        ___qtablewidgetitem9 = self.compras_table_widget.horizontalHeaderItem(3)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
+        ___qtablewidgetitem10 = self.compras_table_widget.horizontalHeaderItem(4)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindows", u"Total", None));
         self.compras_generar.setText(QCoreApplication.translate("MainWindows", u"Generar Compra", None))
         self.compras_agregar.setText(QCoreApplication.translate("MainWindows", u"Agregar Producto", None))
         self.productos_ver.setText(QCoreApplication.translate("MainWindows", u"Ver", None))
@@ -2388,34 +2403,34 @@ class Ui_MainWindows(object):
         self.label_6.setText(QCoreApplication.translate("MainWindows", u"Rango de fechas", None))
         self.label_44.setText(QCoreApplication.translate("MainWindows", u"a", None))
         self.tickets_borrar_filtros.setText(QCoreApplication.translate("MainWindows", u"Borrar Filtros", None))
-        ___qtablewidgetitem6 = self.tickets_table_widget.horizontalHeaderItem(0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
-        ___qtablewidgetitem7 = self.tickets_table_widget.horizontalHeaderItem(1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
-        ___qtablewidgetitem8 = self.tickets_table_widget.horizontalHeaderItem(2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindows", u"Tipo", None));
-        ___qtablewidgetitem9 = self.tickets_table_widget.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
-        ___qtablewidgetitem10 = self.tickets_table_widget.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
-        ___qtablewidgetitem11 = self.tickets_table_widget.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
-        ___qtablewidgetitem12 = self.tickets_table_widget.horizontalHeaderItem(6)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindows", u"Total", None));
-        ___qtablewidgetitem13 = self.tickets_table_widget.horizontalHeaderItem(7)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindows", u"Color", None));
-        ___qtablewidgetitem14 = self.tickets_table_widget.horizontalHeaderItem(8)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindows", u"Empleado", None));
-        ___qtablewidgetitem15 = self.tickets_table_widget.horizontalHeaderItem(9)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindows", u"Rfc", None));
+        ___qtablewidgetitem11 = self.tickets_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
+        ___qtablewidgetitem12 = self.tickets_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
+        ___qtablewidgetitem13 = self.tickets_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindows", u"Tipo", None));
+        ___qtablewidgetitem14 = self.tickets_table_widget.horizontalHeaderItem(3)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindows", u"Nombre", None));
+        ___qtablewidgetitem15 = self.tickets_table_widget.horizontalHeaderItem(4)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindows", u"Precio", None));
+        ___qtablewidgetitem16 = self.tickets_table_widget.horizontalHeaderItem(5)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindows", u"Unidades", None));
+        ___qtablewidgetitem17 = self.tickets_table_widget.horizontalHeaderItem(6)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindows", u"Total", None));
+        ___qtablewidgetitem18 = self.tickets_table_widget.horizontalHeaderItem(7)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindows", u"Color", None));
+        ___qtablewidgetitem19 = self.tickets_table_widget.horizontalHeaderItem(8)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindows", u"Empleado", None));
+        ___qtablewidgetitem20 = self.tickets_table_widget.horizontalHeaderItem(9)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindows", u"Rfc", None));
         self.Tickets_generar_ticket.setText(QCoreApplication.translate("MainWindows", u"Guardar copia", None))
         self.label_7.setText(QCoreApplication.translate("MainWindows", u"Fecha de recorte", None))
-        ___qtablewidgetitem16 = self.recorte_caja_table_widget.horizontalHeaderItem(0)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
-        ___qtablewidgetitem17 = self.recorte_caja_table_widget.horizontalHeaderItem(1)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
-        ___qtablewidgetitem18 = self.recorte_caja_table_widget.horizontalHeaderItem(2)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindows", u"Total", None));
+        ___qtablewidgetitem21 = self.recorte_caja_table_widget.horizontalHeaderItem(0)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindows", u"Folio", None));
+        ___qtablewidgetitem22 = self.recorte_caja_table_widget.horizontalHeaderItem(1)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindows", u"Fecha", None));
+        ___qtablewidgetitem23 = self.recorte_caja_table_widget.horizontalHeaderItem(2)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindows", u"Total", None));
         self.recorte_caja_generar_ticket.setText(QCoreApplication.translate("MainWindows", u"Guardar copia", None))
         self.donwload.setText("")
         self.label_8.setText(QCoreApplication.translate("MainWindows", u"Crear copia", None))
