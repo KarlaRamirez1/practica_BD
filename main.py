@@ -351,16 +351,17 @@ class MainWindow(QMainWindow):
 
 	def ver_producto(self):
 		producto = get_producto(self.conn, this.producto_ver_categoria.currentText(), this.producto_ver_nombre.currentText())
-		this.productos_ver_precio.setValue(producto[3])
+		this.productos_ver_precio.setText(str(producto[3]))
 		this.productos_ver_existencia.setValue(producto[5])
 		this.productos_ver_descripcion.setPlainText(producto[4])
 		this.productos_ver_resurtible.setChecked( True if producto[6] == "TRUE" else False)
+		
 		
 	def editar_producto(self):
 		producto = get_producto(self.conn, this.productos_editar_categoria.currentText(), this.productos_editar_nombre.currentText())
 
 		this.productos_editar_nuevo_nombre.setText(producto[2])
-		this.productos_editar_precio.setValue(producto[3])
+		this.productos_editar_precio.setText(str(producto[3]))
 		this.productos_editar_existencia.setValue(producto[5])
 		this.productos_editar_descripcion.setPlainText(producto[4])
 		this.productos_editar_resurtible.setChecked( True if producto[6] == "TRUE" else False)
@@ -368,7 +369,7 @@ class MainWindow(QMainWindow):
 	def update_producto(self):
 		update_producto = {
 			"Nombre": this.productos_editar_nuevo_nombre.text(),
-			"Precio": this.productos_editar_precio.value(),
+			"Precio": this.productos_editar_precio.text(),
 			"Descripcion": this.productos_editar_descripcion.toPlainText(),
 			"Existencia": this.productos_editar_existencia.value(),
 			"Resurtible": "TRUE" if this.productos_editar_resurtible.isChecked() else "FALSE"
