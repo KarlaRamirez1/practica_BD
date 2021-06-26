@@ -374,7 +374,6 @@ class MainWindow(QMainWindow):
 			"Existencia": this.productos_editar_existencia.value(),
 			"Resurtible": "TRUE" if this.productos_editar_resurtible.isChecked() else "FALSE"
 		}
-		#Hola
 		update(self.conn, "Producto", update_producto, "WHERE Tipo = '{}' AND Nombre = '{}'".format(this.productos_editar_categoria.currentText(), this.productos_editar_nombre.currentText()))
 		
 		QMessageBox.about(self, "Exito", "Los datos se guardaron con exito")
